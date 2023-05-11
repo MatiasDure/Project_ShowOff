@@ -12,6 +12,7 @@ public class Interactable : MonoBehaviour
 
     private SphereCollider _collider;
     private bool _clicked;
+    private bool _insideTrigger;
     private KeyCode _keyClicked;
 
     public static event Action<KeyCode[]> OnEnteredInteractionZone;
@@ -32,7 +33,11 @@ public class Interactable : MonoBehaviour
         _collider.radius = _radius;
     }
 
-    private void Update() => GetKeyPressed();
+    private void Update()
+    {
+        if (!_insideTrigger) return;
+        GetKeyPressed();
+    }
 
     private void GetKeyPressed()
     {
@@ -58,6 +63,7 @@ public class Interactable : MonoBehaviour
         if (!other.CompareTag(PLAYER_TAG)) return;
 
         OnEnteredInteractionZone?.Invoke(_keys);
+        _insideTrigger = true;
     }
 
     private void OnTriggerStay(Collider other)
@@ -79,6 +85,8 @@ public class Interactable : MonoBehaviour
     {
         if (!other.CompareTag(PLAYER_TAG)) return;
 
+        _insideTrigger = false;
+        ResetInteractionInfo();
         OnInteractableDeactivated?.Invoke();
         OnLeftInteractionZone?.Invoke();
     }
