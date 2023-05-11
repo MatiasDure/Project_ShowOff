@@ -35,10 +35,10 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
     void MovePlayer()
     {
         Vector3 _moveVec = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
-        _moveVec *= _moveSpeed * Time.deltaTime;
+        _moveVec *= _moveSpeed;
         _moveVec = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * _moveVec;
 
-        _charController.Move(_moveVec);
+        _charController.SimpleMove(_moveVec); // SimpleMove adds Gravity and Time.deltaTime
     }
 
 
