@@ -71,7 +71,7 @@ public class Interactable : MonoBehaviour
         if (!other.CompareTag(PLAYER_TAG) ||
             !_clicked) return;
 
-        OnInteractableActivated?.Invoke(new InteractionInformation(_keyClicked));
+        OnInteractableActivated?.Invoke(new InteractionInformation(other.gameObject, _keyClicked));
         ResetInteractionInfo();
     }
 
@@ -91,14 +91,31 @@ public class Interactable : MonoBehaviour
         OnLeftInteractionZone?.Invoke();
     }
 
+    /// <summary>
+    /// Simulates the OnTriggerExit for cases when OnTriggerExit does not get called
+    /// </summary>
+    /// <remarks> 
+    /// A use case for this is when you teleport a <c>GameObject</c> outside the collider
+    /// boundary without actually crossing the boundary i.e portal mechanic. 
+    /// </remarks>
+    public void ForceExit()
+    {
+        _insideTrigger = false;
+        ResetInteractionInfo();
+        OnInteractableDeactivated?.Invoke();
+        OnLeftInteractionZone?.Invoke();
+    }
+
 }
 
 public class InteractionInformation
 {
     public KeyCode KeyPressed { get; private set; }
+    public GameObject ObjInteracted { get; private set; }
     
-    public InteractionInformation(KeyCode pPressed)
+    public InteractionInformation(GameObject pObjInteracted, KeyCode pPressed)
     {
+        ObjInteracted = pObjInteracted;
         KeyPressed = pPressed;
     }
 }
