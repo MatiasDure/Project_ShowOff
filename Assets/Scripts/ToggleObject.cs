@@ -1,41 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
-public class ToggleObject : MonoBehaviour, IInteractable
+public class ToggleObject : InteractableReaction
 {
     [SerializeField] private GameObject _toggleObj;
     [SerializeField] private bool _disableOnExit = true;
 
-    private Interactable _interactableScript;
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         if(_toggleObj == null)
         {
             Debug.LogWarning("No GameObject passed to toggle!");
             Destroy(this);
         }
-
-        _interactableScript = GetComponent<Interactable>();
-
-        _interactableScript.OnInteractableActivated += Interact;
         
-        if(_disableOnExit) _interactableScript.OnInteractableDeactivated += DeactivateObj;
+        if(_disableOnExit) InteractableScript.OnInteractableDeactivated += DeactivateObj;
     }
     
-    private void ToggleObj(InteractionInformation info) => _toggleObj.SetActive(!_toggleObj.activeInHierarchy);
+    private void ToggleObj() => _toggleObj.SetActive(!_toggleObj.activeInHierarchy);
 
     private void DeactivateObj() => _toggleObj.SetActive(false);
 
-    public void Interact(InteractionInformation info) => ToggleObj(info);
+    protected override void Interact(InteractionInformation info) => ToggleObj();
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
-        _interactableScript.OnInteractableActivated -= Interact;
+        base.OnDestroy();
         
-        if(_disableOnExit) _interactableScript.OnInteractableDeactivated -= DeactivateObj;
+        if(_disableOnExit) InteractableScript.OnInteractableDeactivated -= DeactivateObj;
     }
 }

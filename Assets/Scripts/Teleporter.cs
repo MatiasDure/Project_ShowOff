@@ -2,33 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
-public class Teleporter : MonoBehaviour, IInteractable
+public class Teleporter : InteractableReaction
 {
     private List<Transform> pointsToTeleport = new List<Transform>();
 
     private CharacterController _characterController;
 
-    private Interactable _interactableScript;
-
-    private void Awake()
+    protected override void Awake()
     {
-       for(int i = 0; i < transform.childCount; i++)
+       base.Awake();
+       
+        for(int i = 0; i < transform.childCount; i++)
        {
             pointsToTeleport.Add(transform.GetChild(i));
        }
     }
 
-    private void Start()
-    {
-        _interactableScript = GetComponent<Interactable>();
-
-        _interactableScript.OnInteractableActivated += Interact;
-    }
-
     private int GenerateRandomIndex() =>  Random.Range(0, pointsToTeleport.Count);
 
-    public void Interact(InteractionInformation info) => Teleport(info.ObjInteracted);
+    protected override void Interact(InteractionInformation info) => Teleport(info.ObjInteracted);
 
     private void Teleport(GameObject objInteracted)
     {
@@ -38,7 +30,7 @@ public class Teleporter : MonoBehaviour, IInteractable
 
         if (_characterController == null) _characterController = objInteracted.GetComponent<CharacterController>();
 
-        _interactableScript.ForceExit();
+        InteractableScript.ForceExit();
 
         _characterController.enabled = false;
         objInteracted.transform.position = newPos;
@@ -46,8 +38,8 @@ public class Teleporter : MonoBehaviour, IInteractable
         _characterController.enabled = true;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
-        _interactableScript.OnInteractableActivated -= Interact;
+        base.OnDestroy();
     }
 }

@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
-public class RotateBranch : MonoBehaviour, IInteractable
+public class RotateBranch : InteractableReaction
 {
     [SerializeField] private GameObject _branchPivot;
 
-    private Interactable _interactable;
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         if (_branchPivot == null) Destroy(this);
-
-        _interactable = GetComponent<Interactable>();
-
-        _interactable.OnInteractableActivated += Interact;
     }
 
     private void Rotate(InteractionInformation info)
@@ -36,11 +31,10 @@ public class RotateBranch : MonoBehaviour, IInteractable
             _branchPivot.transform.Rotate(new(-2, 0, 0));
         }
     }
+    protected override void Interact(InteractionInformation info) => Rotate(info);
 
-    public void Interact(InteractionInformation info) => Rotate(info);
-
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
-        _interactable.OnInteractableActivated -= Interact;
+        base.OnDestroy();   
     }
 }

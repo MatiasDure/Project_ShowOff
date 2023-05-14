@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 {
@@ -45,6 +44,7 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
     void RotatePlayer()
     {
         Vector3 _rotationVec = new Vector3(0, Input.GetAxis("Horizontal"), 0);
+
         _rotationVec *= _rotationSpeed * Time.deltaTime * 100;
 
         transform.Rotate(_rotationVec);
