@@ -25,12 +25,12 @@ public class RotateBranch : MonoBehaviour, IInteractable
 
         angle = angle > 180 ? angle - 360 : angle;
 
-        if(info.KeyPressed == KeyCode.LeftArrow &&
+        if(info.KeyPressed == KeyCode.F &&
             angle < 45)
         {
             _branchPivot.transform.Rotate(new(2, 0, 0));
         }
-        else if(info.KeyPressed == KeyCode.RightArrow &&
+        else if(info.KeyPressed == KeyCode.G &&
             angle > -45)
         {
             _branchPivot.transform.Rotate(new(-2, 0, 0));
