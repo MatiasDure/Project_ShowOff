@@ -26,6 +26,12 @@ public class FogInteraction : MonoBehaviour
         {
             ParticleSystem.Particle _p = _enter[i];
             _p.velocity *= speedMultiplier;
+
+            if (i % 2 == 1)
+            {
+                _p.remainingLifetime = _p.remainingLifetime / 1.5f;
+            }
+
             _enter[i] = _p;
         }
 
