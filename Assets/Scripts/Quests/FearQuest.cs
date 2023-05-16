@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class FearQuest : LevelQuest
 {
-    [SerializeField] Interactable[] torches;
+    [SerializeField] List<GameObject> torchesGO;
+
+    List<PathTorch> torches = new List<PathTorch>();
 
     int torchesOn = 0;
 
@@ -18,28 +20,67 @@ public class FearQuest : LevelQuest
         FearQuestTrigger.instance.OnStartQuest -= StartQuest;
     }
 
-    void Update()
-    {
-        if (!questStarted) return;
-
-        LightUpPath();
-
-    }
-
     protected override void StartQuest()
     {
-        if (questStarted) return;
-        questStarted = true;
+        if (state == QuestState.IN_QUEST) return;
 
-        Debug.Log("Starting Quest!");
-    }
-
-    void LightUpPath()
-    {
-
+        SetupTorches();
+        state = QuestState.IN_QUEST;
+        Debug.Log("Quest started!");
     }
 
     protected override void CompleteQuest()
     {
+        state = QuestState.WAITING;
+        torchesOn = 0;
+        TorchUnsubscribe();
+        Debug.Log("Quest complete!");
+    }
+
+    void SetupTorches()
+    {
+        foreach(GameObject torch in torchesGO)
+        {
+            PathTorch pathTorch = torch.transform.GetComponentInChildren<PathTorch>();
+            TorchSubscribe(pathTorch);
+            torches.Add(pathTorch);
+        }
+    }
+
+    void EnableTorch(PathTorch pPathTorch)
+    {
+        if (state == QuestState.WAITING) return;
+
+        if (pPathTorch == torches[torchesOn])
+        {
+            pPathTorch.EnableTorch();
+            torchesOn++;
+        }
+
+        if(torchesOn == torches.Count)
+        {
+            CompleteQuest();
+        }
+    }
+
+    // TODO: Do we need to disable torches? Maybe disable all when a wrong torch is intaracted with.
+    void DisableTorch(PathTorch pPathTorch)
+    {
+        if (state == QuestState.WAITING) return;
+    }
+
+    void TorchSubscribe(PathTorch pPathTorch)
+    {
+        pPathTorch.OnTorchEnable += EnableTorch;
+        pPathTorch.OnTorchDisable += DisableTorch;
+    }
+
+    void TorchUnsubscribe()
+    {
+        foreach(PathTorch pathTorch in torches)
+        {
+            pathTorch.OnTorchEnable -= EnableTorch;
+            pathTorch.OnTorchDisable -= DisableTorch;
+        }
     }
 }

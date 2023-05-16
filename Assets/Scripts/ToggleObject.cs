@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ToggleObject : InteractableReaction
 {
-    [SerializeField] private GameObject _toggleObj;
+    [SerializeField] GameObject _toggleObj;
     [SerializeField] private bool _disableOnExit = true;
 
     protected override void Awake()
