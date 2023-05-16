@@ -4,11 +4,8 @@ using UnityEngine;
 
 public abstract class LevelQuest : MonoBehaviour
 {
-    public virtual void StartQuest()
-    {
-    }
+    protected bool questStarted = false;
+    protected abstract void StartQuest();
 
-    public virtual void CompleteQuest()
-    {
-    }
+    protected abstract void CompleteQuest();
 }
