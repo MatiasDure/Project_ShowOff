@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 398b7df74a5865e468bcc81ec46c302a, type: 2}
 --- !u!1 &23756717
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +605,8 @@ GameObject:
   - component: {fileID: 231780313}
   - component: {fileID: 231780312}
   - component: {fileID: 231780311}
+  - component: {fileID: 231780314}
+  - component: {fileID: 231780315}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -679,6 +681,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &231780314
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231780309}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &231780315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231780309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2dc6832b990f4449a76d8e2a24ae0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &234690152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,8 +1684,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &603770631
 Transform:
@@ -1741,6 +1777,8 @@ GameObject:
   - component: {fileID: 804490796}
   - component: {fileID: 804490795}
   - component: {fileID: 804490797}
+  - component: {fileID: 804490798}
+  - component: {fileID: 804490799}
   m_Layer: 0
   m_Name: MonsterInteract
   m_TagString: Untagged
@@ -1805,6 +1843,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggleObj: {fileID: 1070408010}
   _disableOnExit: 1
+--- !u!114 &804490798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804490793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15afb948f6839e4facba752bc9c4161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colors:
+  - {fileID: 2100000, guid: 2f0580e3210857047a25e3e34c6bae9a, type: 2}
+  - {fileID: 2100000, guid: e159cd6b488ff4143b8b9731cbfdd4b0, type: 2}
+  - {fileID: 2100000, guid: d6fd9504617f38848b34273dc1579932, type: 2}
+  _colorTimers: []
+  _randomizeTimer: 1
+  _meshRenderer: {fileID: 231780311}
+--- !u!114 &804490799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804490793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6e0c8debb533146a4d223ba81a96ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &826686380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +2003,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &855411734
 MeshCollider:
@@ -3078,8 +3147,8 @@ GameObject:
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1435858024
 Transform:
@@ -3430,8 +3499,8 @@ GameObject:
   m_Name: top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1536309630
 Transform:
@@ -3527,8 +3596,8 @@ GameObject:
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1540975484
 Transform:
@@ -4395,8 +4464,8 @@ GameObject:
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2141160013
 Transform:
