@@ -5,6 +5,7 @@ public class TrafficLight : MonoBehaviour
 {
     public enum State
     {
+        None,
         Go,
         Warning,
         Stop
@@ -25,11 +26,14 @@ public class TrafficLight : MonoBehaviour
 
     private void Start()
     {
-        _state = State.Go;
+        _state = State.None;
     }
 
     private void Update()
     {
+        if (_state == State.None || 
+            GameState.Instance.IsFrozen) return;
+
         _timer -= Time.deltaTime;
 
         if (!TimerOver()) return;
@@ -61,5 +65,12 @@ public class TrafficLight : MonoBehaviour
         }
 
         OnTrafficStateChanged?.Invoke(_state);
+    }
+
+    public void StartLights()
+    {
+        if (_state != State.None) return;
+
+        _state = State.Go;
     }
 }
