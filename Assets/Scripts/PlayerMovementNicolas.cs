@@ -45,7 +45,7 @@ public class PlayerMovementNicolas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
         if (getVerticalInput)
         {
             verticalInput = Input.GetAxis("Vertical");
@@ -101,7 +101,7 @@ public class PlayerMovementNicolas : MonoBehaviour
 
         if (movementDirection == Vector3.zero) return;
 
-        if(movementDirection.z == -1)
+        if(verticalInput == -1 && horizontalInput == 0)
         {
             StartCoroutine(MoveBackPause());
         }
@@ -124,6 +124,8 @@ public class PlayerMovementNicolas : MonoBehaviour
 
     IEnumerator MoveBackPause()
     {
+        verticalInput = 0;
+
         getVerticalInput = false;
         yield return new WaitForSeconds(moveBackPauseSeconds);
         getVerticalInput = true;
