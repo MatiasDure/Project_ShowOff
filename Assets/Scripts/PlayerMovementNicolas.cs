@@ -20,12 +20,19 @@ public class PlayerMovementNicolas : MonoBehaviour
     [SerializeField]
     private Transform cameraTransform;
 
+    [SerializeField]
+    private float moveBackPauseSeconds;
+
     private Animator animator;
     private CharacterController characterController;
     private float ySpeed;
     private float originalStepOffset;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
+    private bool getVerticalInput = true;
+    private float horizontalInput;
+    private float verticalInput;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +46,10 @@ public class PlayerMovementNicolas : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        if (getVerticalInput)
+        {
+            verticalInput = Input.GetAxis("Vertical");
+        }
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
@@ -89,12 +99,15 @@ public class PlayerMovementNicolas : MonoBehaviour
 
         characterController.Move(velocity * Time.deltaTime);
 
-        if (movementDirection != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+        if (movementDirection == Vector3.zero) return;
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        if(movementDirection.z == -1)
+        {
+            StartCoroutine(MoveBackPause());
         }
+
+        Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
 
     private void OnApplicationFocus(bool focus)
@@ -107,5 +120,12 @@ public class PlayerMovementNicolas : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    IEnumerator MoveBackPause()
+    {
+        getVerticalInput = false;
+        yield return new WaitForSeconds(moveBackPauseSeconds);
+        getVerticalInput = true;
     }
 }
