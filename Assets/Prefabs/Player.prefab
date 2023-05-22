@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 2550128321087742464}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 10
+  _rotationSpeed: 2
   _jumpForce: 0
 --- !u!136 &2550128321087742468
 CapsuleCollider:
