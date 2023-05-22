@@ -10,12 +10,14 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
     [SerializeField] float _rotationSpeed;
     [SerializeField] float _jumpForce;
 
-    Rigidbody _rb;
     CharacterController _charController;
+
+    private Vector3 _previousPosition;
+
+    public bool IsMoving { get; private set; }
 
     void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
         _charController = GetComponent<CharacterController>();
     }
 
@@ -33,11 +35,15 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 
     void MovePlayer()
     {
+        _previousPosition = this.transform.position;
+
         Vector3 _moveVec = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
         _moveVec *= _moveSpeed;
         _moveVec = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * _moveVec;
 
         _charController.SimpleMove(_moveVec); // SimpleMove adds Gravity and Time.deltaTime
+
+        IsMoving = _previousPosition != this.transform.position;
     }
 
 
