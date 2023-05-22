@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Interactable), typeof(TrafficLight))]
@@ -9,6 +10,8 @@ public class AngerQuest : MonoBehaviour
     private TrafficLight _trafficLight;
 
     private TrafficLight.State _state;
+
+    public static event Action OnIllegalMove;
 
     private void Awake()
     {
@@ -26,15 +29,20 @@ public class AngerQuest : MonoBehaviour
 
     private void AssignPlayer(InteractionInformation info)
     {
+        if (_playingPlayerMove != null) return;
+
         _playingPlayerMove = info.ObjInteracted.GetComponent<PlayerMoveBehaviour>();
+        _trafficLight.StartLights();
     }
 
     private void CheckState()
     {
-        if (_playingPlayerMove == null || 
+        if (GameState.Instance.IsFrozen || 
+            _playingPlayerMove == null || 
             LegalMove() ||
             !_playingPlayerMove.IsMoving) return;
 
+        OnIllegalMove?.Invoke();
         Debug.LogWarning("Emotional Damage!");
     }
 
