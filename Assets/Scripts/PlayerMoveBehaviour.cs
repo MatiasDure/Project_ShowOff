@@ -11,7 +11,6 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
     [SerializeField] float _rotationSpeed;
     [SerializeField] float _jumpForce;
     [SerializeField] float _moveBackPauseSec;
-    [SerializeField] float _gravity;
     [SerializeField] Transform _cameraTransform;
 
     Animator _animator;
@@ -23,6 +22,14 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
     float _verInput;
 
     bool _getVerInput = true;
+
+
+    //=====================//
+    float ySpeed;
+    float lastGroundedTime;
+    float jumpButtonPressedTime;
+    float jumpButtonGracePeriod = 0.5f;
+    [SerializeField] float originalStepOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -63,12 +70,43 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
         _moveVec *= _moveSpeed;
         _moveVec = Quaternion.AngleAxis(_cameraTransform.rotation.eulerAngles.y, Vector3.up) * _moveVec;
 
+        /*
         if (Input.GetButtonDown("Jump") && _charController.isGrounded)
         {
             _moveVec = Jump(_moveVec);
         }
+        */
 
-        _moveVec.y -= _gravity;
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+        if (_charController.isGrounded)
+        {
+            lastGroundedTime = Time.deltaTime;
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpButtonPressedTime = Time.deltaTime;
+        }
+
+        if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
+        {
+            _charController.stepOffset = originalStepOffset;
+            ySpeed = -0.5f;
+
+            if(Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
+            {
+                ySpeed = _jumpForce;
+                jumpButtonPressedTime = 0;
+                lastGroundedTime = 0;
+            }
+        }
+        else
+        {
+            _charController.stepOffset = 0;
+        }
+
+        _moveVec.y = ySpeed;
+
+
         _charController.Move(_moveVec * Time.deltaTime);
 
         if (_moveVec == Vector3.zero) return;
