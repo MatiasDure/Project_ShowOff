@@ -2,57 +2,150 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Animator), typeof(CharacterController))]
 public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 {
     [SerializeField] float _moveSpeed;
+
+
     [SerializeField] float _rotationSpeed;
+
+
     [SerializeField] float _jumpForce;
 
-    CharacterController _charController;
 
-    private Vector3 _previousPosition;
+    [SerializeField] float _jumpButtonDelay;
+
+
+    [SerializeField] Transform _camTransform;
+
+
+    [SerializeField] float _moveBackPauseSec;
+
+    private Animator _animator;
+    private CharacterController _charController;
+    private float _ySpeed;
+    private float _origStepOffset;
+    private float? _lastGroundedTime;
+    private float? _jumpButtonPressedTime;
+    private bool _getVerticalInput = true;
+    private float _horizontalInput;
+    private float _verticalInput;
 
     public bool IsMoving { get; private set; }
+    private Vector3 _previousPosition;
 
-    void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
+        _animator = GetComponent<Animator>();
         _charController = GetComponent<CharacterController>();
+        _origStepOffset = _charController.stepOffset;
     }
 
     public void Move()
     {
-        GetInputs();
+        GetInput();
         MovePlayer();
-        RotatePlayer();
     }
 
-    void GetInputs()
+    void GetInput()
     {
-
+        _horizontalInput = Input.GetAxis("Horizontal");
+        if (_getVerticalInput)
+        {
+            _verticalInput = Input.GetAxis("Vertical");
+        }
     }
 
     void MovePlayer()
     {
         _previousPosition = this.transform.position;
 
-        Vector3 _moveVec = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
-        _moveVec *= _moveSpeed;
-        _moveVec = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * _moveVec;
+        Vector3 movementDirection = new Vector3(_horizontalInput, 0, _verticalInput);
+        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
 
-        _charController.SimpleMove(_moveVec); // SimpleMove adds Gravity and Time.deltaTime
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            inputMagnitude /= 2;
+        }
+
+        // _animator.SetFloat("Input Magnitude", inputMagnitude, 0.05f, Time.deltaTime); TODO: Add when we have animations
+
+        float speed = inputMagnitude * _moveSpeed;
+        movementDirection = Quaternion.AngleAxis(_camTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
+        movementDirection.Normalize();
+
+        _ySpeed += Physics.gravity.y * Time.deltaTime;
+
+        if (_charController.isGrounded)
+        {
+            _lastGroundedTime = Time.time;
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            _jumpButtonPressedTime = Time.time;
+        }
+
+        if (Time.time - _lastGroundedTime <= _jumpButtonDelay)
+        {
+            _charController.stepOffset = _origStepOffset;
+            _ySpeed = -0.5f;
+
+            if (Time.time - _jumpButtonPressedTime <= _jumpButtonDelay)
+            {
+                _ySpeed = _jumpForce;
+                _jumpButtonPressedTime = null;
+                _lastGroundedTime = null;
+            }
+        }
+        else
+        {
+            _charController.stepOffset = 0;
+        }
+
+        Vector3 velocity = movementDirection * speed;
+        velocity.y = _ySpeed;
+
+        _charController.Move(velocity * Time.deltaTime);
 
         IsMoving = _previousPosition != this.transform.position;
+
+        if (movementDirection == Vector3.zero) return;
+
+        if (_verticalInput == -1 && _horizontalInput == 0)
+        {
+            StartCoroutine(MoveBackPause());
+        }
+
+        RotatePlayer(movementDirection);
     }
 
-
-    void RotatePlayer()
+    void RotatePlayer(Vector3 _pMoveVec)
     {
-        Vector3 _rotationVec = new Vector3(0, Input.GetAxis("Horizontal"), 0);
+        Quaternion _toRotation = Quaternion.LookRotation(_pMoveVec, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, _toRotation, _rotationSpeed * Time.deltaTime);
+    }
 
-        _rotationVec *= _rotationSpeed * Time.deltaTime * 100;
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 
-        transform.Rotate(_rotationVec);
+    IEnumerator MoveBackPause()
+    {
+        _verticalInput = 0;
+
+        _getVerticalInput = false;
+        yield return new WaitForSeconds(_moveBackPauseSec);
+        _getVerticalInput = true;
     }
 }
