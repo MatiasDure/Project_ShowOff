@@ -5,25 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(Animator),typeof(CharacterController))]
 public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 {
+    public bool IsMoving { get; private set; }
+
     [SerializeField] float _moveSpeed;
     [SerializeField] float _rotationSpeed;
     [SerializeField] float _jumpForce;
-    [SerializeField] float moveBackPauseSeconds;
+    [SerializeField] float _moveBackPauseSec;
+    [SerializeField] float _gravity;
     [SerializeField] Transform _cameraTransform;
 
-    Animator animator;
-    CharacterController characterController;
+    Animator _animator;
+    CharacterController _charController;
 
-    float horizontalInput;
-    float verticalInput;
+    Vector3 _previousPosition;
 
-    bool getVerticalInput = true;
+    float _horInput;
+    float _verInput;
+
+    bool _getVerInput = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
+        _charController = GetComponent<CharacterController>();
     }
 
     public void Move()
@@ -34,63 +39,68 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 
     void GetInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        _horInput = Input.GetAxis("Horizontal");
 
-        if (getVerticalInput)
+        if (_getVerInput)
         {
-            verticalInput = Input.GetAxis("Vertical");
+            _verInput = Input.GetAxis("Vertical");
         }
     }
 
     void MovePlayer()
     {
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
+        _previousPosition = this.transform.position;
+
+        Vector3 _moveVec = new Vector3(_horInput, 0, _verInput).normalized;
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            movementDirection *= 2;
+            _moveVec *= 2;
         }
 
         // animator.SetFloat("Input Magnitude", inputMagnitude, 0.05f, Time.deltaTime); TODO: Enable when we have animations
 
-        movementDirection *= _moveSpeed;
-        movementDirection = Quaternion.AngleAxis(_cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
+        _moveVec *= _moveSpeed;
+        _moveVec = Quaternion.AngleAxis(_cameraTransform.rotation.eulerAngles.y, Vector3.up) * _moveVec;
 
-        if (Input.GetButtonDown("Jump") && characterController.isGrounded)
+        if (Input.GetButtonDown("Jump") && _charController.isGrounded)
         {
-            movementDirection += Jump();
+            _moveVec = Jump(_moveVec);
         }
 
-        characterController.SimpleMove(movementDirection);
+        _moveVec.y -= _gravity;
+        _charController.Move(_moveVec * Time.deltaTime);
 
-        if (movementDirection == Vector3.zero) return;
+        if (_moveVec == Vector3.zero) return;
 
-        if (verticalInput == -1 && horizontalInput == 0)
+        if (_verInput == -1 && _horInput == 0)
         {
             StartCoroutine(MoveBackPause());
         }
 
-        RotatePlayer(movementDirection);
+        RotatePlayer(_moveVec);
+
+        IsMoving = _previousPosition != this.transform.position;
     }
 
-    void RotatePlayer(Vector3 pMoveVec)
+    void RotatePlayer(Vector3 _pMoveVec)
     {
-        Quaternion toRotation = Quaternion.LookRotation(pMoveVec, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
+        Quaternion _toRotation = Quaternion.LookRotation(_pMoveVec, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, _toRotation, _rotationSpeed * Time.deltaTime);
     }
 
-    Vector3 Jump()
+    Vector3 Jump(Vector3 _pMoveVec)
     {
-        return new Vector3(0, _jumpForce, 0);
+        return new Vector3(_pMoveVec.x, _jumpForce, _pMoveVec.z);
     }
 
     IEnumerator MoveBackPause()
     {
-        verticalInput = 0;
+        _verInput = 0;
 
-        getVerticalInput = false;
-        yield return new WaitForSeconds(moveBackPauseSeconds);
-        getVerticalInput = true;
+        _getVerInput = false;
+        yield return new WaitForSeconds(_moveBackPauseSec);
+        _getVerInput = true;
     }
 
     private void OnApplicationFocus(bool focus)
