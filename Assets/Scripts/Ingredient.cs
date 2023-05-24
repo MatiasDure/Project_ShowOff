@@ -12,12 +12,13 @@ public enum IngredientName
 
 public class Ingredient : InteractableReaction
 {
-    public static event Action<GameObject> OnObjectPickup;
+    public static event Action<GameObject> OnIngredientPickup;
 
-    [SerializeField] IngredientName _ingredient;
+    [field: SerializeField]
+    public IngredientName _ingrName { get; private set; }
 
     protected override void Interact(InteractionInformation obj)
     {
-        OnObjectPickup?.Invoke(this.gameObject);
+        OnIngredientPickup?.Invoke(this.gameObject);
     }
 }
