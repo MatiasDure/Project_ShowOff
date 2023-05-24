@@ -9,17 +9,20 @@ public class PickupManager : MonoBehaviour
 
     void OnEnable()
     {
-        PickupObject.OnObjectPickup += CollectObject;
+        Ingredient.OnObjectPickup += CollectObject;
     }
 
     void OnDisable()
     {
-        PickupObject.OnObjectPickup -= CollectObject;
+        Ingredient.OnObjectPickup -= CollectObject;
     }
 
     void CollectObject(GameObject _pObject)
     {
+        if (DisgustQuest.state != LevelQuest.QuestState.InQuest) return;
+
         _objectsCollected.Add(_pObject);
+        _pObject.GetComponent<Interactable>().ForceExit();
         _pObject.SetActive(false);
     }
 }
