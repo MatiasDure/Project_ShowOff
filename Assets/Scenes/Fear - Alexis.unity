@@ -263,7 +263,7 @@ SphereCollider:
   m_GameObject: {fileID: 59253128}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1854,9 +1854,29 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 540564909}
+    - target: {fileID: 6257337607592145797, guid: db69c6169246b8948ba9344403220a02,
+        type: 3}
+      propertyPath: m_YAxis.Value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257337607592145797, guid: db69c6169246b8948ba9344403220a02,
+        type: 3}
+      propertyPath: m_YAxis.m_InputAxisName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257337607592145797, guid: db69c6169246b8948ba9344403220a02,
+        type: 3}
+      propertyPath: m_YAxisRecentering.m_enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
+        type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
@@ -1906,6 +1926,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.994719
       objectReference: {fileID: 0}
@@ -1917,12 +1947,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004278879
+      value: -0.0000000042788786
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.4149776e-10
+      value: 4.4149773e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
