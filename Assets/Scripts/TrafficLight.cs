@@ -31,7 +31,6 @@ public class TrafficLight : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_state);
         if (_state == State.None || 
             GameState.Instance.IsFrozen) return;
 
