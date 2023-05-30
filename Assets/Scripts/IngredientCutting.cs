@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCutting : MonoBehaviour
+public class IngredientCutting : InteractableReaction, IIngredientInteraction
 {
     enum State
     {
@@ -22,8 +22,20 @@ public class TestCutting : MonoBehaviour
 
     Coroutine _lastRoutine = null;
 
+    protected override void Interact(InteractionInformation obj)
+    {
+        DisablePlayerMovement();
+    }
+
+    public void DisablePlayerMovement()
+    {
+
+    }
+
     void Update()
     {
+        Debug.Log(Input.GetAxis("Horizontal"));
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             _pressCount++;

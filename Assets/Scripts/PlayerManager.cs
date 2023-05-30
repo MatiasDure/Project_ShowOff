@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
 {
     PlayerMoveBehaviour _moveBehaviour;
 
+    
+
     void Awake()
     {
         _moveBehaviour = GetComponent<PlayerMoveBehaviour>();
