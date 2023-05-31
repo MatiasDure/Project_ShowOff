@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientCutting : InteractableReaction, IIngredientInteraction
+public class IngredientCutting : InteractableReaction, IRecipeStep
 {
     enum State
     {
@@ -24,12 +24,19 @@ public class IngredientCutting : InteractableReaction, IIngredientInteraction
 
     protected override void Interact(InteractionInformation obj)
     {
-        DisablePlayerMovement();
+        FreezeGameState();
     }
 
-    public void DisablePlayerMovement()
+    public void FreezeGameState()
     {
+        if (GameState.Instance.IsFrozen) return;
 
+        GameState.Instance.IsFrozen = true;
+    }
+
+    public void UnFreezeGameState()
+    {
+        GameState.Instance.IsFrozen = false;
     }
 
     void Update()

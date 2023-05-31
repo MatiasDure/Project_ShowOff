@@ -13,12 +13,12 @@ public class RecipeManager : MonoBehaviour
 
     void OnEnable()
     {
-        PickupManager.OnIngredientCollected += GetIngredientName;
+        IngredientPickup.OnIngredientCollected += GetIngredientName;
     }
 
     void OnDisable()
     {
-        PickupManager.OnIngredientCollected -= GetIngredientName;
+        IngredientPickup.OnIngredientCollected -= GetIngredientName;
     }
 
     void Awake()
