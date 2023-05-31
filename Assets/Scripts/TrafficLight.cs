@@ -46,19 +46,13 @@ public class TrafficLight : MonoBehaviour
         switch(_state)
         {
             case State.Go:
-                _state = State.Warning;
-                _timer = UnityEngine.Random.Range(1f, 3f);
-                _meshRenderer.material = _colors[1];
+                UpdateForState(State.Warning);
                 break;
             case State.Warning:
-                _state = State.Stop;
-                _timer = UnityEngine.Random.Range(1f, 3f);
-                _meshRenderer.material = _colors[2];
+                UpdateForState(State.Stop);
                 break;
             case State.Stop:
-                _state = State.Go;
-                _timer = UnityEngine.Random.Range(1f, 3f);
-                _meshRenderer.material = _colors[0];
+                UpdateForState(State.Go);
                 break;
             default:
                 break;
@@ -67,10 +61,25 @@ public class TrafficLight : MonoBehaviour
         OnTrafficStateChanged?.Invoke(_state);
     }
 
+    private void UpdateForState(State pState)
+    {
+        _state = pState;
+        _meshRenderer.material = _colors[(int)pState - 1];
+        SetRandomTimer(1, 3);
+    }
+
+    private void SetRandomTimer(float fromInclusive, float toInclusive) => _timer = UnityEngine.Random.Range(fromInclusive, toInclusive);
+
     public void StartLights()
     {
         if (_state != State.None) return;
 
-        _state = State.Go;
+        UpdateForState(State.Go);
+    }
+
+    public void StopLights()
+    {
+        _state = State.None;
+        _meshRenderer.material = _colors[3];
     }
 }

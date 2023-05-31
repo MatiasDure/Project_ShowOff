@@ -11,26 +11,40 @@ public class MonsterNavMesh : MonoBehaviour
     
     private NavMeshAgent _navMesh;
     private Vector3 _target;
+    private Vector3 _startingPosition;
+    private bool _questWon;
 
     public static event Action OnReachedNewPosition;
 
     private void Awake()
     {
         _navMesh = GetComponent<NavMeshAgent>();
+        _startingPosition = transform.position;
         AngerQuest.OnIllegalMove += AssignNewPosition;
+        AngerQuest.OnQuestFinished += MoveToStartingPos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GameState.Instance.IsFrozen) return;
+        if (!GameState.Instance.IsFrozen &&
+            !_questWon) return;
 
-        _navMesh.destination = _target;  
+        _navMesh.destination = _target;
         CheckIfReachedNewDestination();
+    }
+
+    private void MoveToStartingPos()
+    {
+        _target = _startingPosition;
+        _questWon = true;
     }
 
     private void AssignNewPosition()
     {
+        if (_monsterPositions.Length < 1 ||
+            _monsterPositions[0] == null) return;
+
         GameState.Instance.IsFrozen = true;
         _target = _monsterPositions[UnityEngine.Random.Range(0, _monsterPositions.Length)].position;       
     }
@@ -51,5 +65,6 @@ public class MonsterNavMesh : MonoBehaviour
     private void OnDestroy()
     {
         AngerQuest.OnIllegalMove -= AssignNewPosition;
+        AngerQuest.OnQuestFinished -= MoveToStartingPos;
     }
 }

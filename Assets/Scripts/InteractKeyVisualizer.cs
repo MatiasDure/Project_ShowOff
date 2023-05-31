@@ -24,6 +24,17 @@ public class InteractKeyVisualizer : MonoBehaviour
         if (_spritesWaitingForVisual.Count > 0) SetInteractionSprite(_spritesWaitingForVisual.Dequeue());
     }
 
+    private void DisableVisualizerAll()
+    {
+        _container.SetActive(false);
+        _spritesWaitingForVisual.Clear();
+    }
+
+    private void Update()
+    {
+        if (GameState.Instance.IsFrozen) DisableVisualizerAll();
+    }
+
     private void FindInteractionKeySprite(KeyCode[] pKeyCodes)
     {
         foreach(var key in _interactionKeys)
@@ -38,7 +49,8 @@ public class InteractKeyVisualizer : MonoBehaviour
     private void SetInteractionSprite(Sprite pKeySprite)
     {
         if (_keyImg == null || 
-            pKeySprite == null) return;
+            pKeySprite == null ||
+            GameState.Instance.IsFrozen) return;
 
         if (VisualizerActive())
         {
