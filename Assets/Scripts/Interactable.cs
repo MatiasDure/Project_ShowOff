@@ -35,7 +35,8 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if (!_insideTrigger) return;
+        if (!_insideTrigger ||
+            GameState.Instance.IsFrozen) return;
         GetKeyPressed();
     }
 

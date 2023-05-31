@@ -52,10 +52,9 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
     void GetInput()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (_getVerticalInput)
-        {
-            _verticalInput = Input.GetAxis("Vertical");
-        }
+        if (_getVerticalInput) _verticalInput = Input.GetAxis("Vertical");
+
+        _verticalInput = GameState.Instance.IsFrozen ? 0 : _verticalInput;
     }
 
     void MovePlayer()
