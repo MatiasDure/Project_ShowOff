@@ -12,6 +12,7 @@ public class AngerQuest : MonoBehaviour
     private TrafficLight.State _state;
     private bool _isPlaying;
     private bool _gameWon;
+    private int _interactedCount = 0;
 
     public bool GameWon => _gameWon;
 
@@ -23,7 +24,7 @@ public class AngerQuest : MonoBehaviour
         _interactable = GetComponent<Interactable>();
         _trafficLight = GetComponent<TrafficLight>();
 
-        _interactable.OnInteractableActivated += AssignPlayer;
+        _interactable.OnInteractableActivated += CheckInteraction;
         _trafficLight.OnTrafficStateChanged += (TrafficLight.State pLightState) => _state = pLightState;
 
         _gameWon = false;
@@ -34,21 +35,38 @@ public class AngerQuest : MonoBehaviour
         CheckState();
     }
 
-    private void AssignPlayer(InteractionInformation info)
+    private void CheckInteraction(InteractionInformation info)
     {
         if (_isPlaying)
         {
-            _trafficLight.StopLights();
-            OnQuestFinished?.Invoke();
-            _gameWon = true;
+            _interactedCount++;
+
+            if (_interactedCount != 3) return;
+
+            //game won
+            SetGameWon();
         }
 
         if (_playingPlayerMove != null) return;
 
+        AssignPlayer(info);
+        StartGame();
+    }
+
+    private void SetGameWon()
+    {
+        _trafficLight.StopLights();
+        OnQuestFinished?.Invoke();
+        _gameWon = true;
+    }
+
+    private void StartGame()
+    {
         _isPlaying = true;
-        _playingPlayerMove = info.ObjInteracted.GetComponent<PlayerMoveBehaviour>();
         _trafficLight.StartLights();
     }
+
+    private void AssignPlayer(InteractionInformation info) => _playingPlayerMove = info.ObjInteracted.GetComponent<PlayerMoveBehaviour>();
 
     private void CheckState()
     {
