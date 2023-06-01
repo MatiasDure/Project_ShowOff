@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RedLightGreenLight.unity
     guid: 484cf52b204133b4dbb115cf98879864
+  - enabled: 1
+    path: Assets/Scenes/AlexisAngerlvl.unity
+    guid: 401fddf935ea237499a81d3dd8715cd3
   m_configObjects: {}
