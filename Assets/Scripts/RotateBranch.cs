@@ -7,6 +7,9 @@ public class RotateBranch : InteractableReaction
 {
     [SerializeField] private GameObject _branchPivot;
 
+    //nico
+    private bool audioIsPlaying;
+
     protected override void Awake()
     {
         base.Awake();
@@ -31,7 +34,40 @@ public class RotateBranch : InteractableReaction
             _branchPivot.transform.Rotate(new(-2, 0, 0));
         }
     }
-    protected override void Interact(InteractionInformation info) => Rotate(info);
+    //Matias
+    //protected override void Interact(InteractionInformation info) => Rotate(info);
+
+    //Nico
+    //protected override void Interact(InteractionInformation info)
+    //{
+    //    Rotate(info);
+    //    //FindObjectOfType<AudioManager>().Play("ShakingTree");
+    //    AudioManager.instance.PlayWithPitch("ShakingTree",1);
+    //}
+
+    protected override void Interact(InteractionInformation info)
+    {
+        if (!audioIsPlaying)
+        {
+            StartCoroutine(PlayAudioAndWait(info));
+        }
+        else
+        {
+            Rotate(info);
+        }
+    }
+
+    private IEnumerator PlayAudioAndWait(InteractionInformation info)
+    {
+        audioIsPlaying = true;
+        AudioManager.instance.PlayWithPitch("ShakingTree", 1);
+
+        // Wait for the audio to finish playing
+        yield return new WaitForSeconds(AudioManager.instance.GetClipLength("ShakingTree"));
+
+        audioIsPlaying = false;
+        Rotate(info);
+    }
 
     protected override void OnDestroy()
     {
