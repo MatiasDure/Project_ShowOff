@@ -25,6 +25,7 @@ public class AngerQuest : MonoBehaviour
 
     public bool GameWon => _gameWon;
     public bool IsPlaying => _isPlaying;
+    public int InteractedCount => _interactedCount;
 
     public static AngerQuest Instance { get; private set; }
 

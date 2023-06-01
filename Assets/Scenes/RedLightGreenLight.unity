@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3803,6 +3803,26 @@ PrefabInstance:
       propertyPath: _playerPositions.Array.data[2]
       value: 
       objectReference: {fileID: 329105406}
+    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
+        type: 3}
+      propertyPath: _yellowTimers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
+        type: 3}
+      propertyPath: _yellowTimers.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
+        type: 3}
+      propertyPath: _yellowTimers.Array.data[1]
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
+        type: 3}
+      propertyPath: _yellowTimers.Array.data[2]
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3089120874046014130, guid: c8b877a543fdddd45b0f9c3636f1082e,
         type: 3}
       propertyPath: m_Name

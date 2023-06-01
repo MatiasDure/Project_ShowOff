@@ -12,8 +12,7 @@ public class TrafficLight : MonoBehaviour
     }
 
     [SerializeField] private Material[] _colors;
-    [SerializeField] private float _yellowTimer = 2f;
-    //[SerializeField] private bool _randomizeTimer = true;
+    [SerializeField] private float[] _yellowTimers;
     [SerializeField] MeshRenderer _meshRenderer;   
 
     private State _state;
@@ -70,7 +69,7 @@ public class TrafficLight : MonoBehaviour
 
     private void SetTimer(bool pRandom, float fromValue = 1, float toValue = 3)
     {
-        _timer = pRandom ? UnityEngine.Random.Range(fromValue, toValue) : _yellowTimer;
+        _timer = pRandom ? UnityEngine.Random.Range(fromValue, toValue) : _yellowTimers[AngerQuest.Instance.InteractedCount];
     }
     private void SetRandomTimer(float fromInclusive, float toInclusive) => _timer = UnityEngine.Random.Range(fromInclusive, toInclusive);
 
