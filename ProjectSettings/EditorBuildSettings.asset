@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MatiasScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Fear - Alexis.unity
+    guid: 64f2f8018641ee248b6426ef8904dab9
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 6be28e474460408418bbebb15a44360e
+  - enabled: 1
+    path: Assets/Scenes/Bedroom.unity
+    guid: 13f2ea9eea4264840be792f010962258
+  - enabled: 1
+    path: Assets/Scenes/RedLightGreenLight.unity
+    guid: 484cf52b204133b4dbb115cf98879864
+  - enabled: 1
+    path: Assets/Scenes/AlexisAngerlvl.unity
+    guid: 401fddf935ea237499a81d3dd8715cd3
   m_configObjects: {}

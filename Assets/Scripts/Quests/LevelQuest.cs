@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class LevelQuest : MonoBehaviour
 {
-    protected enum QuestState { WAITING, IN_QUEST }
+    public enum QuestState { Waiting, InQuest }
 
-    protected QuestState state = QuestState.WAITING;
+    protected QuestState state = QuestState.Waiting;
     protected abstract void StartQuest();
 
     protected abstract void CompleteQuest();
