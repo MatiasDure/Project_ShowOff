@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class IngredientCutting : InteractableReaction, IRecipeStep
 {
@@ -9,6 +10,8 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
         UnderThreshold,
         InThreshold
     }
+
+    public static event Action OnCuttingComplete;
 
     State _state = State.UnderThreshold;
 
@@ -20,10 +23,15 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
     float _startTime = 0f;
     int _pressCount = 0;
 
+    bool _startCutting = false;
+
     Coroutine _lastRoutine = null;
 
     protected override void Interact(InteractionInformation obj)
     {
+        if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Cutting) return;
+
+        _startCutting = true;
         FreezeGameState();
     }
 
@@ -41,13 +49,18 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
 
     void Update()
     {
-        Debug.Log(Input.GetAxis("Horizontal"));
+        if (!_startCutting) return;
 
+        CuttingHandler();
+    }
+
+    void CuttingHandler()
+    {
         if (Input.GetKeyDown(KeyCode.E))
         {
             _pressCount++;
 
-            if(_pressCount == 1)
+            if (_pressCount == 1)
             {
                 _startTime = Time.time;
                 Debug.Log("Starting!");
@@ -58,16 +71,16 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
         {
             _lastPressTime = Time.time;
 
-            if(_pressCount > 0)
+            if (_pressCount > 0)
             {
                 float _pressSpeed = _pressCount / (Time.time - _startTime);
                 Debug.Log(_pressSpeed);
-                if(_pressSpeed >= _requiredPressSpeed && _state == State.UnderThreshold)
+                if (_pressSpeed >= _requiredPressSpeed && _state == State.UnderThreshold)
                 {
                     _state = State.InThreshold;
                     _lastRoutine = StartCoroutine(WithinThreshold());
                 }
-                else if(_pressSpeed < _requiredPressSpeed && _state == State.InThreshold)
+                else if (_pressSpeed < _requiredPressSpeed && _state == State.InThreshold)
                 {
                     StopCoroutine(_lastRoutine);
                     ResetCount();
@@ -76,9 +89,9 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
             }
         }
 
-        if(_pressCount > 1 && Time.time - _lastPressTime >= _requiredPressTime)
+        if (_pressCount > 1 && Time.time - _lastPressTime >= _requiredPressTime)
         {
-            if(_lastRoutine != null) StopCoroutine(_lastRoutine);
+            if (_lastRoutine != null) StopCoroutine(_lastRoutine);
             ResetCount();
             Debug.Log("Stopping!!!!!");
         }
@@ -87,8 +100,16 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
     IEnumerator WithinThreshold()
     {
         yield return new WaitForSeconds(_spammingTimeSeconds);
+
+        CuttingComplete();
+    }
+
+    void CuttingComplete()
+    {
         Debug.Log("Completed!");
 
+        OnCuttingComplete?.Invoke();
+        UnFreezeGameState();
         ResetCount();
     }
 
@@ -97,6 +118,7 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
         _pressCount = 0;
         _startTime = 0.0f;
         _lastPressTime = 0.0f;
+        _startCutting = false;
         _state =  State.UnderThreshold;
     }
 }

@@ -22,16 +22,16 @@ public class FearQuest : LevelQuest
 
     protected override void StartQuest()
     {
-        if (state == QuestState.InQuest) return;
+        if (State == QuestState.InQuest) return;
 
         SetupTorches();
-        state = QuestState.InQuest;
+        State = QuestState.InQuest;
         Debug.Log("Quest started!");
     }
 
     protected override void CompleteQuest()
     {
-        state = QuestState.Waiting;
+        State = QuestState.Waiting;
         torchesOn = 0;
         TorchUnsubscribe();
         Debug.Log("Quest complete!");
@@ -49,7 +49,7 @@ public class FearQuest : LevelQuest
 
     void EnableTorch(PathTorch pPathTorch)
     {
-        if (state == QuestState.Waiting) return;
+        if (State == QuestState.Waiting) return;
 
         if (pPathTorch == torches[torchesOn])
         {
@@ -66,7 +66,7 @@ public class FearQuest : LevelQuest
     // TODO: Do we need to disable torches? Maybe disable all when a wrong torch is intaracted with.
     void DisableTorch(PathTorch pPathTorch)
     {
-        if (state == QuestState.Waiting) return;
+        if (State == QuestState.Waiting) return;
     }
 
     void TorchSubscribe(PathTorch pPathTorch)

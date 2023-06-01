@@ -38,7 +38,7 @@ public class RecipeManager : MonoBehaviour
     
     void GetIngredientName(GameObject _pStep)
     {
-        IngredientName _ingrName = _pStep.GetComponent<Ingredient>()._ingrName;
+        IngredientName _ingrName = _pStep.GetComponent<Ingredient>().IngrName;
         string _nameString = _ingrName.ToString();
 
         RecipeStepComplete(_nameString);

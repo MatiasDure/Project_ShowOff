@@ -5,8 +5,6 @@ using System;
 
 public class IngredientPickup : PickupManager
 {
-    [SerializeField] DisgustQuest _disgustQuest;
-
     public static event Action<GameObject> OnIngredientCollected;
     public static event Action OnAllIngredientsCollected;
 
@@ -22,7 +20,7 @@ public class IngredientPickup : PickupManager
 
     protected override void CollectIngredient(GameObject _pObject)
     {
-        if (DisgustQuest.state != DisgustQuest.QuestState.InQuest) return;
+        if (DisgustQuest.Instance.State != DisgustQuest.QuestState.InQuest) return;
 
         _objectsCollected.Add(_pObject);
         _pObject.GetComponent<Interactable>().ForceExit();
@@ -30,8 +28,7 @@ public class IngredientPickup : PickupManager
 
         OnIngredientCollected?.Invoke(_pObject);
 
-
-        if(_objectsCollected.Count == _disgustQuest.IngredientsToPickup.Count)
+        if(_objectsCollected.Count == DisgustQuest.Instance.IngredientsToPickup.Count)
         {
             OnAllIngredientsCollected?.Invoke();
         }

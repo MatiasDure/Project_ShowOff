@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class IngredientFlipping : MonoBehaviour
+public class IngredientFlipping : InteractableReaction, IRecipeStep
 {
+    public static event Action OnFlippingComplete;
+
     [SerializeField] float _requiredFlips;
 
     List<Vector2> _inputHistory = new List<Vector2>();
@@ -17,8 +20,39 @@ public class IngredientFlipping : MonoBehaviour
     int _maxInputHistory = 2;
     int _currFlips = 0;
 
+    bool _startFlipping = false;
+
+    protected override void Interact(InteractionInformation obj)
+    {
+        if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Flipping) return;
+
+        _startFlipping = true;
+        FreezeGameState();
+    }
+
+    public void FreezeGameState()
+    {
+        if (GameState.Instance.IsFrozen) return;
+
+        GameState.Instance.IsFrozen = true;
+    }
+
+    public void UnFreezeGameState()
+    {
+        GameState.Instance.IsFrozen = false;
+    }
+
     void Update()
     {
+        if (!_startFlipping) return;
+
+        FlippingHandler();
+    }
+
+    void FlippingHandler()
+    {
+        if (!_startFlipping) return;
+
         _deltaX = Input.GetAxisRaw("Horizontal") - _oldX;
         _deltaY = Input.GetAxisRaw("Vertical") - _oldY;
         _oldX = Input.GetAxisRaw("Horizontal");
@@ -81,6 +115,14 @@ public class IngredientFlipping : MonoBehaviour
     void DoCircularMotion()
     {
         _currFlips = 0;
+        FlippingComplete();
+    }
+
+    void FlippingComplete()
+    {
         Debug.Log("AYYYYYY");
+
+        OnFlippingComplete?.Invoke();
+        UnFreezeGameState();
     }
 }
