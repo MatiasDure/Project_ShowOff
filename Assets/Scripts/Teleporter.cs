@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Teleporter : InteractableReaction
 {
+    [SerializeField] private int _sceneToTeleport;
+    
     private List<Transform> pointsToTeleport = new List<Transform>();
 
     private CharacterController _characterController;
@@ -20,7 +22,7 @@ public class Teleporter : InteractableReaction
 
     private int GenerateRandomIndex() =>  Random.Range(0, pointsToTeleport.Count);
 
-    protected override void Interact(InteractionInformation info) => Teleport(info.ObjInteracted);
+    protected override void Interact(InteractionInformation info) => TeleportScene();//Teleport(info.ObjInteracted);
 
     private void Teleport(GameObject objInteracted)
     {
@@ -36,6 +38,13 @@ public class Teleporter : InteractableReaction
         objInteracted.transform.position = newPos;
         objInteracted.transform.rotation = newRot;
         _characterController.enabled = true;
+    }
+
+    private void TeleportScene()
+    {
+        if (LoadingScene.Instance == null) return;
+
+        LoadingScene.Instance.LoadScene(_sceneToTeleport);
     }
 
     protected override void OnDestroy()

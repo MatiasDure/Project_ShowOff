@@ -12,8 +12,8 @@ public class TrafficLight : MonoBehaviour
     }
 
     [SerializeField] private Material[] _colors;
-    [SerializeField] private float[] _colorTimers;
-    [SerializeField] private bool _randomizeTimer = true;
+    [SerializeField] private float _yellowTimer = 2f;
+    //[SerializeField] private bool _randomizeTimer = true;
     [SerializeField] MeshRenderer _meshRenderer;   
 
     private State _state;
@@ -31,7 +31,6 @@ public class TrafficLight : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_state);
         if (_state == State.None || 
             GameState.Instance.IsFrozen) return;
 
@@ -66,9 +65,13 @@ public class TrafficLight : MonoBehaviour
     {
         _state = pState;
         _meshRenderer.material = _colors[(int)pState - 1];
-        SetRandomTimer(1, 3);
+        SetTimer(pState != State.Warning);
     }
 
+    private void SetTimer(bool pRandom, float fromValue = 1, float toValue = 3)
+    {
+        _timer = pRandom ? UnityEngine.Random.Range(fromValue, toValue) : _yellowTimer;
+    }
     private void SetRandomTimer(float fromInclusive, float toInclusive) => _timer = UnityEngine.Random.Range(fromInclusive, toInclusive);
 
     public void StartLights()

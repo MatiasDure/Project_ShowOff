@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,11 +6,13 @@ using UnityEngine.AI;
 public class MonsterNavMesh : MonoBehaviour
 {
     [SerializeField] private Transform[] _monsterPositions;
-    
+    [SerializeField] private float _speed;
+
     private NavMeshAgent _navMesh;
     private Vector3 _target;
     private Vector3 _startingPosition;
     private bool _questWon;
+    private int _currentIndex;
 
     public static event Action OnReachedNewPosition;
 
@@ -21,23 +21,43 @@ public class MonsterNavMesh : MonoBehaviour
         _navMesh = GetComponent<NavMeshAgent>();
         _startingPosition = transform.position;
         AngerQuest.OnIllegalMove += AssignNewPosition;
-        AngerQuest.OnQuestFinished += MoveToStartingPos;
+        AngerQuest.OnQuestFinished += ResetPos;
+        AngerQuest.OnTouchedMonster += MoveToPos;
+    }
+
+    private void Start()
+    {
+        ResetAttributes();
+    }
+
+    private void ResetAttributes()
+    {
+        _currentIndex = 0;
+        _navMesh.speed = _speed;
+    }
+
+    private void MoveToPos()
+    {
+        if (!AngerQuest.Instance.IsPlaying) return;
+
+        _target = _monsterPositions[_currentIndex++].position;
+        GameState.Instance.IsFrozen = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GameState.Instance.IsFrozen &&
-            !_questWon) return;
+        if (!GameState.Instance.IsFrozen && !_questWon) return;
 
         _navMesh.destination = _target;
         CheckIfReachedNewDestination();
     }
 
-    private void MoveToStartingPos()
+    private void ResetPos()
     {
         _target = _startingPosition;
         _questWon = true;
+        ResetAttributes();
     }
 
     private void AssignNewPosition()
@@ -65,6 +85,6 @@ public class MonsterNavMesh : MonoBehaviour
     private void OnDestroy()
     {
         AngerQuest.OnIllegalMove -= AssignNewPosition;
-        AngerQuest.OnQuestFinished -= MoveToStartingPos;
+        AngerQuest.OnQuestFinished -= ResetPos;
     }
 }
