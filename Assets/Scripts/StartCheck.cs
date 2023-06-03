@@ -8,6 +8,6 @@ public class StartCheck : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) LoadingScene.Instance.LoadScene(3);
+        if (Input.GetKeyDown(KeyCode.F)) LoadingScene.Instance.LoadScene(1);
     }
 }

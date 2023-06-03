@@ -576,6 +576,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggleObj: {fileID: 3089120872953618760}
   _disableOnExit: 1
+  _soundToPlayOn: 
+  _soundToPlayOff: 
 --- !u!114 &3089120873544868681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +595,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e159cd6b488ff4143b8b9731cbfdd4b0, type: 2}
   - {fileID: 2100000, guid: d6fd9504617f38848b34273dc1579932, type: 2}
   - {fileID: 2100000, guid: 6409c2d3a42ad234eae06b514e544067, type: 2}
-  _yellowTimer: 2
+  _yellowTimers:
+  - 5
+  - 2.5
+  - 0.5
   _meshRenderer: {fileID: 3089120874046014128}
 --- !u!114 &3089120873544868680
 MonoBehaviour:
@@ -933,4 +938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50de105ce27d4fe4590f59cf5d7d26f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmotionIcon: {fileID: 3089120873748622026}
+  EmotionIcon: {fileID: 0}
+  _emotionSound: WrongChoice
+  _camera: {fileID: 0}
+  _shakeTime: 0.3
+  _intensity: 0.2

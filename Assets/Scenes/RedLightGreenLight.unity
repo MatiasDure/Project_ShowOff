@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1468,12 +1468,12 @@ PrefabInstance:
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -6.383621e-15
+      value: 9.822515e-15
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.0359192e-15
+      value: -1.593975e-15
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
@@ -1494,6 +1494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816121875318002510, guid: c20481b93da31894c819944e3f536500,
+        type: 3}
+      propertyPath: field of view
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c20481b93da31894c819944e3f536500, type: 3}
@@ -1789,12 +1794,12 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -6.368696e-15
+      value: 9.829661e-15
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 9.439511e-16
+      value: -1.6380253e-15
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -1819,12 +1824,12 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008515763
+      value: -0.000000008515763
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000012233836
+      value: 0.0000000012233836
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -1844,17 +1849,17 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.124220625
+      value: 0.12422063
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1.721323e-15
+      value: 0.000000029571495
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.2758227e-16
+      value: -0.0000000037020635
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
@@ -4125,26 +4130,6 @@ PrefabInstance:
       propertyPath: _playerPositions.Array.data[2]
       value: 
       objectReference: {fileID: 329105406}
-    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
-        type: 3}
-      propertyPath: _yellowTimers.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
-        type: 3}
-      propertyPath: _yellowTimers.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
-        type: 3}
-      propertyPath: _yellowTimers.Array.data[1]
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3089120873544868681, guid: c8b877a543fdddd45b0f9c3636f1082e,
-        type: 3}
-      propertyPath: _yellowTimers.Array.data[2]
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3089120874046014130, guid: c8b877a543fdddd45b0f9c3636f1082e,
         type: 3}
       propertyPath: m_Name
@@ -4160,11 +4145,6 @@ PrefabInstance:
       propertyPath: EmotionIcon
       value: 
       objectReference: {fileID: 1399570393}
-    - target: {fileID: 3089120874046014139, guid: c8b877a543fdddd45b0f9c3636f1082e,
-        type: 3}
-      propertyPath: _emotionSound
-      value: WrongChoice
-      objectReference: {fileID: 0}
     - target: {fileID: 3089120874046014140, guid: c8b877a543fdddd45b0f9c3636f1082e,
         type: 3}
       propertyPath: _monsterPositions.Array.data[0]

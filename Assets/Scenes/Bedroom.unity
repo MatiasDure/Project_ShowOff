@@ -595,6 +595,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal
       objectReference: {fileID: 0}
+    - target: {fileID: 8224342183011364066, guid: 84a95d880566d854e84c1779f03317d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8224342183011364069, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -722,7 +727,7 @@ PrefabInstance:
     - target: {fileID: 8224342183941368557, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
       propertyPath: _sceneToTeleport
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84a95d880566d854e84c1779f03317d8, type: 3}
@@ -738,6 +743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8224342183011364066, guid: 84a95d880566d854e84c1779f03317d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8224342183011364069, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -746,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 8224342183011364069, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.16
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 8224342183011364069, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
@@ -756,7 +766,7 @@ PrefabInstance:
     - target: {fileID: 8224342183011364069, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.85
+      value: -4.46
       objectReference: {fileID: 0}
     - target: {fileID: 8224342183011364069, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
@@ -890,22 +900,22 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042701647
+      value: -0.0000000042701647
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -5.1905025e-10
+      value: 5.1905025e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004278879
+      value: -0.000000004278879
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.4149776e-10
+      value: 4.4149776e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
@@ -1127,7 +1137,7 @@ PrefabInstance:
     - target: {fileID: 8224342183941368557, guid: 84a95d880566d854e84c1779f03317d8,
         type: 3}
       propertyPath: _sceneToTeleport
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84a95d880566d854e84c1779f03317d8, type: 3}
@@ -1588,12 +1598,12 @@ PrefabInstance:
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004270165
+      value: -0.000000004270165
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -5.1905025e-10
+      value: 5.1905025e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
@@ -1614,6 +1624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816121875318002510, guid: c20481b93da31894c819944e3f536500,
+        type: 3}
+      propertyPath: field of view
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c20481b93da31894c819944e3f536500, type: 3}

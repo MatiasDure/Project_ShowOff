@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3524708563639307448}
   m_LocalRotation: {x: 0.7223913, y: -0, z: -0, w: 0.6914846}
-  m_LocalPosition: {x: 0.064, y: 12.66, z: -0.03}
+  m_LocalPosition: {x: 0.06, y: 9.84, z: -0.11}
   m_LocalScale: {x: 0.66433096, y: 0.6785894, z: 0.9744755}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,8 +45,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.8666667, g: 0.68235296, b: 0.44705883, a: 1}
-  m_Intensity: 400
-  m_Range: 20
+  m_Intensity: 25
+  m_Range: 10
   m_SpotAngle: 111.67616
   m_InnerSpotAngle: 17.75307
   m_CookieSize: 10
@@ -243,6 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggleObj: {fileID: 3524708563639307448}
   _disableOnExit: 0
+  _soundToPlayOn: TuirnOnLamp
+  _soundToPlayOff: TurnOffLamp
 --- !u!1 &4188915115867135536
 GameObject:
   m_ObjectHideFlags: 0
