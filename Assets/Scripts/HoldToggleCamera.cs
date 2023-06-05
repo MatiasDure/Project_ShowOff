@@ -5,13 +5,14 @@ using UnityEngine;
 public class HoldToggleCamera : ToggleCamera
 {
     [SerializeField] private float _secondsToHold;
+    [SerializeField] private KeyCode _keyToHold = KeyCode.E;
 
     private float _holdTimer;
 
     // Update is called once per frame
     protected override void Update()
     {
-        if (!Input.GetKey(KeyCode.F))
+        if (!Input.GetKey(_keyToHold))
         {
             _holdTimer = 0;
             return;
