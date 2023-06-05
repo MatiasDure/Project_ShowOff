@@ -42,7 +42,7 @@ public class IngredientMixing : InteractableReaction, IRecipeStep
         GameState.Instance.IsFrozen = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!_startMixing) return;
         MixingHandler();
@@ -77,7 +77,6 @@ public class IngredientMixing : InteractableReaction, IRecipeStep
                 {
                     if (IsCircularMotion() && _currRotations >= _requiredRotations)
                     {
-                        // Perform your action for circular motion here
                         DoCircularMotion();
                     }
                 }
@@ -118,6 +117,7 @@ public class IngredientMixing : InteractableReaction, IRecipeStep
         Debug.Log("AYYYYYY");
 
         OnMixingComplete?.Invoke();
+        _startMixing = false;
         UnFreezeGameState();
     }
 }

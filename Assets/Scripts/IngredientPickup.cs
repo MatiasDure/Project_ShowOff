@@ -10,15 +10,15 @@ public class IngredientPickup : PickupManager
 
     void OnEnable()
     {
-        Ingredient.OnIngredientPickup += CollectIngredient;
+        Ingredient.OnIngredientPickup += CollectObject;
     }
 
     void OnDisable()
     {
-        Ingredient.OnIngredientPickup -= CollectIngredient;
+        Ingredient.OnIngredientPickup -= CollectObject;
     }
 
-    protected override void CollectIngredient(GameObject _pObject)
+    protected override void CollectObject(GameObject _pObject)
     {
         if (DisgustQuest.Instance.State != DisgustQuest.QuestState.InQuest) return;
 

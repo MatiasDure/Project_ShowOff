@@ -84,7 +84,7 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
                 {
                     StopCoroutine(_lastRoutine);
                     ResetCount();
-                    Debug.Log("Stopping!!!!!");
+                    Debug.Log("Stopping - Too slow!");
                 }
             }
         }
@@ -93,7 +93,7 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
         {
             if (_lastRoutine != null) StopCoroutine(_lastRoutine);
             ResetCount();
-            Debug.Log("Stopping!!!!!");
+            Debug.Log("Stopping - Too much delay between last press!");
         }
     }
 

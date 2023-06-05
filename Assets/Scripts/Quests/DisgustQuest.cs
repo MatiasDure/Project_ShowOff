@@ -15,15 +15,16 @@ public class DisgustQuest : LevelQuest
     }
 
     public static DisgustQuest Instance;
+    public QuestSteps QuestStep { get; private set; }
 
     [field: SerializeField]
     public new QuestState State { get; private set; }
-    public QuestSteps QuestStep { get; private set; }
 
     [field:SerializeField]
     public List<IngredientName> IngredientsToPickup { get; private set; }
 
     [SerializeField] GameObject _recipe;
+    [SerializeField] GameObject _foodPlate;
 
     void OnEnable()
     {
@@ -76,7 +77,9 @@ public class DisgustQuest : LevelQuest
     {
         QuestStep = QuestSteps.Serving;
 
-        Debug.Log("Server that sheet to the monster!");
+        _foodPlate.SetActive(true);
+
+        Debug.Log("Grab that disgusting ass plate and give it to the monster, BOE!");
     }
 
     protected override void StartQuest()

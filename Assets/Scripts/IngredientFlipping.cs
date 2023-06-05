@@ -42,7 +42,7 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
         GameState.Instance.IsFrozen = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!_startFlipping) return;
 
@@ -80,7 +80,6 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
                 {
                     if (IsCircularMotion() && _currFlips >= _requiredFlips)
                     {
-                        // Perform your action for circular motion here
                         DoCircularMotion();
                     }
                 }
@@ -99,7 +98,7 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
 
         float deltaY = endPoint.y - startPoint.y;
         Debug.Log(deltaY);
-        if (Mathf.Abs(deltaY) >= 0.5f)
+        if (Mathf.Abs(deltaY) > 0)
         {
             if (Mathf.Sign(deltaY) != Mathf.Sign(startPoint.y))
             {
@@ -108,7 +107,7 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
             }
         }
 
-        _currFlips = 0;
+        //_currFlips = 0;
         return false;
     }
 
@@ -123,6 +122,7 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
         Debug.Log("AYYYYYY");
 
         OnFlippingComplete?.Invoke();
+        _startFlipping = false;
         UnFreezeGameState();
     }
 }
