@@ -409,12 +409,12 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000042701647
+      value: 0.0000000042701647
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.1905025e-10
+      value: -5.1905025e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -1564,6 +1564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AngryMonster 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3089120874046014130, guid: c8b877a543fdddd45b0f9c3636f1082e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3089120874046014140, guid: c8b877a543fdddd45b0f9c3636f1082e,
         type: 3}
       propertyPath: _monsterPositions.Array.size
@@ -1982,6 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883718eead66cad42b84e1a21107369c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotateSpeed: 0.2
 --- !u!65 &1809794917
 BoxCollider:
   m_ObjectHideFlags: 0

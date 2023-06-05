@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private float _rotateSpeed = .2f;
+
     LineRenderer lineRenderer;
     private void Awake()
     {
@@ -22,16 +24,23 @@ public class Gun : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M)) Shoot();
 
         RotateGun();
-        
     }
 
     private void RotateGun()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+               
+        transform.Rotate(Vector3.up, horizontal * _rotateSpeed);
+        transform.Rotate(Vector3.right * -1, vertical * _rotateSpeed);
 
-        transform.Rotate(Vector3.up, horizontal * 2f);
-        transform.Rotate(Vector3.right, vertical * 2f);
+
+        Debug.Log("X: " + transform.rotation.eulerAngles.x);
+        Debug.Log("Y: " + transform.rotation.eulerAngles.y);
+        Quaternion rotation = new();
+        rotation.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+
+        transform.rotation = rotation;
     }
 
     private void Shoot()
