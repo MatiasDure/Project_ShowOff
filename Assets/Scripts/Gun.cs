@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -35,10 +36,23 @@ public class Gun : MonoBehaviour
         transform.Rotate(Vector3.right * -1, vertical * _rotateSpeed);
 
 
-        Debug.Log("X: " + transform.rotation.eulerAngles.x);
-        Debug.Log("Y: " + transform.rotation.eulerAngles.y);
+        //Debug.Log("X: " + transform.rotation.eulerAngles.x);
+        //Debug.Log("Y: " + transform.rotation.eulerAngles.y);
+
+        float angleX = transform.rotation.eulerAngles.x;
+        float angleY = transform.rotation.eulerAngles.y;
+
+        float newX = angleX > 180 ? angleX - 360 : angleX;
+        float newY = angleY > 180 ? angleY - 360 : angleY;
+
+        newX = Mathf.Clamp(newX, -22f, 6f);
+        newX = newX < 0 ? 360 - newX * -1 : newX;
+        
+        newY = Mathf.Clamp(newY, -37f, 37f);
+        newY = newY < 0 ? 360 - newY * -1 : newY;
+
         Quaternion rotation = new();
-        rotation.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+        rotation.eulerAngles = new Vector3(newX, newY, 0);
 
         transform.rotation = rotation;
     }
