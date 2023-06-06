@@ -6,8 +6,9 @@ using UnityEngine;
 
 public abstract class ToggleCamera : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera[] _camerasToToggleBetween;
-    [SerializeField] private CameraMode[] _cameras;
+    [SerializeField] protected CameraMode[] _cameras;
+
+    public static Action<string> OnCameraModeChanged;
 
     // Update is called once per frame
     protected virtual void Update()
@@ -33,6 +34,8 @@ public abstract class ToggleCamera : MonoBehaviour
         GameObject firstCam = _cameras[0].VirtualCamera.gameObject;
         firstCam.SetActive(!firstCam.activeInHierarchy);
 
+        OnCameraModeChanged?.Invoke(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
+
         Debug.Log(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
     }
 }
@@ -41,8 +44,8 @@ public abstract class ToggleCamera : MonoBehaviour
 public class CameraMode
 {
     [SerializeField] private string _cameraMode;
-    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
-
+    [SerializeField] private CinemachineVirtualCameraBase _virtualCamera;
+    
     public string Mode => _cameraMode;
-    public CinemachineVirtualCamera VirtualCamera => _virtualCamera;
+    public CinemachineVirtualCameraBase VirtualCamera => _virtualCamera;
 }
