@@ -53,4 +53,10 @@ public class AngerEmotion : MonsterEmotion
     {
         if(_vignette.intensity.value > 0) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0, .01f);
     }
+
+    private void OnDestroy()
+    {
+        AngerQuest.OnIllegalMove -= ShowEmotion;
+        MonsterNavMesh.OnReachedNewPosition -= HideEmotion;
+    }
 }

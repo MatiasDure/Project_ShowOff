@@ -10,6 +10,14 @@ public abstract class ToggleCamera : MonoBehaviour
 
     public static Action<string> OnCameraModeChanged;
 
+    public static ToggleCamera Instance { get; private set; }
+
+    protected virtual void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(this.gameObject);
+    }
+
     // Update is called once per frame
     protected virtual void Update()
     {
@@ -26,7 +34,7 @@ public abstract class ToggleCamera : MonoBehaviour
     protected virtual void ResetAfterToggle() { }
 
     //Only works for 2 cameras at the moment
-    private void Toggle()
+    public void Toggle()
     {
         if (_cameras.Length < 1 ||
             _cameras[0] == null) return;

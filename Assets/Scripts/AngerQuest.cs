@@ -45,15 +45,23 @@ public class AngerQuest : MonoBehaviour
         _trafficLight = GetComponent<TrafficLight>();
 
         _interactable.OnInteractableActivated += CheckInteraction;
-        _trafficLight.OnTrafficStateChanged += (TrafficLight.State pLightState) => _state = pLightState;
+        _trafficLight.OnTrafficStateChanged += ChangeState;
 
         _gameWon = false;
+    }
+
+    private void OnDestroy()
+    {
+        _interactable.OnInteractableActivated -= CheckInteraction;
+        _trafficLight.OnTrafficStateChanged -= ChangeState;
     }
 
     private void Update()
     {
         CheckState();
     }
+
+    private void ChangeState(TrafficLight.State pLightState) => _state = pLightState;
 
     private void CheckInteraction(InteractionInformation info)
     {
@@ -132,12 +140,4 @@ public class AngerQuest : MonoBehaviour
     }
 
     private bool LegalMove() => _state == TrafficLight.State.Go || _state == TrafficLight.State.Warning || _state == TrafficLight.State.None;
-}
-
-[Serializable]
-public class PopUp
-{
-    public GameObject _container;
-    public Image _image;
-    public TextMeshProUGUI _text;
 }

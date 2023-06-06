@@ -9,7 +9,6 @@ public class Gun : MonoBehaviour
     [SerializeField] private float _rotateSpeed = .2f;
 
     private Ammo _ammo;
-    private float _timerHolding;
     private bool _ignoredFirst = false;
 
     LineRenderer lineRenderer;
@@ -21,9 +20,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        ToggleCamera.OnCameraModeChanged += (string pMode) => {
-            if (pMode != "Shooting") ResetAim();
-        };
+        ToggleCamera.OnCameraModeChanged += CheckResetAim;
     }
 
     private void Update()
@@ -85,6 +82,11 @@ public class Gun : MonoBehaviour
         transform.localRotation = rotation;
     }
 
+    private void CheckResetAim(string pMode)
+    {
+        if (pMode != "Shooting") ResetAim();
+    }
+
     private void Shoot()
     {
         if (!_ammo.AmmoAvailable) return;
@@ -98,11 +100,14 @@ public class Gun : MonoBehaviour
             if (!hit.transform.TryGetComponent<IHittable>(out IHittable hittable)) continue;
 
             hittable.Hit();
+            ScoreSystem.Instance.ModifyScore();
         }
 
-        Debug.Log(hits.Length);
-        Debug.DrawRay(transform.position, transform.forward * 100f, Color.red, .1f);
-
         _ammo.ModifyBulletCount();
+    }
+
+    private void OnDestroy()
+    {
+        ToggleCamera.OnCameraModeChanged -= CheckResetAim;
     }
 }

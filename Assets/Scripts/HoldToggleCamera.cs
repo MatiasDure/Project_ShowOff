@@ -10,6 +10,11 @@ public class HoldToggleCamera : ToggleCamera
 
     private float _holdTimer;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     // Update is called once per frame
     protected override void Update()
     {

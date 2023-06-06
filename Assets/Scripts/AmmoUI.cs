@@ -15,14 +15,25 @@ public class AmmoUI : MonoBehaviour
     {
         _ammo = GetComponent<Ammo>();
 
-        _ammo.OnBulletCountChanged += (int pAmmoCount) => 
-        {
-            if(_ammoText != null) _ammoText.text = pAmmoCount.ToString();
-        };
+        _ammo.OnBulletCountChanged += ChangeText;
 
-        ToggleCamera.OnCameraModeChanged += (string pCamMode) =>
-        {
-            _container.SetActive(pCamMode.Equals("Shooting"));
-        };
+        ToggleCamera.OnCameraModeChanged += ToggleUI;
+    }
+
+    private void ChangeText(int pAmmoCount)
+    {
+        if (_ammoText != null) _ammoText.text = pAmmoCount.ToString();
+    }
+
+    private void ToggleUI(string pCamMode)
+    {
+        _container.SetActive(pCamMode.Equals("Shooting"));
+    }
+
+    private void OnDestroy()
+    {
+        _ammo.OnBulletCountChanged -= ChangeText;
+
+        ToggleCamera.OnCameraModeChanged -= ToggleUI;
     }
 }

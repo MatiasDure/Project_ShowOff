@@ -86,5 +86,6 @@ public class MonsterNavMesh : MonoBehaviour
     {
         AngerQuest.OnIllegalMove -= AssignNewPosition;
         AngerQuest.OnQuestFinished -= ResetPos;
+        AngerQuest.OnTouchedMonster -= MoveToPos;
     }
 }
