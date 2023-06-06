@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class IngredientMixing : InteractableReaction, IRecipeStep
+[RequireComponent(typeof(IngredientHelper))]
+public class IngredientMixing : InteractableReaction
 {
     public static event Action OnMixingComplete;
 
     [SerializeField] float _requiredRotations;
+    [SerializeField] float _timeLimit;
 
     List<Vector2> _inputHistory = new List<Vector2>();
     Vector2 _inputDir;
@@ -22,24 +24,26 @@ public class IngredientMixing : InteractableReaction, IRecipeStep
 
     bool _startMixing = false;
 
+    IngredientHelper _helper;
+
+    void OnDisable()
+    {
+        _helper.OnTimerEnd -= TimeUp;
+    }
+
+    void Start()
+    {
+        _helper = GetComponent<IngredientHelper>();
+
+        _helper.OnTimerEnd += TimeUp;
+    }
+
     protected override void Interact(InteractionInformation obj)
     {
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Mixing) return;
 
         _startMixing = true;
-        FreezeGameState();
-    }
-
-    public void FreezeGameState()
-    {
-        if (GameState.Instance.IsFrozen) return;
-
-        GameState.Instance.IsFrozen = true;
-    }
-
-    public void UnFreezeGameState()
-    {
-        GameState.Instance.IsFrozen = false;
+        _helper.StartTask(_timeLimit);
     }
 
     void FixedUpdate()
@@ -94,7 +98,6 @@ public class IngredientMixing : InteractableReaction, IRecipeStep
         Vector2 endPoint = _inputHistory[_maxInputHistory - 1];
 
         float angle = Vector2.SignedAngle(startPoint, endPoint);
-        Debug.Log(angle);
         if (Mathf.Abs(angle) >= 315f || Mathf.Abs(angle) <= 45f && angle != 0f)
         {
             _currRotations++;
@@ -114,10 +117,20 @@ public class IngredientMixing : InteractableReaction, IRecipeStep
 
     void MixingComplete()
     {
-        Debug.Log("AYYYYYY");
-
         OnMixingComplete?.Invoke();
         _startMixing = false;
-        UnFreezeGameState();
+        _helper.EndTask();
+    }
+
+    void ResetCount()
+    {
+        _startMixing = false;
+        _currRotations = 0;
+        _inputHistory.Clear();
+    }
+
+    void TimeUp()
+    {
+        ResetCount();
     }
 }

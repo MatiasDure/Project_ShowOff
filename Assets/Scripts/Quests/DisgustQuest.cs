@@ -28,7 +28,7 @@ public class DisgustQuest : LevelQuest
 
     void OnEnable()
     {
-        DisgustQuestTrigger.instance.OnStartQuest += StartQuest;
+        DisgustQuestTrigger.instance.OnMonsterInteraction += PlayerInteract;
         IngredientPickup.OnAllIngredientsCollected += IngredientsCollected;
         IngredientCutting.OnCuttingComplete += CuttingCompleted;
         IngredientFlipping.OnFlippingComplete += FlippingCompleted;
@@ -37,7 +37,7 @@ public class DisgustQuest : LevelQuest
 
     void OnDisable()
     {
-        DisgustQuestTrigger.instance.OnStartQuest -= StartQuest;
+        DisgustQuestTrigger.instance.OnMonsterInteraction -= PlayerInteract;
         IngredientPickup.OnAllIngredientsCollected -= IngredientsCollected;
         IngredientCutting.OnCuttingComplete -= CuttingCompleted;
         IngredientFlipping.OnFlippingComplete -= FlippingCompleted;
@@ -59,21 +59,21 @@ public class DisgustQuest : LevelQuest
         Debug.Log("Move over to the cutting board!");
     }
 
-    void CuttingCompleted()
+    void CuttingCompleted()  // TODO: Update UI Panel
     {
         QuestStep = QuestSteps.Flipping;
 
         Debug.Log("Move over to the pan - get flipping my dude!");
     }
 
-    void FlippingCompleted()
+    void FlippingCompleted()  // TODO: Update UI Panel
     {
         QuestStep = QuestSteps.Mixing;
 
         Debug.Log("Move over to the mixing bowl!");
     }
 
-    void MixingCompleted()
+    void MixingCompleted()  // TODO: Update UI Panel
     {
         QuestStep = QuestSteps.Serving;
 
@@ -82,10 +82,30 @@ public class DisgustQuest : LevelQuest
         Debug.Log("Grab that disgusting ass plate and give it to the monster, BOE!");
     }
 
+    void ServePlate()
+    {
+        ObjectPickup _platePickup;
+        if (!_foodPlate.TryGetComponent<ObjectPickup>(out _platePickup)) return;
+
+        if (!_platePickup.PickedUp) return;
+
+        Destroy(_foodPlate);
+        CompleteQuest();
+    }
+
+    void PlayerInteract()
+    {
+        if (QuestStep == QuestSteps.Serving)
+        {
+            ServePlate();
+        }
+
+        if (State == QuestState.InQuest) return;
+        StartQuest();
+    }
+
     protected override void StartQuest()
     {
-        if (State == QuestState.InQuest) return;
-
         _recipe.SetActive(true);
 
         State = QuestState.InQuest;
@@ -93,8 +113,8 @@ public class DisgustQuest : LevelQuest
         Debug.Log("Quest started!");
     }
 
-    protected override void CompleteQuest()
+    protected override void CompleteQuest() // TODO: Update UI Panel
     {
-        
+        Debug.Log("Quest complete!");
     }
 }

@@ -70,7 +70,7 @@ public class Interactable : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag(PLAYER_TAG) ||
-            !_clicked) return;
+            !_clicked || !enabled) return;
 
         OnInteractableActivated?.Invoke(new InteractionInformation(other.gameObject, _keyClicked));
         ResetInteractionInfo();
@@ -84,7 +84,7 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag(PLAYER_TAG)) return;
+        if (!other.CompareTag(PLAYER_TAG) || !enabled) return;
 
         _insideTrigger = false;
         ResetInteractionInfo();

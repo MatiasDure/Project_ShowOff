@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -858,7 +858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &339580653
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1258,6 +1258,7 @@ GameObject:
   - component: {fileID: 578837735}
   - component: {fileID: 578837734}
   - component: {fileID: 578837736}
+  - component: {fileID: 578837737}
   m_Layer: 0
   m_Name: CuttingBoard
   m_TagString: Untagged
@@ -1373,6 +1374,19 @@ MonoBehaviour:
   _requiredPressSpeed: 4
   _spammingTimeSeconds: 3
   _requiredPressTime: 1
+  _timeLimit: 10
+--- !u!114 &578837737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578837729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe749c1846434741abc9d02be3c8f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &632441099
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,6 +3050,7 @@ GameObject:
   - component: {fileID: 1576207827}
   - component: {fileID: 1576207826}
   - component: {fileID: 1576207831}
+  - component: {fileID: 1576207832}
   m_Layer: 0
   m_Name: MixingBowl
   m_TagString: Untagged
@@ -3149,6 +3164,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _requiredRotations: 15
+  _timeLimit: 15
+--- !u!114 &1576207832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576207824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe749c1846434741abc9d02be3c8f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1656215960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,6 +3777,7 @@ GameObject:
   - component: {fileID: 2016776808}
   - component: {fileID: 2016776807}
   - component: {fileID: 2016776806}
+  - component: {fileID: 2016776812}
   m_Layer: 0
   m_Name: FlippingPan
   m_TagString: Untagged
@@ -3769,6 +3798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _requiredFlips: 15
+  _timeLimit: 15
 --- !u!114 &2016776807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3863,6 +3893,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 65.49, z: 0}
+--- !u!114 &2016776812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016776805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe749c1846434741abc9d02be3c8f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2049776666
 PrefabInstance:
   m_ObjectHideFlags: 0

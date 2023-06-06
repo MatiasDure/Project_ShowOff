@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class IngredientCutting : InteractableReaction, IRecipeStep
+[RequireComponent(typeof(IngredientHelper))]
+public class IngredientCutting : InteractableReaction
 {
     enum State
     {
@@ -18,6 +19,7 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
     [SerializeField] float _requiredPressSpeed = 10f;
     [SerializeField] float _spammingTimeSeconds = 0.5f;
     [SerializeField] float _requiredPressTime = 1f;
+    [SerializeField] float _timeLimit;
 
     float _lastPressTime = 0f;
     float _startTime = 0f;
@@ -26,25 +28,26 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
     bool _startCutting = false;
 
     Coroutine _lastRoutine = null;
+    IngredientHelper _helper;
+
+    void OnDisable()
+    {
+        _helper.OnTimerEnd -= TimeUp;
+    }
+
+    void Start()
+    {
+        _helper = GetComponent<IngredientHelper>();
+
+        _helper.OnTimerEnd += TimeUp;
+    }
 
     protected override void Interact(InteractionInformation obj)
     {
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Cutting) return;
 
         _startCutting = true;
-        FreezeGameState();
-    }
-
-    public void FreezeGameState()
-    {
-        if (GameState.Instance.IsFrozen) return;
-
-        GameState.Instance.IsFrozen = true;
-    }
-
-    public void UnFreezeGameState()
-    {
-        GameState.Instance.IsFrozen = false;
+        _helper.StartTask(_timeLimit);
     }
 
     void Update()
@@ -63,7 +66,6 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
             if (_pressCount == 1)
             {
                 _startTime = Time.time;
-                Debug.Log("Starting!");
             }
         }
 
@@ -74,7 +76,6 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
             if (_pressCount > 0)
             {
                 float _pressSpeed = _pressCount / (Time.time - _startTime);
-                Debug.Log(_pressSpeed);
                 if (_pressSpeed >= _requiredPressSpeed && _state == State.UnderThreshold)
                 {
                     _state = State.InThreshold;
@@ -82,7 +83,6 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
                 }
                 else if (_pressSpeed < _requiredPressSpeed && _state == State.InThreshold)
                 {
-                    StopCoroutine(_lastRoutine);
                     ResetCount();
                     Debug.Log("Stopping - Too slow!");
                 }
@@ -91,7 +91,6 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
 
         if (_pressCount > 1 && Time.time - _lastPressTime >= _requiredPressTime)
         {
-            if (_lastRoutine != null) StopCoroutine(_lastRoutine);
             ResetCount();
             Debug.Log("Stopping - Too much delay between last press!");
         }
@@ -106,19 +105,24 @@ public class IngredientCutting : InteractableReaction, IRecipeStep
 
     void CuttingComplete()
     {
-        Debug.Log("Completed!");
-
         OnCuttingComplete?.Invoke();
-        UnFreezeGameState();
+        _helper.EndTask();
         ResetCount();
     }
 
     void ResetCount()
     {
+        if(_lastRoutine != null) StopCoroutine(_lastRoutine);
+
         _pressCount = 0;
         _startTime = 0.0f;
         _lastPressTime = 0.0f;
         _startCutting = false;
         _state =  State.UnderThreshold;
+    }
+
+    void TimeUp()
+    {
+        ResetCount();
     }
 }

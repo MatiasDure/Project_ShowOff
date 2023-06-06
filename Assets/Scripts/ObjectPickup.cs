@@ -6,6 +6,8 @@ public class ObjectPickup : InteractableReaction
 {
     [SerializeField] Vector3 _pickupPosition;
 
+    public bool PickedUp { get; private set; } = false;
+
     protected override void Interact(InteractionInformation obj)
     {
         PickupObject();
@@ -21,5 +23,7 @@ public class ObjectPickup : InteractableReaction
 
         base.InteractableScript.ForceExit();
         base.InteractableScript.enabled = false;
+
+        PickedUp = true;
     }
 }
