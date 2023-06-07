@@ -16,7 +16,7 @@ public class SadnessQuest : LevelQuest
     {
         _trigger = GetComponent<SadnessQuestTrigger>();
 
-        state = QuestState.Waiting;
+        State = QuestState.Waiting;
         _trigger.OnStartQuest += StartQuest;
 
         if (_ammo == null) _ammo = FindObjectOfType<Ammo>();
@@ -25,7 +25,7 @@ public class SadnessQuest : LevelQuest
 
     private void Update()
     {
-        if(state == QuestState.InQuest && 
+        if(State == QuestState.InQuest && 
             !_ammo.AmmoAvailable  )
         {
             CompleteQuest();
@@ -36,7 +36,7 @@ public class SadnessQuest : LevelQuest
     {
         _balloonActivator.DeactivateAllObjects();
         HoldToggleCamera.Instance.Toggle();
-        state = QuestState.Waiting;
+        State = QuestState.Waiting;
 
         StartCoroutine(DisplayWin());
     }
@@ -53,10 +53,10 @@ public class SadnessQuest : LevelQuest
 
     protected override void StartQuest()
     {
-        if (state == QuestState.InQuest) return;
+        if (State == QuestState.InQuest) return;
 
         _balloonActivator.ActivateAllObjects();
-        state = QuestState.InQuest;
+        State = QuestState.InQuest;
     }
 
     private void OnDestroy()
