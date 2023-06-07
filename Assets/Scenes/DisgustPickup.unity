@@ -1371,10 +1371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2289fca2c30f9f348b1a71cc23f9058e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requiredPressSpeed: 4
+  _tempo: 4
   _spammingTimeSeconds: 3
-  _requiredPressTime: 1
   _timeLimit: 10
+  _skipTask: 1
 --- !u!114 &578837737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3165,6 +3165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _requiredRotations: 15
   _timeLimit: 15
+  _skipTask: 1
 --- !u!114 &1576207832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3868,6 +3869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _requiredFlips: 15
   _timeLimit: 15
+  _skipTask: 1
 --- !u!114 &2016776807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4466,12 +4468,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004278879
+      value: -0.000000004278879
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.4149778e-10
+      value: 4.4149778e-10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6257337608404625650, guid: db69c6169246b8948ba9344403220a02, type: 3}

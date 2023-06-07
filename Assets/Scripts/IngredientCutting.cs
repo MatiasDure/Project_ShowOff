@@ -16,11 +16,14 @@ public class IngredientCutting : InteractableReaction
 
     State _state = State.UnderThreshold;
 
-    [SerializeField] float _requiredPressSpeed = 10f;
+    [Range(4,6)]
+    [SerializeField] float _tempo;
     [SerializeField] float _spammingTimeSeconds = 0.5f;
-    [SerializeField] float _requiredPressTime = 1f;
     [SerializeField] float _timeLimit;
 
+    [SerializeField] bool _skipTask = false;
+
+    float _requiredPressTime = 1f;
     float _lastPressTime = 0f;
     float _startTime = 0f;
     int _pressCount = 0;
@@ -44,6 +47,11 @@ public class IngredientCutting : InteractableReaction
 
     protected override void Interact(InteractionInformation obj)
     {
+        if (_skipTask)
+        {
+            CuttingComplete();
+            return;
+        }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Cutting) return;
 
         _startCutting = true;
@@ -76,12 +84,12 @@ public class IngredientCutting : InteractableReaction
             if (_pressCount > 0)
             {
                 float _pressSpeed = _pressCount / (Time.time - _startTime);
-                if (_pressSpeed >= _requiredPressSpeed && _state == State.UnderThreshold)
+                if (_pressSpeed >= _tempo && _state == State.UnderThreshold)
                 {
                     _state = State.InThreshold;
                     _lastRoutine = StartCoroutine(WithinThreshold());
                 }
-                else if (_pressSpeed < _requiredPressSpeed && _state == State.InThreshold)
+                else if (_pressSpeed < _tempo && _state == State.InThreshold)
                 {
                     ResetCount();
                     Debug.Log("Stopping - Too slow!");

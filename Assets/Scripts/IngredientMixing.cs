@@ -10,6 +10,7 @@ public class IngredientMixing : InteractableReaction
 
     [SerializeField] float _requiredRotations;
     [SerializeField] float _timeLimit;
+    [SerializeField] bool _skipTask = false;
 
     List<Vector2> _inputHistory = new List<Vector2>();
     Vector2 _inputDir;
@@ -40,6 +41,11 @@ public class IngredientMixing : InteractableReaction
 
     protected override void Interact(InteractionInformation obj)
     {
+        if (_skipTask)
+        {
+            MixingComplete();
+            return;
+        }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Mixing) return;
 
         _startMixing = true;

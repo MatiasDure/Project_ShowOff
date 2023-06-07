@@ -10,6 +10,7 @@ public class IngredientFlipping : InteractableReaction
 
     [SerializeField] float _requiredFlips;
     [SerializeField] float _timeLimit;
+    [SerializeField] bool _skipTask = false;
 
     List<Vector2> _inputHistory = new List<Vector2>();
     Vector2 _inputDir;
@@ -40,6 +41,11 @@ public class IngredientFlipping : InteractableReaction
 
     protected override void Interact(InteractionInformation obj)
     {
+        if (_skipTask)
+        {
+            FlippingComplete();
+            return;
+        }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Flipping) return;
 
         _startFlipping = true;
