@@ -61,7 +61,7 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag(PLAYER_TAG)) return;
+        if (!other.CompareTag(PLAYER_TAG) || !enabled) return;
 
         OnEnteredInteractionZone?.Invoke(_keys);
         _insideTrigger = true;

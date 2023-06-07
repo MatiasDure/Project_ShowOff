@@ -144,8 +144,8 @@ GameObject:
   - component: {fileID: 3329366541488409569}
   - component: {fileID: 3329366541488409582}
   - component: {fileID: 3329366541488409573}
-  - component: {fileID: 1915763819}
-  - component: {fileID: 1915763820}
+  - component: {fileID: 1733071919688779024}
+  - component: {fileID: 1915763841}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -302,29 +302,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1915763819
-MonoBehaviour:
+--- !u!135 &1733071919688779024
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3329366541488409580}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb5a6a2da7d06ba41b961b747c95f649, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _requiredFlips: 3
---- !u!114 &1915763820
-MonoBehaviour:
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &1915763841
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3329366541488409580}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fbf913369257ec4db06b0d87058a7a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _requiredRotations: 5
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
