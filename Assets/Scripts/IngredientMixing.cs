@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class IngredientMixing : MonoBehaviour
+public class IngredientMixing : InteractableReaction, IRecipeStep
 {
+    public static event Action OnMixingComplete;
+
     [SerializeField] float _requiredRotations;
 
     List<Vector2> _inputHistory = new List<Vector2>();
@@ -17,7 +20,35 @@ public class IngredientMixing : MonoBehaviour
     int _maxInputHistory = 2;
     int _currRotations = 0;
 
-    void Update()
+    bool _startMixing = false;
+
+    protected override void Interact(InteractionInformation obj)
+    {
+        if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Mixing) return;
+
+        _startMixing = true;
+        FreezeGameState();
+    }
+
+    public void FreezeGameState()
+    {
+        if (GameState.Instance.IsFrozen) return;
+
+        GameState.Instance.IsFrozen = true;
+    }
+
+    public void UnFreezeGameState()
+    {
+        GameState.Instance.IsFrozen = false;
+    }
+
+    void FixedUpdate()
+    {
+        if (!_startMixing) return;
+        MixingHandler();
+    }
+
+    void MixingHandler()
     {
         _deltaX = Input.GetAxisRaw("Horizontal") - _oldX;
         _deltaY = Input.GetAxisRaw("Vertical") - _oldY;
@@ -46,7 +77,6 @@ public class IngredientMixing : MonoBehaviour
                 {
                     if (IsCircularMotion() && _currRotations >= _requiredRotations)
                     {
-                        // Perform your action for circular motion here
                         DoCircularMotion();
                     }
                 }
@@ -78,6 +108,16 @@ public class IngredientMixing : MonoBehaviour
     void DoCircularMotion()
     {
         _currRotations = 0;
+
+        MixingComplete();
+    }
+
+    void MixingComplete()
+    {
         Debug.Log("AYYYYYY");
+
+        OnMixingComplete?.Invoke();
+        _startMixing = false;
+        UnFreezeGameState();
     }
 }

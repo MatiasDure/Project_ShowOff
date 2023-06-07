@@ -7,5 +7,5 @@ public abstract class PickupManager : MonoBehaviour
 {
     protected List<GameObject> _objectsCollected = new List<GameObject>();
 
-    protected abstract void CollectIngredient(GameObject _pObject);
+    protected abstract void CollectObject(GameObject _pObject);
 }

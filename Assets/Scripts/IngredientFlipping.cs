@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class IngredientFlipping : MonoBehaviour
+public class IngredientFlipping : InteractableReaction, IRecipeStep
 {
+    public static event Action OnFlippingComplete;
+
     [SerializeField] float _requiredFlips;
 
     List<Vector2> _inputHistory = new List<Vector2>();
@@ -17,8 +20,39 @@ public class IngredientFlipping : MonoBehaviour
     int _maxInputHistory = 2;
     int _currFlips = 0;
 
-    void Update()
+    bool _startFlipping = false;
+
+    protected override void Interact(InteractionInformation obj)
     {
+        if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Flipping) return;
+
+        _startFlipping = true;
+        FreezeGameState();
+    }
+
+    public void FreezeGameState()
+    {
+        if (GameState.Instance.IsFrozen) return;
+
+        GameState.Instance.IsFrozen = true;
+    }
+
+    public void UnFreezeGameState()
+    {
+        GameState.Instance.IsFrozen = false;
+    }
+
+    void FixedUpdate()
+    {
+        if (!_startFlipping) return;
+
+        FlippingHandler();
+    }
+
+    void FlippingHandler()
+    {
+        if (!_startFlipping) return;
+
         _deltaX = Input.GetAxisRaw("Horizontal") - _oldX;
         _deltaY = Input.GetAxisRaw("Vertical") - _oldY;
         _oldX = Input.GetAxisRaw("Horizontal");
@@ -46,7 +80,6 @@ public class IngredientFlipping : MonoBehaviour
                 {
                     if (IsCircularMotion() && _currFlips >= _requiredFlips)
                     {
-                        // Perform your action for circular motion here
                         DoCircularMotion();
                     }
                 }
@@ -65,7 +98,7 @@ public class IngredientFlipping : MonoBehaviour
 
         float deltaY = endPoint.y - startPoint.y;
         Debug.Log(deltaY);
-        if (Mathf.Abs(deltaY) >= 0.5f)
+        if (Mathf.Abs(deltaY) > 0)
         {
             if (Mathf.Sign(deltaY) != Mathf.Sign(startPoint.y))
             {
@@ -74,13 +107,22 @@ public class IngredientFlipping : MonoBehaviour
             }
         }
 
-        _currFlips = 0;
+        //_currFlips = 0;
         return false;
     }
 
     void DoCircularMotion()
     {
         _currFlips = 0;
+        FlippingComplete();
+    }
+
+    void FlippingComplete()
+    {
         Debug.Log("AYYYYYY");
+
+        OnFlippingComplete?.Invoke();
+        _startFlipping = false;
+        UnFreezeGameState();
     }
 }
