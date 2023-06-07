@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class IngredientFlipping : InteractableReaction, IRecipeStep
+[RequireComponent(typeof(IngredientHelper))]
+public class IngredientFlipping : InteractableReaction
 {
     public static event Action OnFlippingComplete;
 
     [SerializeField] float _requiredFlips;
+    [SerializeField] float _timeLimit;
 
     List<Vector2> _inputHistory = new List<Vector2>();
     Vector2 _inputDir;
@@ -22,24 +24,26 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
 
     bool _startFlipping = false;
 
+    IngredientHelper _helper;
+
+    void OnDisable()
+    {
+        _helper.OnTimerEnd -= TimeUp;
+    }
+
+    void Start()
+    {
+        _helper = GetComponent<IngredientHelper>();
+
+        _helper.OnTimerEnd += TimeUp;
+    }
+
     protected override void Interact(InteractionInformation obj)
     {
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Flipping) return;
 
         _startFlipping = true;
-        FreezeGameState();
-    }
-
-    public void FreezeGameState()
-    {
-        if (GameState.Instance.IsFrozen) return;
-
-        GameState.Instance.IsFrozen = true;
-    }
-
-    public void UnFreezeGameState()
-    {
-        GameState.Instance.IsFrozen = false;
+        _helper.StartTask(_timeLimit);
     }
 
     void FixedUpdate()
@@ -97,7 +101,6 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
         Vector2 endPoint = _inputHistory[_maxInputHistory - 1];
 
         float deltaY = endPoint.y - startPoint.y;
-        Debug.Log(deltaY);
         if (Mathf.Abs(deltaY) > 0)
         {
             if (Mathf.Sign(deltaY) != Mathf.Sign(startPoint.y))
@@ -119,10 +122,20 @@ public class IngredientFlipping : InteractableReaction, IRecipeStep
 
     void FlippingComplete()
     {
-        Debug.Log("AYYYYYY");
-
         OnFlippingComplete?.Invoke();
         _startFlipping = false;
-        UnFreezeGameState();
+        _helper.EndTask();
+    }
+
+    void ResetCount()
+    {
+        _startFlipping = false;
+        _currFlips = 0;
+        _inputHistory.Clear();
+    }
+
+    void TimeUp()
+    {
+        ResetCount();
     }
 }

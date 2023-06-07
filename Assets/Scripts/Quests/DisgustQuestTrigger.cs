@@ -5,7 +5,7 @@ using System;
 
 public class DisgustQuestTrigger : QuestTrigger<DisgustQuestTrigger>
 {
-    public event Action OnStartQuest;
+    public event Action OnMonsterInteraction;
 
     protected override void Awake()
     {
@@ -17,6 +17,6 @@ public class DisgustQuestTrigger : QuestTrigger<DisgustQuestTrigger>
 
     protected override void Interact(InteractionInformation obj)
     {
-        OnStartQuest?.Invoke();
+        OnMonsterInteraction?.Invoke();
     }
 }
