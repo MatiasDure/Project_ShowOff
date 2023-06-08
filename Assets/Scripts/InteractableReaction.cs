@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class InteractableReaction : MonoBehaviour
 {
     protected Interactable InteractableScript;
+    protected bool _canInteract = true;
 
     protected virtual void Awake()
     {
@@ -14,6 +15,13 @@ public abstract class InteractableReaction : MonoBehaviour
     }
 
     protected abstract void Interact(InteractionInformation obj);
+
+    protected virtual void DisableInteractable()
+    {
+        _canInteract = false;
+        InteractableScript.ForceExit();
+        InteractableScript.enabled = false;
+    }
 
     protected virtual void OnDestroy()
     {

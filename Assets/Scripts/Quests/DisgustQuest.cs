@@ -116,5 +116,6 @@ public class DisgustQuest : LevelQuest
     protected override void CompleteQuest() // TODO: Update UI Panel
     {
         Debug.Log("Quest complete!");
+        this.enabled = false;
     }
 }
