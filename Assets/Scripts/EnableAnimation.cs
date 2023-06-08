@@ -20,6 +20,8 @@ public class EnableAnimation : InteractableReaction
     protected override void Interact(InteractionInformation obj)
     {
         Animate();
+        AudioManager.instance.PlayWithPitch("WhiteBoard", 1f);
+        StartCoroutine(PlayNextSound());
     }
 
     private void Animate()
@@ -36,5 +38,13 @@ public class EnableAnimation : InteractableReaction
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
 
         _animator.SetBool(_propertyName, false);
+    }
+
+    IEnumerator PlayNextSound()
+    {
+        yield return new WaitForSeconds(AudioManager.instance.GetClipLength("WhiteBoard"));
+
+        // Play your next sound here
+        AudioManager.instance.PlayWithPitch("MonsterAngry", 1f);
     }
 }

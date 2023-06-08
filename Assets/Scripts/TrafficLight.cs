@@ -49,6 +49,7 @@ public class TrafficLight : MonoBehaviour
                 break;
             case State.Warning:
                 UpdateForState(State.Stop);
+                AudioManager.instance.PlayWithPitch("Stop", 1f);
                 break;
             case State.Stop:
                 UpdateForState(State.Go);

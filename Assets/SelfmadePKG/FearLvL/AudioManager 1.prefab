@@ -129,3 +129,45 @@ MonoBehaviour:
     loop: 1
     priority: 225
     source: {fileID: 0}
+  - name: BookInteract
+    clip: {fileID: 8300000, guid: 6a4506ea1904442d5bc4a97caa2c54b6, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 0
+    source: {fileID: 0}
+  - name: MonsterAngry
+    clip: {fileID: 8300000, guid: 9d62757fa2162438f836f3711c219d6c, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 192
+    source: {fileID: 0}
+  - name: WhiteBoard
+    clip: {fileID: 8300000, guid: f70ad9d0cbff442429693970985d6167, type: 3}
+    volume: 0.2
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: WrongMove
+    clip: {fileID: 8300000, guid: 196cbdaffefff4962a177be034fdf370, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Stop
+    clip: {fileID: 8300000, guid: 8fdbaa8351df44f62a517b7fee019521, type: 3}
+    volume: 0.35
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: AngerBackground
+    clip: {fileID: 8300000, guid: 021a37fe206464830ae58570cd30d564, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
