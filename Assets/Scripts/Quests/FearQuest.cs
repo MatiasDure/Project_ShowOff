@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FearQuest : LevelQuest
 {
+    public static event Action<Vector2> OnNextMonsterWaypoint; 
+
     [SerializeField] List<GameObject> torchesGO;
 
     List<PathTorch> torches = new List<PathTorch>();
@@ -47,13 +50,14 @@ public class FearQuest : LevelQuest
         }
     }
 
-    void EnableTorch(PathTorch pPathTorch)
+    void EnableTorch(PathTorch pPathTorch, Vector2 pMonsterPos)
     {
         if (State == QuestState.Waiting) return;
 
         if (pPathTorch == torches[torchesOn])
         {
             pPathTorch.EnableTorch();
+            OnNextMonsterWaypoint?.Invoke(pMonsterPos);
             torchesOn++;
         }
 
@@ -63,16 +67,9 @@ public class FearQuest : LevelQuest
         }
     }
 
-    // TODO: Do we need to disable torches? Maybe disable all when a wrong torch is intaracted with.
-    void DisableTorch(PathTorch pPathTorch)
-    {
-        if (State == QuestState.Waiting) return;
-    }
-
     void TorchSubscribe(PathTorch pPathTorch)
     {
         pPathTorch.OnTorchEnable += EnableTorch;
-        pPathTorch.OnTorchDisable += DisableTorch;
     }
 
     void TorchUnsubscribe()
@@ -80,7 +77,6 @@ public class FearQuest : LevelQuest
         foreach(PathTorch pathTorch in torches)
         {
             pathTorch.OnTorchEnable -= EnableTorch;
-            pathTorch.OnTorchDisable -= DisableTorch;
         }
     }
 }

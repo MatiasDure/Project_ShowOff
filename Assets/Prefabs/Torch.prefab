@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3609045375000264898
 Transform:
   m_ObjectHideFlags: 0
@@ -441,7 +441,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggleObj: {fileID: 3609045375000264899}
-  _disableOnExit: 1
+  _disableOnExit: 0
+  _soundToPlayOn: 
+  _soundToPlayOff: 
+  MonsterPosition: {x: 3.55, y: 0.2}
 --- !u!1 &4097612091699349603
 GameObject:
   m_ObjectHideFlags: 0
