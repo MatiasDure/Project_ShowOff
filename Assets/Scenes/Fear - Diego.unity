@@ -28829,6 +28829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b5114943f4b014384bc74bc7570e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneToTeleport: 0
 --- !u!135 &4219056328525360068
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29606,6 +29607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggleObj: {fileID: 8377093878691936687}
   _disableOnExit: 1
+  _soundToPlayOn: 
+  _soundToPlayOff: 
 --- !u!135 &8377093878426539721
 SphereCollider:
   m_ObjectHideFlags: 0
