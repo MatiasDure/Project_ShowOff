@@ -21,6 +21,7 @@ public class AffectMonster : InteractableReaction
     protected override void Interact(InteractionInformation obj)
     {
         TriggerMonster();
+        AudioManager.instance.PlayWithPitch("BookInteract", 1f);
     }
 
     private void TriggerMonster()
