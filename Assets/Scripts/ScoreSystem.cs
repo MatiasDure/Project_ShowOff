@@ -24,7 +24,10 @@ public class ScoreSystem : MonoBehaviour
 
     public void ModifyScore(int pModifyBy = 1)
     {
+        Debug.Log(Score);
         Score += pModifyBy;
         OnScoreModified?.Invoke(Score);
     }
+
+    public void ResetScore() => Score = 0;
 }
