@@ -7,15 +7,21 @@ public class Ammo : MonoBehaviour
     public int AmountCount { get; private set; }
     public bool AmmoAvailable { get; private set; }
 
+    private bool _infiniteMode = false;
+
     public Action<int> OnBulletCountChanged;
+    public Action<bool> OnInfiteMode;
 
     public void Start()
     {
         ResetAmmo();
+        EnableInfiniteAmmo();
     }
 
     public void ModifyBulletCount(int pModifyBy = -1)
     {
+        if (_infiniteMode) return;
+
         AmountCount += pModifyBy;
         OnBulletCountChanged?.Invoke(AmountCount);
         CheckAmmoAvailable();
@@ -24,7 +30,21 @@ public class Ammo : MonoBehaviour
     private void ResetAmmo()
     {
         AmountCount = _ammoCount;
+        OnBulletCountChanged?.Invoke(AmountCount);
         CheckAmmoAvailable();
+    }
+
+    public void EnableInfiniteAmmo()
+    {
+        _infiniteMode = true;
+        OnInfiteMode?.Invoke(true);
+    }
+
+    public void DisableInfiniteAmmo()
+    {
+        _infiniteMode = false;
+        OnInfiteMode?.Invoke(false);
+        ResetAmmo();
     }
 
     private void CheckAmmoAvailable() => AmmoAvailable = AmountCount > 0;

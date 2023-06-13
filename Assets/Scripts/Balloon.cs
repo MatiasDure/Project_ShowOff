@@ -7,5 +7,6 @@ public class Balloon : MonoBehaviour, IHittable
     public void Hit()
     {
         gameObject.SetActive(false);
+        ScoreSystem.Instance.ModifyScore();
     }
 }

@@ -89,7 +89,10 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        if (!_ammo.AmmoAvailable) return;
+        bool currentlyInQuest = SadnessQuest.Instance.CurrentQuestState == LevelQuest.QuestState.InQuest;
+
+        if (!_ammo.AmmoAvailable &&
+            currentlyInQuest) return;
 
         Ray ray = new Ray(transform.position, transform.forward);
 
@@ -100,10 +103,9 @@ public class Gun : MonoBehaviour
             if (!hit.transform.TryGetComponent<IHittable>(out IHittable hittable)) continue;
 
             hittable.Hit();
-            ScoreSystem.Instance.ModifyScore();
         }
 
-        _ammo.ModifyBulletCount();
+        if(currentlyInQuest) _ammo.ModifyBulletCount();
     }
 
     private void OnDestroy()

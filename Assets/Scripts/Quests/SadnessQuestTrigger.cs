@@ -9,7 +9,6 @@ public class SadnessQuestTrigger : QuestTrigger<SadnessQuestTrigger>
 
     protected override void Interact(InteractionInformation obj)
     {
-        Debug.Log("Hey");
         OnStartQuest?.Invoke();
     }
 
