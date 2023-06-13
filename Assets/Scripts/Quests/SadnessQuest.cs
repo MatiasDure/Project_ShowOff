@@ -8,7 +8,7 @@ public class SadnessQuest : LevelQuest
 {
     [SerializeField] private ActivateObjects _balloonActivator;
     [SerializeField] private Ammo _ammo;
-    [SerializeField] private PopUp _monsterPopUp;
+    [SerializeField] private PopUp _monsterPopUp; //should go into the base class
 
     private SadnessQuestTrigger _trigger;
 
