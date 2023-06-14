@@ -6,18 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/LatestScenes/MainMenu.unity
     guid: 6be28e474460408418bbebb15a44360e
   - enabled: 1
-    path: Assets/Scenes/Bedroom.unity
+    path: Assets/Scenes/LatestScenes/Bedroom.unity
     guid: 13f2ea9eea4264840be792f010962258
   - enabled: 1
-    path: Assets/Scenes/AlexisFearDressed.unity
+    path: Assets/Scenes/LatestScenes/Fear/AlexisFearDressed.unity
     guid: 992460e98c366364c854e797854efcc9
   - enabled: 1
     path: Assets/Scenes/DiegoAngerlvl_Dressing.unity
     guid: 56d7e86172c2b384b8b20c84c5423218
   - enabled: 1
-    path: Assets/Scenes/DiegoDisgust_Dressing.unity
+    path: Assets/Scenes/LatestScenes/Disgust/DiegoDisgust_Dressing.unity
     guid: 868bffbb985b523428edc411f09f3600
   m_configObjects: {}
