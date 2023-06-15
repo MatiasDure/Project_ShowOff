@@ -89,7 +89,7 @@ public class DisgustQuest : LevelQuest
 
         if (!_platePickup.PickedUp) return;
 
-        Destroy(_foodPlate);
+        Destroy(_foodPlate.transform.root.Find("Plate").gameObject);
         CompleteQuest();
     }
 
