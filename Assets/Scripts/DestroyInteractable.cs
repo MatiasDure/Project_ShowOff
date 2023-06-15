@@ -13,6 +13,7 @@ public class DestroyInteractable : InteractableReaction
     {
         if (!_canInteract) return;
 
+        base.Interact(obj);
         DestroyGO();
         DisableInteractable();
     }

@@ -8,6 +8,7 @@ public class SoundInteractable : InteractableReaction
 
     protected override void Interact(InteractionInformation obj)
     {
+        base.Interact(obj);
         PlaySound();
     }
 
