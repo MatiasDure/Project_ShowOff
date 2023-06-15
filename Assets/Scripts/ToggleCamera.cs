@@ -36,15 +36,16 @@ public abstract class ToggleCamera : MonoBehaviour
     //Only works for 2 cameras at the moment
     public void Toggle()
     {
-        if (_cameras.Length < 1 ||
+        if (_cameras.Length < 2 ||
             _cameras[0] == null) return;
 
         GameObject firstCam = _cameras[0].VirtualCamera.gameObject;
         firstCam.SetActive(!firstCam.activeInHierarchy);
+        _cameras[1].VirtualCamera.gameObject.SetActive(!firstCam.activeInHierarchy);
 
         OnCameraModeChanged?.Invoke(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
 
-        Debug.Log(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
+        //Debug.Log(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
     }
 }
 
