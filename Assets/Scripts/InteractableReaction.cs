@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Interactable))]
 public abstract class InteractableReaction : MonoBehaviour
 {
+    public event Action OnInteractableReaction;
+
     protected Interactable InteractableScript;
     protected bool _canInteract = true;
 
@@ -14,7 +17,10 @@ public abstract class InteractableReaction : MonoBehaviour
         InteractableScript.OnInteractableActivated += Interact;
     }
 
-    protected abstract void Interact(InteractionInformation obj);
+    protected virtual void Interact(InteractionInformation obj)
+    {
+        OnInteractableReaction?.Invoke();
+    }
 
     protected virtual void DisableInteractable()
     {

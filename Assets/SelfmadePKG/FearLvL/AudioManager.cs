@@ -67,7 +67,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Playing: " + name + " with pitch: " + pitch);
+            //Debug.Log("Playing: " + name + " with pitch: " + pitch);
         }
         s.source.pitch = pitch;
         s.source.Play();
