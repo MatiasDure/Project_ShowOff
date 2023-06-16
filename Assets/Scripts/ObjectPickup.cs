@@ -10,6 +10,7 @@ public class ObjectPickup : InteractableReaction
 
     protected override void Interact(InteractionInformation obj)
     {
+        AudioManager.instance.PlayWithPitch("Pickups", 1f);
         PickupObject();
     }
 

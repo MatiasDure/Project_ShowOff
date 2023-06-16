@@ -107,6 +107,7 @@ public class DisgustQuest : LevelQuest
     protected override void StartQuest()
     {
         _recipe.SetActive(true);
+        AudioManager.instance.PlayWithPitch("Mhm", 1f);
 
         State = QuestState.InQuest;
         QuestStep = QuestSteps.CollectingIngredients;
@@ -115,7 +116,17 @@ public class DisgustQuest : LevelQuest
 
     protected override void CompleteQuest() // TODO: Update UI Panel
     {
+        AudioManager.instance.PlayWithPitch("Slurp", 1f);
+        StartCoroutine(PlayNextSound());
         Debug.Log("Quest complete!");
         this.enabled = false;
     }
+    IEnumerator PlayNextSound()
+    {
+        yield return new WaitForSeconds(AudioManager.instance.GetClipLength("Slurp"));
+
+        // Play your next sound here
+        AudioManager.instance.PlayWithPitch("FinalNote", 1f);
+    }
 }
+

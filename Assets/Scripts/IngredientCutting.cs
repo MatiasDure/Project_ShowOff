@@ -70,6 +70,7 @@ public class IngredientCutting : InteractableReaction
         if (Input.GetKeyDown(KeyCode.E))
         {
             _pressCount++;
+            AudioManager.instance.PlayWithPitch("Chop", 1f);
 
             if (_pressCount == 1)
             {
