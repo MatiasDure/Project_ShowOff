@@ -20,6 +20,9 @@ public class IngredientMixing : InteractableReaction
     float _oldX;
     float _oldY;
 
+    int _flipCounter = 0;
+
+
     int _maxInputHistory = 2;
     int _currRotations = 0;
 
@@ -47,7 +50,7 @@ public class IngredientMixing : InteractableReaction
             return;
         }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Mixing) return;
-
+        AudioManager.instance.PlayWithPitch("Boiling-[AudioTrimmer.com]", 1f);
         _startMixing = true;
         _helper.StartTask(_timeLimit);
     }
@@ -107,6 +110,13 @@ public class IngredientMixing : InteractableReaction
         if (Mathf.Abs(angle) >= 315f || Mathf.Abs(angle) <= 45f && angle != 0f)
         {
             _currRotations++;
+            // AudioManager.instance.PlayWithPitch("TurnPot", 1f);
+            _flipCounter++; // Increment the flip counter
+
+            if (_flipCounter % 5 == 0)
+            {
+                AudioManager.instance.PlayWithPitch("TurnPot", 1f);
+            }
             return true;
         }
 
@@ -123,9 +133,11 @@ public class IngredientMixing : InteractableReaction
 
     void MixingComplete()
     {
+        AudioManager.instance.Stop("Boiling-[AudioTrimmer.com]");
         OnMixingComplete?.Invoke();
         _startMixing = false;
         _helper.EndTask();
+        _flipCounter = 0; // Reset the flip counter
     }
 
     void ResetCount()
@@ -137,6 +149,7 @@ public class IngredientMixing : InteractableReaction
 
     void TimeUp()
     {
+        AudioManager.instance.Stop("Boiling-[AudioTrimmer.com]");
         ResetCount();
     }
 }

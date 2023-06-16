@@ -11,6 +11,8 @@ public class IngredientFlipping : InteractableReaction
     [SerializeField] float _requiredFlips;
     [SerializeField] float _timeLimit;
     [SerializeField] bool _skipTask = false;
+    int _flipCounter = 0;
+
 
     List<Vector2> _inputHistory = new List<Vector2>();
     Vector2 _inputDir;
@@ -47,7 +49,7 @@ public class IngredientFlipping : InteractableReaction
             return;
         }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Flipping) return;
-
+        AudioManager.instance.PlayWithPitch("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]", 1f);
         _startFlipping = true;
         _helper.StartTask(_timeLimit);
     }
@@ -112,6 +114,14 @@ public class IngredientFlipping : InteractableReaction
             if (Mathf.Sign(deltaY) != Mathf.Sign(startPoint.y))
             {
                 _currFlips++;
+                //Nico
+                //AudioManager.instance.PlayWithPitch("FlipPan", 1f);
+                _flipCounter++; // Increment the flip counter
+
+                if (_flipCounter % 5 == 0)
+                {
+                    AudioManager.instance.PlayWithPitch("FlipPan", 1f);
+                }
                 return true;
             }
         }
@@ -128,9 +138,11 @@ public class IngredientFlipping : InteractableReaction
 
     void FlippingComplete()
     {
+        AudioManager.instance.Stop("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]");
         OnFlippingComplete?.Invoke();
         _startFlipping = false;
         _helper.EndTask();
+        _flipCounter = 0; // Reset the flip counter
     }
 
     void ResetCount()
@@ -142,6 +154,7 @@ public class IngredientFlipping : InteractableReaction
 
     void TimeUp()
     {
+        AudioManager.instance.Stop("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]");
         ResetCount();
     }
 }
