@@ -27,6 +27,7 @@ public class FearQuest : LevelQuest
     {
         if (State == QuestState.InQuest) return;
 
+        base.StartQuest();
         SetupTorches();
         State = QuestState.InQuest;
         Debug.Log("Quest started!");
@@ -34,6 +35,7 @@ public class FearQuest : LevelQuest
 
     protected override void CompleteQuest()
     {
+        base.CompleteQuest();
         State = QuestState.Waiting;
         torchesOn = 0;
         TorchUnsubscribe();

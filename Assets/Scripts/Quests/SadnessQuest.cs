@@ -48,6 +48,8 @@ public class SadnessQuest : LevelQuest
 
     protected override void CompleteQuest()
     {
+        base.CompleteQuest();
+
         _balloonActivator.DeactivateAllObjects();
         State = QuestState.Waiting;
         HoldToggleCamera.Instance.Toggle();
@@ -73,6 +75,7 @@ public class SadnessQuest : LevelQuest
     {
         if (State == QuestState.InQuest ||
             _displayingScore) return;
+        base.StartQuest();
 
         _balloonActivator.ActivateAllObjects();
         State = QuestState.InQuest;
