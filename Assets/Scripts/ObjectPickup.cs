@@ -19,8 +19,8 @@ public class ObjectPickup : InteractableReaction
         GameObject _player = PlayerManager.Instance.gameObject;
         if (_player == null) return;
 
-        transform.parent = _player.transform;
-        transform.localPosition = _pickupPosition;
+        transform.root.parent = _player.transform;
+        transform.root.localPosition = _pickupPosition;
 
         base.InteractableScript.ForceExit();
         base.InteractableScript.enabled = false;
