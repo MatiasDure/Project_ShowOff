@@ -171,3 +171,108 @@ MonoBehaviour:
     loop: 0
     priority: 128
     source: {fileID: 0}
+  - name: Boiling
+    clip: {fileID: 8300000, guid: 25ae743f0d96a48b99fce450240f6b1f, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Chop
+    clip: {fileID: 8300000, guid: cadd5b66c3c1e41dcba7259eeb7290f9, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Fart
+    clip: {fileID: 8300000, guid: be6e423108d5540a896ff97b068843a4, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: FlipPan
+    clip: {fileID: 8300000, guid: 437e24248bd8f4fa09e989058f2704fb, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Mhm
+    clip: {fileID: 8300000, guid: 132f82affae614ee7ac32a35def4e36a, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Pickups
+    clip: {fileID: 8300000, guid: 1176893e04490469bbf07e49365a78cc, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Sizzle
+    clip: {fileID: 8300000, guid: 02b4bdb541d0a41748ce06340155a81b, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 1
+    priority: 128
+    source: {fileID: 0}
+  - name: Slurp
+    clip: {fileID: 8300000, guid: 256ee1443185a46eeb2efe6c2f46a2c9, type: 3}
+    volume: 0.65
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Tempo
+    clip: {fileID: 8300000, guid: 16b635d5309cd4494b1ed4a4dc7d6daf, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: TurnPot
+    clip: {fileID: 8300000, guid: 0d2877094efaf4ee3b03db5169a4e7a1, type: 3}
+    volume: 0.7
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: UghReaction
+    clip: {fileID: 8300000, guid: 48abe5f6b7f6b40e3b917d5c55c8c8da, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: YuckReaction
+    clip: {fileID: 8300000, guid: 0dde60388f8a44bab86a4bfe87f7e10e, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Boiling-[AudioTrimmer.com]
+    clip: {fileID: 8300000, guid: 2bcec32a662bc49b2a190a7fe662f21e, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Sizzle-[AudioTrimmer.com]
+    clip: {fileID: 8300000, guid: 9a29a6c3d3756465fa9fbe8c427e204e, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 1
+    priority: 128
+    source: {fileID: 0}
+  - name: 571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]
+    clip: {fileID: 8300000, guid: 1c8fcd728fffb41e39290ba6ca54ba84, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 1
+    priority: 211
+    source: {fileID: 0}
