@@ -5,9 +5,12 @@ using System;
 
 public class FearQuest : LevelQuest
 {
-    public static event Action<Vector2> OnNextMonsterWaypoint; 
+    public static event Action<Vector2> OnNextMonsterWaypoint;
+    public static event Action OnFearQuestStart;
+    public static event Action OnFearQuestEndTranstiion;
 
     [SerializeField] List<GameObject> torchesGO;
+    [SerializeField] float firstTorchEnableSec;
 
     List<PathTorch> torches = new List<PathTorch>();
 
@@ -29,6 +32,7 @@ public class FearQuest : LevelQuest
 
         SetupTorches();
         State = QuestState.InQuest;
+        StartCamTransition();
         Debug.Log("Quest started!");
     }
 
@@ -78,5 +82,21 @@ public class FearQuest : LevelQuest
         {
             pathTorch.OnTorchEnable -= EnableTorch;
         }
+    }
+
+    void StartCamTransition()
+    {
+        OnFearQuestStart?.Invoke();
+        GameState.Instance.IsFrozen = true;
+        StartCoroutine(LightFirstTorch(firstTorchEnableSec));
+    }
+
+    IEnumerator LightFirstTorch(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        EnableTorch(torches[0], new Vector2(torches[0].transform.position.x + torches[0].MonsterPosition.x, torches[0].transform.position.z + torches[0].MonsterPosition.y));
+        OnFearQuestEndTranstiion?.Invoke();
+        GameState.Instance.IsFrozen = false;
     }
 }
