@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ee0b7112ddc71841b064a4cd51dda88
+guid: b83e40086590c1b458995822c91a7538
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: plant_lambert6SG
-    second: {fileID: 2100000, guid: 71250e5ba71752d4b8ae956309b62032, type: 2}
+      name: 01 - Default
+    second: {fileID: 2100000, guid: 4db17dd0f3b53224ab6c146fff316725, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -52,7 +52,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

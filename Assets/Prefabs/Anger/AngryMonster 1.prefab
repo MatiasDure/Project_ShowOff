@@ -844,7 +844,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3089120874046014130}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 5854207683029607448, guid: 8fbc497e438f0274683624f3aefff8fd, type: 3}
 --- !u!23 &3089120874046014128
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -865,7 +865,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6409c2d3a42ad234eae06b514e544067, type: 2}
+  - {fileID: 2100000, guid: e20365d53fc696a4ca59b7fc824dedd4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -941,5 +941,6 @@ MonoBehaviour:
   EmotionIcon: {fileID: 0}
   _emotionSound: WrongChoice
   _camera: {fileID: 0}
+  _globalVolume: {fileID: 0}
   _shakeTime: 0.3
   _intensity: 0.2
