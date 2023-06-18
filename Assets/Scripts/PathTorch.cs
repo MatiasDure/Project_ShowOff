@@ -7,7 +7,8 @@ public class PathTorch : ToggleObject
 {
     public event Action<PathTorch, Vector2> OnTorchEnable;
 
-    [SerializeField] Vector2 MonsterPosition;
+    [field:SerializeField]
+    public Vector2 MonsterPosition { get; private set; }
 
     InteractionInformation info; // Dummy info
 
