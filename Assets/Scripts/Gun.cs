@@ -93,7 +93,7 @@ public class Gun : MonoBehaviour
 
         if (!_ammo.AmmoAvailable &&
             currentlyInQuest) return;
-
+        AudioManager.instance.PlayWithPitch("Spray", 1f);
         Ray ray = new Ray(transform.position, transform.forward);
 
         RaycastHit[] hits = Physics.RaycastAll(ray, 100f);

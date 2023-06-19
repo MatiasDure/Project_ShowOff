@@ -14,7 +14,15 @@ public class HoldToggleCamera : ToggleCamera
     {
         base.Awake();
     }
+    private void Start()
+    {
+        ToggleCamera.OnCameraModeChanged += PlaySound;
+    }
 
+    private void PlaySound(string pMode)
+    {
+        AudioManager.instance.PlayWithPitch(pMode.Equals("Shooting") ? "ZoomIn" : "ZoomOut", 1f);
+    }
     // Update is called once per frame
     protected override void Update()
     {
@@ -51,4 +59,9 @@ public class HoldToggleCamera : ToggleCamera
     }
 
     private bool CheckTimer() => _holdTimer >= _secondsToHold;
+
+    private void OnDestroy()
+    {
+        ToggleCamera.OnCameraModeChanged -= PlaySound;
+    }
 }
