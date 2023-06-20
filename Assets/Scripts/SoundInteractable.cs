@@ -7,8 +7,12 @@ public class SoundInteractable : InteractableReaction
 {
     public event Action OnSoundPlayed;
 
-    [SerializeField] AudioClip _audioClip;
+    //[SerializeField] AudioClip _audioClip;
+    [SerializeField] private string _soundToPlay;
     [SerializeField] float _audioDelaySec;
+    [SerializeField] private string _audioMonsterInteraction;
+    [SerializeField] float _audioMonsterInteractionTimer;
+
 
     protected override void Interact(InteractionInformation obj)
     {
@@ -18,7 +22,7 @@ public class SoundInteractable : InteractableReaction
 
     void CheckSound()
     {
-        if(_audioClip == null)
+        if(_soundToPlay == null)
         {
             Debug.Log("Audio clip not found!");
             return;
@@ -32,11 +36,29 @@ public class SoundInteractable : InteractableReaction
         {
             StartCoroutine(PlayWithDelay(_audioDelaySec));
         }
+
+        if(_audioMonsterInteractionTimer == 0)
+        {
+            PlayMonsterSound();
+        }
+        else
+        {
+            StartCoroutine(PlayWithDelayMonster(_audioMonsterInteractionTimer));
+        }
     }
 
     void PlaySound()
     {
         // Play sound here
+        AudioManager.instance.PlayWithPitch(_soundToPlay, 1f);
+        Debug.Log("Playing sound!");
+        OnSoundPlayed?.Invoke();
+        _canInteract = true;
+    }
+    void PlayMonsterSound()
+    {
+        // Play sound here
+        AudioManager.instance.PlayWithPitch(_audioMonsterInteraction, 1f);
         Debug.Log("Playing sound!");
         OnSoundPlayed?.Invoke();
         _canInteract = true;
@@ -47,5 +69,12 @@ public class SoundInteractable : InteractableReaction
         _canInteract = false;
         yield return new WaitForSeconds(delay);
         PlaySound();
+    }
+
+    IEnumerator PlayWithDelayMonster(float delay)
+    {
+        _canInteract = false;
+        yield return new WaitForSeconds(delay);
+        PlayMonsterSound();
     }
 }
