@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private KeyCode[] _keys;
     [SerializeField] private float _radius;
     [SerializeField] private bool _KeyDown = true;
+    [SerializeField] private AnimatorManipulator _animManipulator;
 
     private SphereCollider _collider;
     private bool _clicked;
@@ -20,6 +21,7 @@ public class Interactable : MonoBehaviour
 
     public event Action<InteractionInformation> OnInteractableActivated;
     public event Action OnInteractableDeactivated;
+    public static event Action OnInteracted;
 
     private void Awake()
     {
@@ -73,6 +75,7 @@ public class Interactable : MonoBehaviour
             !_clicked || !enabled) return;
 
         OnInteractableActivated?.Invoke(new InteractionInformation(other.gameObject, _keyClicked));
+        OnInteracted?.Invoke();
         ResetInteractionInfo();
     }
 
