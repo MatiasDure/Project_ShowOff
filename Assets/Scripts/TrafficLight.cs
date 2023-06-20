@@ -46,6 +46,7 @@ public class TrafficLight : MonoBehaviour
         {
             case State.Go:
                 UpdateForState(State.Warning);
+                AudioManager.instance.PlayWithPitch("Warning", 1f);
                 break;
             case State.Warning:
                 UpdateForState(State.Stop);
@@ -53,6 +54,7 @@ public class TrafficLight : MonoBehaviour
                 break;
             case State.Stop:
                 UpdateForState(State.Go);
+                AudioManager.instance.PlayWithPitch("Start", 1f);
                 break;
             default:
                 break;
