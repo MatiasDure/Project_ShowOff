@@ -17,8 +17,7 @@ public class AngerEmotion : MonsterEmotion
     // Start is called before the first frame update
     void Start()
     {
-
-        if (_globalVolume.profile.TryGet<Vignette>(out _vignette))
+        _globalVolume.profile.TryGet<Vignette>(out _vignette);
 
         AngerQuest.OnIllegalMove += ShowEmotion;
         MonsterNavMesh.OnReachedNewPosition += HideEmotion;
