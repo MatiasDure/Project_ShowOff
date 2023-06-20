@@ -339,3 +339,17 @@ MonoBehaviour:
     loop: 0
     priority: 128
     source: {fileID: 0}
+  - name: FearScared
+    clip: {fileID: 8300000, guid: effdc366bce884b95af497893456a7a9, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ShortOff
+    clip: {fileID: 8300000, guid: 7b97cc641d4274446a67ef960867bb30, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
