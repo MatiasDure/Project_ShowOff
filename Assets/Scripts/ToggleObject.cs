@@ -9,6 +9,7 @@ public class ToggleObject : InteractableReaction
     //[SerializeField] private string _soundToPlay = null;
     [SerializeField] private string _soundToPlayOn = null;
     [SerializeField] private string _soundToPlayOff = null;
+    [SerializeField] private string _monsterSound = null;
 
     private bool _isOn = false;
 
@@ -42,6 +43,7 @@ public class ToggleObject : InteractableReaction
         else if (!isActive && _soundToPlayOff != null)
         {
             AudioManager.instance.PlayWithPitch(_soundToPlayOff, 1f);
+            StartCoroutine(PlayNextSound());
         }
 
         //if (_soundToPlay == null) return;
@@ -58,5 +60,11 @@ public class ToggleObject : InteractableReaction
         base.OnDestroy();
         
         if(_disableOnExit) InteractableScript.OnInteractableDeactivated -= DeactivateObj;
+    }
+    IEnumerator PlayNextSound()
+    {
+        yield return new WaitForSeconds(AudioManager.instance.GetClipLength(_soundToPlayOff));
+
+        AudioManager.instance.PlayWithPitch(_monsterSound, 1);
     }
 }

@@ -39,8 +39,16 @@ public class FearMonsterMoveBehaviour : MonoBehaviour, IMoveBehaviour
         Vector3 _desiredPos = _targPos - transform.position;
         transform.position += _desiredPos.normalized * _moveSpeed * Time.deltaTime;
 
+        Rotate(_desiredPos);
+
         if (_desiredPos.magnitude > 1) return;
         _currTarg++;
+    }
+
+    void Rotate(Vector3 _targRot)
+    {
+        Quaternion _desiredRot = Quaternion.LookRotation(_targRot);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, _desiredRot, _rotationSpeed * Time.deltaTime);
     }
 
     void AddWaypoint(Vector2 pWaypoint)
