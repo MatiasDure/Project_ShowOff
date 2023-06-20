@@ -276,3 +276,66 @@ MonoBehaviour:
     loop: 1
     priority: 211
     source: {fileID: 0}
+  - name: BalloonPop
+    clip: {fileID: 8300000, guid: 47226048c592546e4a5fd6213aff2dbe, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: GunShooting
+    clip: {fileID: 8300000, guid: 394ac1b8ac54e4516951927aa369a2cb, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: MonsterSad
+    clip: {fileID: 8300000, guid: 468b696d0fec344b89840b15f281f9cb, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: MonsterShot
+    clip: {fileID: 8300000, guid: 48857892ccbcf407eaf98d46f0e3bf0a, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: SadnessBG
+    clip: {fileID: 8300000, guid: b2576d97ff0664275af42c09a99f4c2f, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Spray
+    clip: {fileID: 8300000, guid: 9244e1a7894d74847a05d44055e0efd5, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: WaterGun
+    clip: {fileID: 8300000, guid: 0f74d5d71904f43b488d70b689c6f013, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ZoomIn
+    clip: {fileID: 8300000, guid: 097e08e0aea6f4b67b302ccf6b9293dc, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ZoomOut
+    clip: {fileID: 8300000, guid: 7eee3782de4c64bef91780080746a346, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}

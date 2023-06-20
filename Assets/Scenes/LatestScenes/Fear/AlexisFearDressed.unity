@@ -6901,6 +6901,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[42].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b97cc641d4274446a67ef960867bb30, type: 3}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[42].name
+      value: ShortOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[43].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: effdc366bce884b95af497893456a7a9, type: 3}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[43].name
+      value: FearScared
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[42].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[43].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[42].priority
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[43].priority
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 3619008157216745343, guid: e5929c657e7934c6b8c7b863864181da,
         type: 3}
       propertyPath: m_RootOrder
@@ -9547,6 +9592,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 558898861}
     m_Modifications:
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: _monsterSound
+      value: FearScared
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: _soundToPlayOff
+      value: ShortOff
+      objectReference: {fileID: 0}
     - target: {fileID: 4188915115867135536, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: m_Name
@@ -10637,7 +10692,7 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.055541705
+      value: 0.0555417
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -10657,7 +10712,7 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10591986
+      value: 0.10591985
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -10667,7 +10722,7 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.046287943
+      value: 0.04628794
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -10687,12 +10742,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.084779106
+      value: 0.0847791
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.3987237
+      value: -0.39872366
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -24548,13 +24603,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
+      propertyPath: _monsterSound
+      value: FearScared
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
       propertyPath: _soundToPlayOn
       value: TurnOnLamp
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _soundToPlayOff
-      value: TurnOffLamp
+      value: ShortOff
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115867135536, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -32693,17 +32753,17 @@ PrefabInstance:
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9101801
+      value: 0.91018015
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10591986
+      value: 0.105919845
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.39775696
+      value: -0.397757
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
@@ -39249,7 +39309,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: c06071c870c5143a48e4ace328c04677, type: 3}
+      objectReference: {fileID: 8300000, guid: 4dae2685ae1a04e438753c8d1962e880, type: 3}
     - target: {fileID: 1157135396578754409, guid: f892f869310f73d43b670926a298096c,
         type: 3}
       propertyPath: m_RootOrder
@@ -39421,13 +39481,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
+      propertyPath: _monsterSound
+      value: FearScared
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
       propertyPath: _soundToPlayOn
       value: TurnOnLamp
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _soundToPlayOff
-      value: TurnOffLamp
+      value: ShortOff
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115867135536, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -39890,6 +39955,7 @@ MonoBehaviour:
   _disableOnExit: 1
   _soundToPlayOn: 
   _soundToPlayOff: 
+  _monsterSound: 
 --- !u!135 &8377093878426539721
 SphereCollider:
   m_ObjectHideFlags: 0
