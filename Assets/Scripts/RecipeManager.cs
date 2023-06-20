@@ -14,11 +14,13 @@ public class RecipeManager : MonoBehaviour
     void OnEnable()
     {
         IngredientPickup.OnIngredientCollected += GetIngredientName;
+        DisgustQuest.OnStepComplete += RecipeStepComplete;
     }
 
     void OnDisable()
     {
         IngredientPickup.OnIngredientCollected -= GetIngredientName;
+        DisgustQuest.OnStepComplete -= RecipeStepComplete;
     }
 
     void Awake()
@@ -29,11 +31,6 @@ public class RecipeManager : MonoBehaviour
     void RecipeStepComplete(string _pStep)
     {
         _recipeSteps[_pStep].SetActive(true);
-    }
-
-    void RecipeComplete()
-    {
-
     }
     
     void GetIngredientName(GameObject _pStep)
