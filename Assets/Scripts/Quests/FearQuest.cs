@@ -66,6 +66,10 @@ public class FearQuest : LevelQuest
             OnNextMonsterWaypoint?.Invoke(pMonsterPos);
             torchesOn++;
         }
+        else
+        {
+            AudioManager.instance.PlayWithPitch("WrongChoice", 1);
+        }
 
         if(torchesOn == torches.Count)
         {
