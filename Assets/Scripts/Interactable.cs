@@ -9,7 +9,6 @@ public class Interactable : MonoBehaviour
     [SerializeField] private KeyCode[] _keys;
     [SerializeField] private float _radius;
     [SerializeField] private bool _KeyDown = true;
-    [SerializeField] private AnimatorManipulator _animManipulator;
 
     private SphereCollider _collider;
     private bool _clicked;
