@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04816963, g: 0.05058846, b: 0.08393898, a: 1}
+  m_IndirectSpecularColor: {r: 0.048169784, g: 0.050588418, b: 0.08393868, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7419,8 +7419,13 @@ PrefabInstance:
     - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 44
+      value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[30].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 54db1144ee2854093a498fe1825bbdba, type: 3}
     - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
         type: 3}
       propertyPath: sounds.Array.data[42].clip
@@ -7440,6 +7445,16 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[43].name
       value: FearScared
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[44].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 96ae7b123b65349c3b941f9a37ed4c7d, type: 3}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[44].name
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
         type: 3}
@@ -9994,7 +10009,7 @@ PrefabInstance:
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _monsterSound
-      value: FearScared
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -11088,7 +11103,7 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.055541705
+      value: 0.0555417
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -11108,7 +11123,7 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10591986
+      value: 0.10591985
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -11118,7 +11133,7 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.046287943
+      value: 0.04628794
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -11138,12 +11153,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.084779106
+      value: 0.0847791
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.3987237
+      value: -0.39872366
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -24730,7 +24745,7 @@ PrefabInstance:
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _monsterSound
-      value: FearScared
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -32758,17 +32773,17 @@ PrefabInstance:
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9101801
+      value: 0.91018015
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10591986
+      value: 0.105919845
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.39775696
+      value: -0.397757
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
@@ -39834,7 +39849,7 @@ PrefabInstance:
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _monsterSound
-      value: FearScared
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
