@@ -50,7 +50,8 @@ public class IngredientMixing : InteractableReaction
             return;
         }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Mixing) return;
-        AudioManager.instance.PlayWithPitch("Boiling-[AudioTrimmer.com]", 1f);
+        AudioManager.instance.PlayWithPitch("TikTok", 1f);
+        AudioManager.instance.PlayWithPitch("FinalBoil", 1f);
         _startMixing = true;
         _helper.StartTask(_timeLimit);
     }
@@ -133,7 +134,9 @@ public class IngredientMixing : InteractableReaction
 
     void MixingComplete()
     {
-        AudioManager.instance.Stop("Boiling-[AudioTrimmer.com]");
+        AudioManager.instance.Stop("FinalBoil");
+        AudioManager.instance.Stop("TikTok");
+        AudioManager.instance.PlayWithPitch("Correct", 1f);
         OnMixingComplete?.Invoke();
         _startMixing = false;
         _helper.EndTask();
@@ -149,7 +152,9 @@ public class IngredientMixing : InteractableReaction
 
     void TimeUp()
     {
-        AudioManager.instance.Stop("Boiling-[AudioTrimmer.com]");
+        AudioManager.instance.Stop("FinalBoil");
+        AudioManager.instance.Stop("TikTok");
+        AudioManager.instance.PlayWithPitch("Timer", 1f);
         ResetCount();
     }
 }

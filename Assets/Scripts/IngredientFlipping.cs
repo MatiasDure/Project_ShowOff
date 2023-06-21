@@ -49,10 +49,12 @@ public class IngredientFlipping : InteractableReaction
             return;
         }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Flipping) return;
+        AudioManager.instance.PlayWithPitch("TikTok", 1f);
         AudioManager.instance.PlayWithPitch("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]", 1f);
         _startFlipping = true;
         _helper.StartTask(_timeLimit);
     }
+
 
     void FixedUpdate()
     {
@@ -139,6 +141,8 @@ public class IngredientFlipping : InteractableReaction
     void FlippingComplete()
     {
         AudioManager.instance.Stop("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]");
+        AudioManager.instance.Stop("TikTok");
+        AudioManager.instance.PlayWithPitch("Correct", 1f);
         OnFlippingComplete?.Invoke();
         _startFlipping = false;
         _helper.EndTask();
@@ -155,6 +159,8 @@ public class IngredientFlipping : InteractableReaction
     void TimeUp()
     {
         AudioManager.instance.Stop("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]");
+        AudioManager.instance.Stop("TikTok");
+        AudioManager.instance.PlayWithPitch("Timer", 1f);
         ResetCount();
     }
 }
