@@ -6,6 +6,8 @@ public class DestroyInteractable : InteractableReaction
 {
     [Range(0,3f)]
     [SerializeField] float _fadePerSec;
+    [SerializeField] private string _soundToPlay;
+    [SerializeField] private string _soundToPlayMonster;
 
     bool _startFade = false;
 
@@ -13,6 +15,7 @@ public class DestroyInteractable : InteractableReaction
     {
         if (!_canInteract) return;
 
+        AudioManager.instance.PlayWithPitch(_soundToPlay, 1f);
         base.Interact(obj);
         DestroyGO();
         DisableInteractable();
@@ -46,6 +49,7 @@ public class DestroyInteractable : InteractableReaction
         if (_material.color.a <= 0)
         {
             Destroy(gameObject);
+            AudioManager.instance.PlayWithPitch(_soundToPlayMonster, 1f);
         }
     }
 }

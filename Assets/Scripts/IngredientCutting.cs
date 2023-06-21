@@ -53,7 +53,7 @@ public class IngredientCutting : InteractableReaction
             return;
         }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Cutting) return;
-
+        AudioManager.instance.PlayWithPitch("TikTok", 1f);
         _startCutting = true;
         _helper.StartTask(_timeLimit);
     }
@@ -114,6 +114,8 @@ public class IngredientCutting : InteractableReaction
 
     void CuttingComplete()
     {
+        AudioManager.instance.Stop("TikTok");
+        AudioManager.instance.PlayWithPitch("Correct", 1f);
         OnCuttingComplete?.Invoke();
         _helper.EndTask();
         ResetCount();
@@ -132,6 +134,8 @@ public class IngredientCutting : InteractableReaction
 
     void TimeUp()
     {
+        AudioManager.instance.Stop("TikTok");
+        AudioManager.instance.PlayWithPitch("Timer", 1f);
         ResetCount();
     }
 }
