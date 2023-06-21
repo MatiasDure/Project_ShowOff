@@ -14,6 +14,8 @@ public class DisgustQuest : LevelQuest
         Serving
     }
 
+    public static event Action<string> OnStepComplete;
+
     public static DisgustQuest Instance;
     public QuestSteps QuestStep { get; private set; }
 
@@ -52,34 +54,33 @@ public class DisgustQuest : LevelQuest
         State = base.State;
     }
 
-    void IngredientsCollected()  // TODO: Update UI Panel
+    void IngredientsCollected()
     {
         QuestStep = QuestSteps.Cutting;
-
-        Debug.Log("Move over to the cutting board!");
     }
 
-    void CuttingCompleted()  // TODO: Update UI Panel
+    void CuttingCompleted()
     {
         QuestStep = QuestSteps.Flipping;
 
-        Debug.Log("Move over to the pan - get flipping my dude!");
+        OnStepComplete?.Invoke("Cut");
     }
 
-    void FlippingCompleted()  // TODO: Update UI Panel
+    void FlippingCompleted()
     {
         QuestStep = QuestSteps.Mixing;
 
-        Debug.Log("Move over to the mixing bowl!");
+        OnStepComplete?.Invoke("Flip");
+
     }
 
-    void MixingCompleted()  // TODO: Update UI Panel
+    void MixingCompleted()
     {
         QuestStep = QuestSteps.Serving;
 
         _foodPlate.SetActive(true);
 
-        Debug.Log("Grab that disgusting ass plate and give it to the monster, BOE!");
+        OnStepComplete?.Invoke("Mix");
     }
 
     void ServePlate()
@@ -113,16 +114,15 @@ public class DisgustQuest : LevelQuest
 
         State = QuestState.InQuest;
         QuestStep = QuestSteps.CollectingIngredients;
-        Debug.Log("Quest started!");
     }
 
-    protected override void CompleteQuest() // TODO: Update UI Panel
+    protected override void CompleteQuest()
     {
         base.CompleteQuest();
+        _recipe.SetActive(false);
 
         AudioManager.instance.PlayWithPitch("Slurp", 1f);
         StartCoroutine(PlayNextSound());
-        Debug.Log("Quest complete!");
         this.enabled = false;
     }
     IEnumerator PlayNextSound()

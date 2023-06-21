@@ -60,7 +60,7 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            inputMagnitude /= 2;
+            inputMagnitude *= 2;
         }
 
         // _animator.SetFloat("Input Magnitude", inputMagnitude, 0.05f, Time.deltaTime); TODO: Add when we have animations
