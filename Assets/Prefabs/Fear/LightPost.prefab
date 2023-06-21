@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3524708563639307449
 Transform:
@@ -45,8 +45,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.8666667, g: 0.68235296, b: 0.44705883, a: 1}
-  m_Intensity: 25
-  m_Range: 10
+  m_Intensity: 50
+  m_Range: 15
   m_SpotAngle: 111.67616
   m_InnerSpotAngle: 17.75307
   m_CookieSize: 10
@@ -84,7 +84,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -245,6 +245,7 @@ MonoBehaviour:
   _disableOnExit: 0
   _soundToPlayOn: TuirnOnLamp
   _soundToPlayOff: TurnOffLamp
+  _monsterSound: 
 --- !u!1 &4188915115867135536
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,10 +715,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bd4ba390d1cf4ab4ca381798b32e7c66,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99e905eb25789d1468b58ad370880b7e, type: 2}
     - target: {fileID: 919132149155446097, guid: bd4ba390d1cf4ab4ca381798b32e7c66,
         type: 3}
       propertyPath: m_Name
       value: Lamp_Post
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd4ba390d1cf4ab4ca381798b32e7c66,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd4ba390d1cf4ab4ca381798b32e7c66, type: 3}
