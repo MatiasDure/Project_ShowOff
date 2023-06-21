@@ -10,6 +10,7 @@ public class AngerEmotion : MonsterEmotion
     [SerializeField] private Volume _globalVolume;
     [SerializeField] private float _shakeTime = .3f;
     [SerializeField] private float _intensity = .2f;
+    [SerializeField] private AnimatorMonster _animatorMonster;
     
     private CinemachineBasicMultiChannelPerlin _multiChannelPerlin;
     private Vignette _vignette;
@@ -26,13 +27,15 @@ public class AngerEmotion : MonsterEmotion
     public override void AffectMonster()
     {
         AudioManager.instance.PlayWithPitch(_emotionSound, 1f);
+        _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsTriggered, true);
 
-        if (_camera == null) return;
+        if (_camera == null || _animatorMonster == null) return;
         
-        if(_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        
+        if(_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
         StartCoroutine(ShakeCamera());
     }
+
 
     IEnumerator ShakeCamera()
     {
@@ -50,7 +53,7 @@ public class AngerEmotion : MonsterEmotion
 
     private void Update()
     {
-        if(_vignette.intensity.value > 0) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0, .01f);
+        if (_vignette.intensity.value > 0) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0, .01f);
     }
 
     private void OnDestroy()
