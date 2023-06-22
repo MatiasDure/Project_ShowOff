@@ -7419,8 +7419,13 @@ PrefabInstance:
     - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 44
+      value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[30].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 54db1144ee2854093a498fe1825bbdba, type: 3}
     - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
         type: 3}
       propertyPath: sounds.Array.data[42].clip
@@ -7440,6 +7445,16 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[43].name
       value: FearScared
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[44].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 96ae7b123b65349c3b941f9a37ed4c7d, type: 3}
+    - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
+        type: 3}
+      propertyPath: sounds.Array.data[44].name
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 3619008157216745342, guid: e5929c657e7934c6b8c7b863864181da,
         type: 3}
@@ -9994,7 +10009,7 @@ PrefabInstance:
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _monsterSound
-      value: FearScared
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -11093,7 +11108,7 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000516956
+      value: 0.055541698
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -11157,6 +11172,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
+--- !u!1 &677365219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6257337608404625652, guid: db69c6169246b8948ba9344403220a02,
+    type: 3}
+  m_PrefabInstance: {fileID: 677365218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &677365220
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677365219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &681480941
 GameObject:
   m_ObjectHideFlags: 0
@@ -21209,6 +21247,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1209542892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1210598439 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1448614340341636232, guid: 74bbeecca3c02cd45aeead08876ee84d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1287831990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1217991902 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4097612090889572939, guid: c73cc3f1f97410e43b4da3b6c372a639,
@@ -24735,7 +24785,7 @@ PrefabInstance:
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _monsterSound
-      value: FearScared
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -33186,6 +33236,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1793437259}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1796275697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7040670488755791630, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1857296223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1796275702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796275697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032dc4764e6f6d943baf774a3a9c8be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterEmotion: {fileID: 8377093877921068864}
 --- !u!1001 &1797785076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34747,6 +34816,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7040670488480978548, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.9268
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.9268
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.9268
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978549, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040670488480978552, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: ee1450d0efec3c644ad1c87e045460af,
+        type: 3}
     - target: {fileID: 7040670488755791629, guid: 475d52a9cee4a77439dc1430acf7bf3a,
         type: 3}
       propertyPath: m_RootOrder
@@ -34755,17 +34880,17 @@ PrefabInstance:
     - target: {fileID: 7040670488755791629, guid: 475d52a9cee4a77439dc1430acf7bf3a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6187
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7040670488755791629, guid: 475d52a9cee4a77439dc1430acf7bf3a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.3746657
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7040670488755791629, guid: 475d52a9cee4a77439dc1430acf7bf3a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6187
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7040670488755791629, guid: 475d52a9cee4a77439dc1430acf7bf3a,
         type: 3}
@@ -34837,11 +34962,11 @@ PrefabInstance:
       propertyPath: _keys.Array.data[0]
       value: 101
       objectReference: {fileID: 0}
-    - target: {fileID: 7040670488755791858, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+    - target: {fileID: 7040670489955119629, guid: 475d52a9cee4a77439dc1430acf7bf3a,
         type: 3}
-      propertyPath: _monsterAnim
+      propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 8377093877921068864}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 475d52a9cee4a77439dc1430acf7bf3a, type: 3}
 --- !u!1 &1857841659
@@ -38984,7 +39109,7 @@ Terrain:
   m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
-  m_DeringLightProbesForTrees: 1
+  m_DeringLightProbesForTrees: 0
   m_ScaleInLightmap: 1
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
   m_GroupingID: 0
@@ -39940,12 +40065,17 @@ PrefabInstance:
     - target: {fileID: 3524708563639307451, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 75
+      value: 52.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524708563639307451, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: _monsterSound
-      value: FearScared
+      value: ScaredSound
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -40415,6 +40545,7 @@ GameObject:
   - component: {fileID: 8377093877921068860}
   - component: {fileID: 8377093877921068861}
   - component: {fileID: 8377093877921068862}
+  - component: {fileID: 8377093877921068864}
   - component: {fileID: 8377093877921068863}
   - component: {fileID: 8377093877921068864}
   m_Layer: 0
@@ -40432,8 +40563,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8377093877921068848}
   m_LocalRotation: {x: -0, y: -0.98515433, z: 0, w: -0.17167105}
-  m_LocalPosition: {x: -25.11, y: 0, z: 53.53}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -23.07, y: 0, z: 61.07}
+  m_LocalScale: {x: 2.2828, y: 2.2828, z: 2.2828}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8377093878426539727}
@@ -40489,10 +40620,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8377093877921068848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95de1007b57712846a3236ddf5731275, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a360f9501847274a9a1afe665ca9f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1841929232}
+  EmotionIcon: {fileID: 0}
+  _emotionSound: 
+  _camera: {fileID: 134442361}
+  _globalVolume: {fileID: 1210598439}
+  _shakeTime: 0.3
+  _intensity: 0.2
 --- !u!114 &8377093878426539720
 MonoBehaviour:
   m_ObjectHideFlags: 0
