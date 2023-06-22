@@ -30,7 +30,6 @@ public class AngerEmotion : MonsterEmotion
         if (_camera == null) return;
         
         if(_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        
         StartCoroutine(ShakeCamera());
     }
 

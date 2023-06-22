@@ -29,14 +29,13 @@ public class FearEmotion : MonsterEmotion
 
         if (_camera == null) return;
 
-        if (_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        if (_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         StartCoroutine(ShakeCamera());
     }
 
     IEnumerator ShakeCamera()
     {
-        Debug.Log(_multiChannelPerlin);
         _multiChannelPerlin.m_AmplitudeGain = 1;
         ShowEmotion();
         _vignette.intensity.value = 1f;
