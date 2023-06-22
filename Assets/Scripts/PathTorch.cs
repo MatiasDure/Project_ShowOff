@@ -36,9 +36,9 @@ public class PathTorch : ToggleObject
         //Nico
         torchCount++;
         float pitch = 1.0f + (torchCount * 0.1f); // Adjust the pitch increment as needed
-        float pitchKey = 0.5f + ((torchCount - 1) * 2.0f) / 12f;
+        float pitchKey = Mathf.Pow(2f, (torchCount - 1) / 12f);
         AudioManager.instance.PlayWithPitch("LightUp", 1);
-        if(pitchKey <= 3)
+        if(pitchKey <= 2.519842)
         {
             AudioManager.instance.PlayWithPitch("KeyNote", pitchKey);
         }
