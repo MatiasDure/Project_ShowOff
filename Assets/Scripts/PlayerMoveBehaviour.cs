@@ -2,32 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Animator), typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 {
     [SerializeField] float _moveSpeed;
-
-
     [SerializeField] float _rotationSpeed;
-
-
-    [SerializeField] float _jumpForce;
-
-
-    [SerializeField] float _jumpButtonDelay;
-
-
+    //[SerializeField] float _jumpForce;
+    //[SerializeField] float _jumpButtonDelay;
     [SerializeField] Transform _camTransform;
-
-
     [SerializeField] float _moveBackPauseSec;
+    [SerializeField] AnimatorManipulator _animManipulator;
 
-    private Animator _animator;
     private CharacterController _charController;
     private float _ySpeed;
-    private float _origStepOffset;
-    private float? _lastGroundedTime;
-    private float? _jumpButtonPressedTime;
+    //private float _origStepOffset;
+    //private float? _lastGroundedTime;
+    //private float? _jumpButtonPressedTime;
     private bool _getVerticalInput = true;
     private float _horizontalInput;
     private float _verticalInput;
@@ -35,12 +25,16 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
     public bool IsMoving { get; private set; }
     private Vector3 _previousPosition;
 
+    void Awake()
+    {
+        if (_animManipulator == null) _animManipulator = GetComponentInChildren<AnimatorManipulator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _animator = GetComponent<Animator>();
         _charController = GetComponent<CharacterController>();
-        _origStepOffset = _charController.stepOffset;
+        //_origStepOffset = _charController.stepOffset;
     }
 
     public void Move()
@@ -66,7 +60,7 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            inputMagnitude /= 2;
+            inputMagnitude *= 2;
         }
 
         // _animator.SetFloat("Input Magnitude", inputMagnitude, 0.05f, Time.deltaTime); TODO: Add when we have animations
@@ -77,32 +71,32 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
 
         _ySpeed += Physics.gravity.y * Time.deltaTime;
 
-        if (_charController.isGrounded)
-        {
-            _lastGroundedTime = Time.time;
-        }
+        //if (_charController.isGrounded)
+        //{
+        //    _lastGroundedTime = Time.time;
+        //}
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            _jumpButtonPressedTime = Time.time;
-        }
+        //if (Input.GetButtonDown("Jump"))
+        //{
+        //    _jumpButtonPressedTime = Time.time;
+        //}
 
-        if (Time.time - _lastGroundedTime <= _jumpButtonDelay)
-        {
-            _charController.stepOffset = _origStepOffset;
-            _ySpeed = -0.5f;
+        //if (Time.time - _lastGroundedTime <= _jumpButtonDelay)
+        //{
+        //    _charController.stepOffset = _origStepOffset;
+        //    _ySpeed = -0.5f;
 
-            if (Time.time - _jumpButtonPressedTime <= _jumpButtonDelay)
-            {
-                _ySpeed = _jumpForce;
-                _jumpButtonPressedTime = null;
-                _lastGroundedTime = null;
-            }
-        }
-        else
-        {
-            _charController.stepOffset = 0;
-        }
+        //    if (Time.time - _jumpButtonPressedTime <= _jumpButtonDelay)
+        //    {
+        //        _ySpeed = _jumpForce;
+        //        _jumpButtonPressedTime = null;
+        //        _lastGroundedTime = null;
+        //    }
+        //}
+        //else
+        //{
+        //    _charController.stepOffset = 0;
+        //}
 
         Vector3 velocity = movementDirection * speed;
         velocity.y = _ySpeed;
@@ -110,6 +104,7 @@ public class PlayerMoveBehaviour : MonoBehaviour, IMoveBehaviour
         _charController.Move(velocity * Time.deltaTime);
 
         IsMoving = _previousPosition != this.transform.position;
+        _animManipulator.SetParamValue(AnimatorManipulator.Params.IsMoving, IsMoving);
 
         if (movementDirection == Vector3.zero) return;
 

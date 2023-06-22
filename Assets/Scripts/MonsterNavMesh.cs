@@ -7,6 +7,7 @@ public class MonsterNavMesh : MonoBehaviour
 {
     [SerializeField] private Transform[] _monsterPositions;
     [SerializeField] private float _speed;
+    [SerializeField] private AnimatorMonster _animatorMonster;
 
     private NavMeshAgent _navMesh;
     private Vector3 _target;
@@ -40,7 +41,9 @@ public class MonsterNavMesh : MonoBehaviour
     {
         if (!AngerQuest.Instance.IsPlaying) return;
 
+        _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, true);
         _target = _monsterPositions[_currentIndex++].position;
+        _navMesh.destination = _target;
         GameState.Instance.IsFrozen = true;
     }
 
@@ -49,7 +52,6 @@ public class MonsterNavMesh : MonoBehaviour
     {
         if ((!GameState.Instance.IsFrozen && !_questWon) || !AngerQuest.Instance.IsPlaying) return;
 
-        _navMesh.destination = _target;
         CheckIfReachedNewDestination();
     }
 
@@ -60,31 +62,26 @@ public class MonsterNavMesh : MonoBehaviour
         ResetAttributes();
     }
 
-    //private void AssignNewPosition()
-    //{
-    //    if (_monsterPositions.Length < 1 ||
-    //        _monsterPositions[0] == null) return;
-
-    //    GameState.Instance.IsFrozen = true;
-    //    _target = _monsterPositions[UnityEngine.Random.Range(0, _monsterPositions.Length)].position;      
-    //}
-
     private void CheckIfReachedNewDestination()
     {
         Vector3 dest = _navMesh.destination;
         Vector3 pos = this.transform.position;
+        Vector3 dir = dest - pos;
+        float distance = dir.magnitude;
 
-        if (!(Mathf.Abs(dest.x - pos.x) < 1 &&
-                Mathf.Abs(dest.y - pos.y) < 1 &&
-                Mathf.Abs(dest.z - pos.z) < 1)) return;
+        if (distance > 2f)
+        {
+            _navMesh.destination = _target;
+            return;
+        }
 
         GameState.Instance.IsFrozen = false;
+        _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, false);
         OnReachedNewPosition?.Invoke();
     }
 
     private void OnDestroy()
     {
-        //AngerQuest.OnIllegalMove -= AssignNewPosition;
         AngerQuest.OnQuestFinished -= ResetPos;
         AngerQuest.OnTouchedMonster -= MoveToPos;
     }

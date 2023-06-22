@@ -104,7 +104,7 @@ public class AngerQuest : MonoBehaviour
         _trafficLight.StopLights();
         OnQuestFinished?.Invoke();
         _gameWon = true;
-
+        AudioManager.instance.PlayWithPitch("FinalNote", 1f);
         StartCoroutine(WinPopUp());
     }
 

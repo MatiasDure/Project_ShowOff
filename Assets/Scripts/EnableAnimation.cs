@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnableAnimation : InteractableReaction
 {
     [SerializeField] private string _propertyName = null;
+    [SerializeField] private AngerEmotion _angerEmotion;
 
     private Animator _animator;
 
@@ -35,7 +36,7 @@ public class EnableAnimation : InteractableReaction
     {
         _animator.SetBool(_propertyName, true);
 
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(AudioManager.instance.GetClipLength("WhiteBoard"));
 
         _animator.SetBool(_propertyName, false);
     }
@@ -44,7 +45,6 @@ public class EnableAnimation : InteractableReaction
     {
         yield return new WaitForSeconds(AudioManager.instance.GetClipLength("WhiteBoard"));
 
-        // Play your next sound here
-        AudioManager.instance.PlayWithPitch("MonsterAngry", 1f);
+        _angerEmotion.AffectMonster();
     }
 }

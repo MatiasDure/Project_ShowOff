@@ -20,6 +20,7 @@ public class Interactable : MonoBehaviour
 
     public event Action<InteractionInformation> OnInteractableActivated;
     public event Action OnInteractableDeactivated;
+    public static event Action OnInteracted;
 
     private void Awake()
     {
@@ -73,6 +74,7 @@ public class Interactable : MonoBehaviour
             !_clicked || !enabled) return;
 
         OnInteractableActivated?.Invoke(new InteractionInformation(other.gameObject, _keyClicked));
+        OnInteracted?.Invoke();
         ResetInteractionInfo();
     }
 

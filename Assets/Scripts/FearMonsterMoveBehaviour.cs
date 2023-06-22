@@ -6,6 +6,7 @@ public class FearMonsterMoveBehaviour : MonoBehaviour, IMoveBehaviour
 {
     [SerializeField] float _moveSpeed;
     [SerializeField] float _rotationSpeed;
+    [SerializeField] AnimatorMonster _monsterAnim;
 
     List<Vector3> _waypoints = new List<Vector3>();
 
@@ -35,12 +36,23 @@ public class FearMonsterMoveBehaviour : MonoBehaviour, IMoveBehaviour
 
     public void Move()
     {
+        _monsterAnim.UpdateParameter(AnimatorMonster.Params.IsMoving, true);
         Vector3 _targPos = _waypoints[_currTarg];
         Vector3 _desiredPos = _targPos - transform.position;
         transform.position += _desiredPos.normalized * _moveSpeed * Time.deltaTime;
 
+        Rotate(_desiredPos);
+
         if (_desiredPos.magnitude > 1) return;
+
+        _monsterAnim.UpdateParameter(AnimatorMonster.Params.IsMoving, false);
         _currTarg++;
+    }
+
+    void Rotate(Vector3 _targRot)
+    {
+        Quaternion _desiredRot = Quaternion.LookRotation(_targRot);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, _desiredRot, _rotationSpeed * Time.deltaTime);
     }
 
     void AddWaypoint(Vector2 pWaypoint)
