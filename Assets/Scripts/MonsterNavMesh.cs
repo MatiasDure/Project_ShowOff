@@ -43,6 +43,7 @@ public class MonsterNavMesh : MonoBehaviour
 
         _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, true);
         _target = _monsterPositions[_currentIndex++].position;
+        _navMesh.destination = _target;
         GameState.Instance.IsFrozen = true;
     }
 
@@ -51,7 +52,7 @@ public class MonsterNavMesh : MonoBehaviour
     {
         if ((!GameState.Instance.IsFrozen && !_questWon) || !AngerQuest.Instance.IsPlaying) return;
 
-        _navMesh.destination = _target;
+        //_navMesh.destination = _target;
         CheckIfReachedNewDestination();
     }
 
@@ -66,10 +67,17 @@ public class MonsterNavMesh : MonoBehaviour
     {
         Vector3 dest = _navMesh.destination;
         Vector3 pos = this.transform.position;
+        Vector3 dir = dest - pos;
+        float distance = dir.magnitude;
 
-        if (!(Mathf.Abs(dest.x - pos.x) < 1 &&
-                Mathf.Abs(dest.y - pos.y) < 1 &&
-                Mathf.Abs(dest.z - pos.z) < 1)) return;
+        if (distance > 2f)
+        {
+            _navMesh.destination = _target;
+            return;
+        }
+        //if (!(Mathf.Abs(dest.x - pos.x) < 1 &&
+        //        Mathf.Abs(dest.y - pos.y) < 1 &&
+        //        Mathf.Abs(dest.z - pos.z) < 1)) return;
 
         GameState.Instance.IsFrozen = false;
         _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, false);

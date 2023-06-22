@@ -15,13 +15,12 @@ public class TrafficLight : MonoBehaviour
         Stop
     }
 
-    [SerializeField] private CinemachineFreeLook _camera;
-    [SerializeField] private Material[] _colors;
+    //[SerializeField] private CinemachineFreeLook _camera;
+    //[SerializeField] private Material[] _colors;
     [SerializeField] private float[] _yellowTimers;
-    [SerializeField] MeshRenderer _meshRenderer;
     [SerializeField] private Volume _globalVolume;
 
-    private CinemachineBasicMultiChannelPerlin _multiChannelPerlin;
+    //private CinemachineBasicMultiChannelPerlin _multiChannelPerlin;
     private Vignette _vignette;
 
     private State _state;
@@ -36,14 +35,14 @@ public class TrafficLight : MonoBehaviour
     {
         _globalVolume.profile.TryGet<Vignette>(out _vignette);
 
-        if (_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        //if (_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         _state = State.None;
     }
 
     private void Update()
     {
-        if (_vignette.intensity.value > 0) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0, .01f);
+        //if (_vignette.intensity.value > 0) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0, .01f);
 
         if (_state == State.None || 
             GameState.Instance.IsFrozen) return;
@@ -86,7 +85,6 @@ public class TrafficLight : MonoBehaviour
     private void UpdateForState(State pState)
     {
         _state = pState;
-        _meshRenderer.material = _colors[(int)pState - 1];
         SetTimer(pState != State.Warning);
     }
 
@@ -106,6 +104,5 @@ public class TrafficLight : MonoBehaviour
     public void StopLights()
     {
         _state = State.None;
-        _meshRenderer.material = _colors[3];
     }
 }
