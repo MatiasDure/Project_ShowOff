@@ -256,7 +256,7 @@ MonoBehaviour:
     priority: 128
     source: {fileID: 0}
   - name: Boiling-[AudioTrimmer.com]
-    clip: {fileID: 8300000, guid: 2bcec32a662bc49b2a190a7fe662f21e, type: 3}
+    clip: {fileID: 8300000, guid: 54db1144ee2854093a498fe1825bbdba, type: 3}
     volume: 0.5
     pitch: 0
     loop: 0
@@ -339,13 +339,6 @@ MonoBehaviour:
     loop: 0
     priority: 128
     source: {fileID: 0}
-  - name: FearScared
-    clip: {fileID: 8300000, guid: effdc366bce884b95af497893456a7a9, type: 3}
-    volume: 1
-    pitch: 0
-    loop: 0
-    priority: 128
-    source: {fileID: 0}
   - name: ShortOff
     clip: {fileID: 8300000, guid: 7b97cc641d4274446a67ef960867bb30, type: 3}
     volume: 1
@@ -353,59 +346,17 @@ MonoBehaviour:
     loop: 0
     priority: 128
     source: {fileID: 0}
-  - name: Warning
-    clip: {fileID: 8300000, guid: bd0b72d0d3cdd2a4483f662be597dbb4, type: 3}
+  - name: FearScared
+    clip: {fileID: 8300000, guid: effdc366bce884b95af497893456a7a9, type: 3}
     volume: 1
     pitch: 0
     loop: 0
     priority: 128
     source: {fileID: 0}
-  - name: Start
-    clip: {fileID: 8300000, guid: b638b9e8debe9d34c9698bf211abae14, type: 3}
+  - name: ScaredSound
+    clip: {fileID: 8300000, guid: 96ae7b123b65349c3b941f9a37ed4c7d, type: 3}
     volume: 1
     pitch: 0
     loop: 0
-    priority: 128
-    source: {fileID: 0}
-  - name: Timer
-    clip: {fileID: 8300000, guid: a804d09d129824c878fa28a39153e379, type: 3}
-    volume: 1
-    pitch: 0
-    loop: 0
-    priority: 128
-    source: {fileID: 0}
-  - name: Clock
-    clip: {fileID: 8300000, guid: e424b9950781e4a0e83cd15aa8726e45, type: 3}
-    volume: 1
-    pitch: 0
-    loop: 1
-    priority: 128
-    source: {fileID: 0}
-  - name: Correct
-    clip: {fileID: 8300000, guid: abe25ba3eed7b472eb4c3d2c9cce263e, type: 3}
-    volume: 1
-    pitch: 0
-    loop: 0
-    priority: 128
-    source: {fileID: 0}
-  - name: Correct
-    clip: {fileID: 8300000, guid: abe25ba3eed7b472eb4c3d2c9cce263e, type: 3}
-    volume: 1
-    pitch: 0
-    loop: 0
-    priority: 128
-    source: {fileID: 0}
-  - name: TikTok
-    clip: {fileID: 8300000, guid: db08a8449f8034aab8510343c50e6bdd, type: 3}
-    volume: 1
-    pitch: 0
-    loop: 0
-    priority: 10
-    source: {fileID: 0}
-  - name: FinalBoil
-    clip: {fileID: 8300000, guid: bbb311e79e92e4c4ab71419d1c6c2761, type: 3}
-    volume: 1
-    pitch: 0
-    loop: 1
     priority: 128
     source: {fileID: 0}
