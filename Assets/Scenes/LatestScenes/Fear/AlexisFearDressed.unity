@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.048169784, g: 0.050588418, b: 0.08393868, a: 1}
+  m_IndirectSpecularColor: {r: 0.04816963, g: 0.05058846, b: 0.08393898, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11103,7 +11103,7 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0555417
+      value: 0.055541698
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -11133,7 +11133,7 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.04628794
+      value: 0.046287943
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -11153,12 +11153,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0847791
+      value: 0.084779106
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.39872366
+      value: -0.3987237
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -21219,6 +21219,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1209542892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1210598439 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1448614340341636232, guid: 74bbeecca3c02cd45aeead08876ee84d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1287831990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1217991902 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4097612090889572939, guid: c73cc3f1f97410e43b4da3b6c372a639,
@@ -32773,17 +32785,17 @@ PrefabInstance:
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.91018015
+      value: 0.9101801
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.105919845
+      value: 0.10591986
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.397757
+      value: -0.39775696
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
@@ -33191,6 +33203,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1793437259}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1796275697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7040670488755791630, guid: 475d52a9cee4a77439dc1430acf7bf3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1857296223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1796275702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796275697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032dc4764e6f6d943baf774a3a9c8be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterEmotion: {fileID: 8377093877921068864}
 --- !u!1001 &1797785076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40319,6 +40350,7 @@ GameObject:
   - component: {fileID: 8377093877921068860}
   - component: {fileID: 8377093877921068861}
   - component: {fileID: 8377093877921068862}
+  - component: {fileID: 8377093877921068864}
   - component: {fileID: 8377093877921068863}
   m_Layer: 0
   m_Name: Monster
@@ -40381,6 +40413,24 @@ CapsuleCollider:
   m_Height: 1.86
   m_Direction: 2
   m_Center: {x: 0, y: 0.48, z: -0.37}
+--- !u!114 &8377093877921068864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8377093877921068848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a360f9501847274a9a1afe665ca9f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmotionIcon: {fileID: 0}
+  _emotionSound: 
+  _camera: {fileID: 0}
+  _globalVolume: {fileID: 1210598439}
+  _shakeTime: 0.3
+  _intensity: 0.2
 --- !u!114 &8377093878426539720
 MonoBehaviour:
   m_ObjectHideFlags: 0
