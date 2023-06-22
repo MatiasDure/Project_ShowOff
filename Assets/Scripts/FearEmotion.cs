@@ -8,7 +8,7 @@ using Cinemachine;
 public class FearEmotion : MonsterEmotion
 {
 
-    [SerializeField] private CinemachineVirtualCamera _camera;
+    [SerializeField] private CinemachineFreeLook _camera;
     [SerializeField] private Volume _globalVolume;
     [SerializeField] private float _shakeTime = .3f;
     [SerializeField] private float _intensity = .2f;
@@ -29,13 +29,14 @@ public class FearEmotion : MonsterEmotion
 
         if (_camera == null) return;
 
-        if (_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        if (_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         StartCoroutine(ShakeCamera());
     }
 
     IEnumerator ShakeCamera()
     {
+        Debug.Log(_multiChannelPerlin);
         _multiChannelPerlin.m_AmplitudeGain = 1;
         ShowEmotion();
         _vignette.intensity.value = 1f;
