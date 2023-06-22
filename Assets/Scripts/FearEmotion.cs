@@ -1,26 +1,26 @@
-using Cinemachine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Cinemachine;
 
-public class AngerEmotion : MonsterEmotion
+public class FearEmotion : MonsterEmotion
 {
+
     [SerializeField] private CinemachineFreeLook _camera;
     [SerializeField] private Volume _globalVolume;
     [SerializeField] private float _shakeTime = .3f;
     [SerializeField] private float _intensity = .2f;
-    
+
     private CinemachineBasicMultiChannelPerlin _multiChannelPerlin;
     private Vignette _vignette;
 
     // Start is called before the first frame update
+
     void Start()
     {
-        _globalVolume.profile.TryGet<Vignette>(out _vignette);
-
-        AngerQuest.OnIllegalMove += ShowEmotion;
-        MonsterNavMesh.OnReachedNewPosition += HideEmotion;
+        if (_globalVolume.profile.TryGet<Vignette>(out _vignette)) { }
     }
 
     public override void AffectMonster()
@@ -28,8 +28,9 @@ public class AngerEmotion : MonsterEmotion
         AudioManager.instance.PlayWithPitch(_emotionSound, 1f);
 
         if (_camera == null) return;
-        
-        if(_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        if (_multiChannelPerlin == null) _multiChannelPerlin = _camera.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
         StartCoroutine(ShakeCamera());
     }
 
@@ -38,7 +39,6 @@ public class AngerEmotion : MonsterEmotion
         _multiChannelPerlin.m_AmplitudeGain = 1;
         ShowEmotion();
         _vignette.intensity.value = 1f;
-
 
         yield return new WaitForSeconds(.5f);
 
@@ -49,12 +49,6 @@ public class AngerEmotion : MonsterEmotion
 
     private void Update()
     {
-        if(_vignette.intensity.value > 0) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0, .01f);
-    }
-
-    private void OnDestroy()
-    {
-        AngerQuest.OnIllegalMove -= ShowEmotion;
-        MonsterNavMesh.OnReachedNewPosition -= HideEmotion;
+        if (_vignette.intensity.value > 0) _vignette.intensity.value = Mathf.Lerp(_vignette.intensity.value, 0, .01f);
     }
 }
