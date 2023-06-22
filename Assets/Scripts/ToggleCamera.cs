@@ -45,7 +45,6 @@ public abstract class ToggleCamera : MonoBehaviour
 
         OnCameraModeChanged?.Invoke(firstCam.activeInHierarchy ? Cameras[0].Mode : Cameras[1].Mode);
 
-        //Debug.Log(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
     }
 
     public void SwitchCamera(string pCameraMode)

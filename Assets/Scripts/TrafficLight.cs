@@ -78,7 +78,6 @@ public class TrafficLight : MonoBehaviour
         }
 
         _vignette.intensity.value = 1f;
-        Debug.Log(_vignette.intensity.value);
         OnTrafficStateChanged?.Invoke(_state);
     }
 

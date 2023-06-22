@@ -66,7 +66,6 @@ public class RotateBranch : InteractableReaction
         yield return new WaitForSeconds(AudioManager.instance.GetClipLength("ShakingTree"));
 
         audioIsPlaying = false;
-        Debug.Log("Play monster screaming sound here mothafaka!");
 
         Rotate(info);
     }

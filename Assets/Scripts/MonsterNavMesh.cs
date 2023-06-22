@@ -45,6 +45,8 @@ public class MonsterNavMesh : MonoBehaviour
         _target = _monsterPositions[_currentIndex++].position;
         _navMesh.destination = _target;
         GameState.Instance.IsFrozen = true;
+
+        Debug.Log();
     }
 
     // Update is called once per frame
@@ -52,7 +54,6 @@ public class MonsterNavMesh : MonoBehaviour
     {
         if ((!GameState.Instance.IsFrozen && !_questWon) || !AngerQuest.Instance.IsPlaying) return;
 
-        //_navMesh.destination = _target;
         CheckIfReachedNewDestination();
     }
 
@@ -75,9 +76,6 @@ public class MonsterNavMesh : MonoBehaviour
             _navMesh.destination = _target;
             return;
         }
-        //if (!(Mathf.Abs(dest.x - pos.x) < 1 &&
-        //        Mathf.Abs(dest.y - pos.y) < 1 &&
-        //        Mathf.Abs(dest.z - pos.z) < 1)) return;
 
         GameState.Instance.IsFrozen = false;
         _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, false);
