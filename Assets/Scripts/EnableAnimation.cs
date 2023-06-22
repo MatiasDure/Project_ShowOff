@@ -36,7 +36,7 @@ public class EnableAnimation : InteractableReaction
     {
         _animator.SetBool(_propertyName, true);
 
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(AudioManager.instance.GetClipLength("WhiteBoard"));
 
         _animator.SetBool(_propertyName, false);
     }
