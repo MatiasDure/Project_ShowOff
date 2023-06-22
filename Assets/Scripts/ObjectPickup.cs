@@ -16,11 +16,12 @@ public class ObjectPickup : InteractableReaction
 
     void PickupObject()
     {
-        GameObject _player = PlayerManager.Instance.gameObject;
-        if (_player == null) return;
+        GameObject player = PlayerManager.Instance.gameObject;
+        GameObject plate = transform.root.gameObject;
+        if (player == null) return;
 
-        transform.root.parent = _player.transform;
-        transform.root.localPosition = _pickupPosition;
+        plate.transform.SetParent(player.transform);
+        plate.transform.localPosition = _pickupPosition;
 
         base.InteractableScript.ForceExit();
         base.InteractableScript.enabled = false;

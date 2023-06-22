@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class HintTrail : MonoBehaviour
 {
-    [SerializeField] private Transform[] _positionsToGo;
-    [SerializeField] ParticleSystem _trailParticle;
-    [SerializeField] PlayerMoveBehaviour _player;
-    [SerializeField] float _secondsForHint;
+    [SerializeField] protected Transform[] _positionsToGo;
+    [SerializeField] protected ParticleSystem _trailParticle;
+    [SerializeField] protected PlayerMoveBehaviour _player;
+    [SerializeField] protected float _secondsForHint;
 
-    private List<ParticleSystem> _hintsParticles = new List<ParticleSystem>();
-    private Dictionary<ParticleSystem, FollowPath> _particlesPath = new Dictionary<ParticleSystem, FollowPath>();
+    protected List<ParticleSystem> _hintsParticles = new List<ParticleSystem>();
+    protected Dictionary<ParticleSystem, FollowPath> _particlesPath = new Dictionary<ParticleSystem, FollowPath>();
     private float _lastHintProvided = 0;
 
     void Awake()
@@ -75,7 +75,7 @@ public class HintTrail : MonoBehaviour
         return _lastHintProvided >= _secondsForHint;
     }
 
-    private void EnableHints()
+    protected void EnableHints()
     {
         foreach (var particle in _hintsParticles)
         {

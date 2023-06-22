@@ -5,9 +5,9 @@ using System;
 
 public enum IngredientName
 {
-    Banana,
-    Tomato,
-    Apple
+    Carrot,
+    Onion,
+    Potato
 }
 
 public class Ingredient : InteractableReaction
