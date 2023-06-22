@@ -15,6 +15,7 @@ public class DisgustQuest : LevelQuest
     }
 
     public static event Action<string> OnStepComplete;
+    public static event Action<Transform> OnShowNextHint;
 
     public static DisgustQuest Instance;
     public QuestSteps QuestStep { get; private set; }
@@ -27,6 +28,11 @@ public class DisgustQuest : LevelQuest
 
     [SerializeField] GameObject _recipe;
     [SerializeField] GameObject _foodPlate;
+    [SerializeField] Transform _cuttingHint;
+    [SerializeField] Transform _flippingHint;
+    [SerializeField] Transform _mixingHint;
+    [SerializeField] Transform _plateHint; 
+    [SerializeField] HintTrail _hintTrail;
 
     void OnEnable()
     {
@@ -57,6 +63,8 @@ public class DisgustQuest : LevelQuest
     void IngredientsCollected()
     {
         QuestStep = QuestSteps.Cutting;
+        _hintTrail.gameObject.SetActive(true);
+        OnShowNextHint?.Invoke(_cuttingHint);
     }
 
     void CuttingCompleted()
@@ -64,6 +72,7 @@ public class DisgustQuest : LevelQuest
         QuestStep = QuestSteps.Flipping;
 
         OnStepComplete?.Invoke("Cut");
+        OnShowNextHint?.Invoke(_flippingHint);
     }
 
     void FlippingCompleted()
@@ -71,7 +80,7 @@ public class DisgustQuest : LevelQuest
         QuestStep = QuestSteps.Mixing;
 
         OnStepComplete?.Invoke("Flip");
-
+        OnShowNextHint?.Invoke(_mixingHint);
     }
 
     void MixingCompleted()
@@ -81,6 +90,7 @@ public class DisgustQuest : LevelQuest
         _foodPlate.SetActive(true);
 
         OnStepComplete?.Invoke("Mix");
+        OnShowNextHint?.Invoke(_plateHint);
     }
 
     void ServePlate()
@@ -90,6 +100,7 @@ public class DisgustQuest : LevelQuest
 
         if (!_platePickup.PickedUp) return;
 
+        _hintTrail.gameObject.SetActive(false);
         Destroy(_foodPlate.transform.root.Find("Plate").gameObject);
         CompleteQuest();
     }
