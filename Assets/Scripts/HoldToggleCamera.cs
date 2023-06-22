@@ -41,7 +41,7 @@ public class HoldToggleCamera : ToggleCamera
 
     private bool IsShootMode()
     {
-        foreach (var item in _cameras)
+        foreach (var item in Cameras)
         {
             if (!item.Mode.Equals("Shooting")) continue;
 

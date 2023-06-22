@@ -26,6 +26,7 @@ public class AngerEmotion : MonsterEmotion
 
     public override void AffectMonster()
     {
+        ToggleCamera.Instance.SwitchCamera("MonsterTriggeredCam");
         AudioManager.instance.PlayWithPitch(_emotionSound, 1f);
         _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsTriggered, true);
 
@@ -42,13 +43,12 @@ public class AngerEmotion : MonsterEmotion
         _multiChannelPerlin.m_AmplitudeGain = 1;
         ShowEmotion();
         _vignette.intensity.value = 1f;
+        _vignette.color.value = Color.red;
 
-
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
 
         HideEmotion();
         _multiChannelPerlin.m_AmplitudeGain = 0;
-
     }
 
     private void Update()

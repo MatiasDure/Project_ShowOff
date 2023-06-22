@@ -17,7 +17,11 @@ public class AnimatorMonster : MonoBehaviour
     {
         var state = _animator.GetCurrentAnimatorStateInfo(0);
 
-        if (state.IsName("REACTION") && state.normalizedTime >= 1) UpdateParameter(Params.IsTriggered, false);
+        if (state.IsName("REACTION") && state.normalizedTime >= 1)
+        {
+            UpdateParameter(Params.IsTriggered, false);
+            ToggleCamera.Instance.SwitchCamera("PlayerCam");
+        }
     }
 
     public void UpdateParameter(Params pParam, bool pValue)

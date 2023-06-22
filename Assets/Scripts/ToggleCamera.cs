@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class ToggleCamera : MonoBehaviour
 {
-    [SerializeField] protected CameraMode[] _cameras;
+    [SerializeField] protected CameraMode[] Cameras;
 
     public static Action<string> OnCameraModeChanged;
 
@@ -36,16 +36,28 @@ public abstract class ToggleCamera : MonoBehaviour
     //Only works for 2 cameras at the moment
     public void Toggle()
     {
-        if (_cameras.Length < 2 ||
-            _cameras[0] == null) return;
+        if (Cameras.Length < 2 ||
+            Cameras[0] == null) return;
 
-        GameObject firstCam = _cameras[0].VirtualCamera.gameObject;
+        GameObject firstCam = Cameras[0].VirtualCamera.gameObject;
         firstCam.SetActive(!firstCam.activeInHierarchy);
-        _cameras[1].VirtualCamera.gameObject.SetActive(!firstCam.activeInHierarchy);
+        Cameras[1].VirtualCamera.gameObject.SetActive(!firstCam.activeInHierarchy);
 
-        OnCameraModeChanged?.Invoke(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
+        OnCameraModeChanged?.Invoke(firstCam.activeInHierarchy ? Cameras[0].Mode : Cameras[1].Mode);
 
         //Debug.Log(firstCam.activeInHierarchy ? _cameras[0].Mode : _cameras[1].Mode);
+    }
+
+    public void SwitchCamera(string pCameraMode)
+    {
+        foreach(CameraMode mode in Cameras)
+        {
+            if (!mode.Mode.Equals(pCameraMode)) continue;
+
+            //activating camera
+            mode.VirtualCamera.gameObject.SetActive(false);
+            mode.VirtualCamera.gameObject.SetActive(true);
+        }
     }
 }
 
