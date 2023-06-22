@@ -45,8 +45,6 @@ public class MonsterNavMesh : MonoBehaviour
         _target = _monsterPositions[_currentIndex++].position;
         _navMesh.destination = _target;
         GameState.Instance.IsFrozen = true;
-
-        Debug.Log();
     }
 
     // Update is called once per frame
