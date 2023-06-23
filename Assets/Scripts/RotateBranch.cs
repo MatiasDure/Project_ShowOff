@@ -61,6 +61,8 @@ public class RotateBranch : InteractableReaction
     {
         audioIsPlaying = true;
         AudioManager.instance.PlayWithPitch("ShakingTree", 1);
+
+        yield return new WaitForSeconds(0.5f);
         AudioManager.instance.PlayWithPitch("ScaredSound", 1);
         // Wait for the audio to finish playing
         yield return new WaitForSeconds(AudioManager.instance.GetClipLength("ShakingTree"));
