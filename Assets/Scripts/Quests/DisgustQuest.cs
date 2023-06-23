@@ -100,8 +100,10 @@ public class DisgustQuest : LevelQuest
 
         if (!_platePickup.PickedUp) return;
 
+        _hintTrail.RemoveTrail(_plateHint);
         _hintTrail.gameObject.SetActive(false);
-        Destroy(_foodPlate.transform.root.Find("Plate").gameObject);
+        Destroy(_plateHint.parent.gameObject);
+
         CompleteQuest();
     }
 

@@ -90,4 +90,22 @@ public class HintTrail : MonoBehaviour
 
         _lastHintProvided = 0;
     }
+
+    public void RemoveTrail(Transform pTransform)
+    {
+        ParticleSystem systemToRemove = null;
+        foreach(var trail in _particlesPath)
+        {
+            if (trail.Value.Target != pTransform) continue;
+
+            systemToRemove = trail.Key;
+            break;
+        }
+
+        if (systemToRemove == null) return;
+
+        _particlesPath.Remove(systemToRemove);
+
+        Destroy(systemToRemove.gameObject);
+    }
 }
