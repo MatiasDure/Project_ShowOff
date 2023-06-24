@@ -14,7 +14,7 @@ public class Ammo : MonoBehaviour
 
     public void Start()
     {
-        ResetAmmo();
+        //ResetAmmo();
         EnableInfiniteAmmo();
     }
 
@@ -25,6 +25,11 @@ public class Ammo : MonoBehaviour
         AmountCount += pModifyBy;
         OnBulletCountChanged?.Invoke(AmountCount);
         CheckAmmoAvailable();
+    }
+
+    private void Update()
+    {
+        Debug.Log(_infiniteMode);
     }
 
     private void ResetAmmo()

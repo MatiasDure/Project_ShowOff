@@ -85,7 +85,6 @@ public class SadnessQuest : LevelQuest
     private void ResetQuest()
     {
         _monsterPopUp._text.text = "Try to shoot as many balloons as posible";
-        _ammo.EnableInfiniteAmmo();
         ScoreSystem.Instance.ResetScore();
     }
 
