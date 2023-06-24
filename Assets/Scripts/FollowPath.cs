@@ -9,15 +9,11 @@ public class FollowPath : MonoBehaviour
     public Transform Target { get; set; }
     public bool ReachedTarget { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Target == null) return;
+
         Vector3 dir = Target.position - this.transform.position;
         float dist = dir.magnitude;
 
@@ -28,7 +24,6 @@ public class FollowPath : MonoBehaviour
             ReachedTarget = false;
         }
         else ReachedTarget = true;
-
     }
 
     public void ResetPosition()
