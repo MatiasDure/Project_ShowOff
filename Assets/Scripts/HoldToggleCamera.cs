@@ -18,16 +18,23 @@ public class HoldToggleCamera : ToggleCamera
     }
     private void Start()
     {
-        ToggleCamera.OnCameraModeChanged += PlaySound;
+        ToggleCamera.OnCameraModeChanged += CameraModeChanged;
+    }
+
+    private void CameraModeChanged(string pCurrentMode)
+    {
+        PlaySound(pCurrentMode);
     }
 
     private void PlaySound(string pMode)
     {
         AudioManager.instance.PlayWithPitch(pMode.Equals("Shooting") ? "ZoomIn" : "ZoomOut", 1f);
     }
-    // Update is called once per frame
+
     protected override void Update()
     {
+        base.Update();
+
         GameState.Instance.IsFrozen = IsShootMode();
 
         if (!Input.GetKey(_keyToHold))
@@ -39,8 +46,6 @@ public class HoldToggleCamera : ToggleCamera
 
         _holdTimer += Time.deltaTime;
         _slider.value = _holdTimer / _secondsToHold;
-
-        base.Update();
     }
 
     private bool IsShootMode()

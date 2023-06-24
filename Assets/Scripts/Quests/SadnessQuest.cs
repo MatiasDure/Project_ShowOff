@@ -40,7 +40,7 @@ public class SadnessQuest : LevelQuest
     private void Update()
     {
         if(State == QuestState.InQuest && 
-            !_ammo.AmmoAvailable  )
+            !_ammo.AmmoAvailable)
         {
             CompleteQuest();
         }
@@ -53,7 +53,7 @@ public class SadnessQuest : LevelQuest
         _balloonActivator.DeactivateAllObjects();
         State = QuestState.Waiting;
         HoldToggleCamera.Instance.Toggle();
-        //_ammo.EnableInfiniteAmmo();
+        _ammo.EnableInfiniteAmmo();
 
         StartCoroutine(DisplayWin());
     }

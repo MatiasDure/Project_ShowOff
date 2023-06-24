@@ -7,6 +7,10 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed = .2f;
+    [SerializeField] private Transform _laserPos;
+    [SerializeField] private Vector2 _minMaxX;
+    [SerializeField] private Vector2 _minMaxY;
+    [SerializeField] private GameObject _gunModel;
 
     private Ammo _ammo;
     private bool _ignoredFirst = false;
@@ -21,6 +25,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         ToggleCamera.OnCameraModeChanged += CheckResetAim;
+        ToggleCamera.OnReachedCameraMode += CheckCameraMode;
     }
 
     private void Update()
@@ -33,9 +38,7 @@ public class Gun : MonoBehaviour
             return;
         }
 
-        lineRenderer.enabled = true;
-        Vector3 lineEnd = transform.position + transform.forward * 20f;
-        lineRenderer.SetPositions(new Vector3[] { transform.position, lineEnd });
+        if(lineRenderer.enabled) SetTargetLine();
 
         if (Input.GetKeyUp(KeyCode.E))
         {
@@ -47,9 +50,14 @@ public class Gun : MonoBehaviour
         Aim();
     }
 
+    private void SetTargetLine()
+    {
+        Vector3 lineEnd = _laserPos.position + _laserPos.forward * 20f;
+        lineRenderer.SetPositions(new Vector3[] { _laserPos.position, lineEnd });
+    }
+
     private void Aim()
     {
-
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
                
@@ -62,10 +70,10 @@ public class Gun : MonoBehaviour
         float newX = angleX > 180 ? angleX - 360 : angleX;
         float newY = angleY > 180 ? angleY - 360 : angleY;
 
-        newX = Mathf.Clamp(newX, -22f, 2f);
+        newX = Mathf.Clamp(newX, _minMaxX[0], _minMaxX[1]);
         newX = newX < 0 ? 360 - newX * -1 : newX;
 
-        newY = Mathf.Clamp(newY, -37f, 37f);
+        newY = Mathf.Clamp(newY, _minMaxY[0], _minMaxY[1]);
         newY = newY < 0 ? 360 - newY * -1 : newY;
 
         Quaternion rotation = new();
@@ -84,7 +92,19 @@ public class Gun : MonoBehaviour
 
     private void CheckResetAim(string pMode)
     {
-        if (pMode != "Shooting") ResetAim();
+        if (pMode != "Shooting")
+        {
+            ResetAim();
+            _gunModel.SetActive(false);
+        }
+    }
+
+    private void CheckCameraMode(CameraMode pMode)
+    {
+        if (!pMode.Mode.Equals("Shooting")) return;
+
+        _gunModel.SetActive(true);
+        lineRenderer.enabled = true;
     }
 
     private void Shoot()
@@ -94,7 +114,8 @@ public class Gun : MonoBehaviour
         if (!_ammo.AmmoAvailable &&
             currentlyInQuest) return;
         AudioManager.instance.PlayWithPitch("Spray", 1f);
-        Ray ray = new Ray(transform.position, transform.forward);
+
+        Ray ray = new Ray(_laserPos.position, _laserPos.forward);
 
         RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
 
@@ -111,5 +132,6 @@ public class Gun : MonoBehaviour
     private void OnDestroy()
     {
         ToggleCamera.OnCameraModeChanged -= CheckResetAim;
+        ToggleCamera.OnReachedCameraMode -= CheckCameraMode;
     }
 }
