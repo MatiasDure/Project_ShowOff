@@ -12,11 +12,15 @@ public class SoundInteractable : InteractableReaction
     [SerializeField] float _audioDelaySec;
     [SerializeField] private string _audioMonsterInteraction;
     [SerializeField] float _audioMonsterInteractionTimer;
+    [SerializeField] private MonsterEmotion _monsterEmotion;
 
 
     protected override void Interact(InteractionInformation obj)
     {
+        if (!_canInteract) return;
+
         base.Interact(obj);
+        _canInteract = false;
         CheckSound();
     }
 
@@ -51,29 +55,25 @@ public class SoundInteractable : InteractableReaction
     {
         // Play sound here
         AudioManager.instance.PlayWithPitch(_soundToPlay, 1f);
-        Debug.Log("Playing sound!");
         OnSoundPlayed?.Invoke();
-        _canInteract = true;
     }
     void PlayMonsterSound()
     {
         // Play sound here
-        AudioManager.instance.PlayWithPitch(_audioMonsterInteraction, 1f);
-        Debug.Log("Playing sound!");
-        OnSoundPlayed?.Invoke();
         _canInteract = true;
+        _monsterEmotion.AffectMonster();
+        AudioManager.instance.PlayWithPitch(_audioMonsterInteraction, 1f);
+        OnSoundPlayed?.Invoke();
     }
 
     IEnumerator PlayWithDelay(float delay)
     {
-        _canInteract = false;
         yield return new WaitForSeconds(delay);
         PlaySound();
     }
 
     IEnumerator PlayWithDelayMonster(float delay)
     {
-        _canInteract = false;
         yield return new WaitForSeconds(delay);
         PlayMonsterSound();
     }

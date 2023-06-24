@@ -28,11 +28,14 @@ public class DisgustQuest : LevelQuest
 
     [SerializeField] GameObject _recipe;
     [SerializeField] GameObject _foodPlate;
+    [SerializeField] GameObject _poopFoodPlate;
     [SerializeField] Transform _cuttingHint;
     [SerializeField] Transform _flippingHint;
     [SerializeField] Transform _mixingHint;
-    [SerializeField] Transform _plateHint; 
+    [SerializeField] Transform _plateHint;
+    [SerializeField] Transform _plateEatingPosition;
     [SerializeField] HintTrail _hintTrail;
+    [SerializeField] Animator _animator;
 
     void OnEnable()
     {
@@ -93,6 +96,13 @@ public class DisgustQuest : LevelQuest
         OnShowNextHint?.Invoke(_plateHint);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M)) MixingCompleted();
+
+        if (Input.GetKeyDown(KeyCode.Space)) ServePlate();
+    }
+
     void ServePlate()
     {
         ObjectPickup _platePickup;
@@ -101,7 +111,10 @@ public class DisgustQuest : LevelQuest
         if (!_platePickup.PickedUp) return;
 
         _hintTrail.gameObject.SetActive(false);
-        Destroy(_foodPlate.transform.root.Find("Plate").gameObject);
+        _foodPlate.transform.parent.SetParent(_plateEatingPosition);
+        _foodPlate.transform.parent.localPosition = Vector3.zero;
+        Debug.Log(_foodPlate.transform.parent);
+        Destroy(_poopFoodPlate);
         CompleteQuest();
     }
 
@@ -131,6 +144,7 @@ public class DisgustQuest : LevelQuest
     {
         base.CompleteQuest();
         _recipe.SetActive(false);
+        _animator.SetBool("IsEating", true);
 
         AudioManager.instance.PlayWithPitch("Slurp", 1f);
         StartCoroutine(PlayNextSound());
