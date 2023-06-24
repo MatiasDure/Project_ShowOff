@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HoldToggleCamera : ToggleCamera
 {
     [SerializeField] private float _secondsToHold;
     [SerializeField] private KeyCode _keyToHold = KeyCode.E;
+    [SerializeField] private Slider _slider;
 
     private float _holdTimer;
 
@@ -31,10 +33,12 @@ public class HoldToggleCamera : ToggleCamera
         if (!Input.GetKey(_keyToHold))
         {
             _holdTimer = 0;
+            _slider.value = 0;
             return;
         }
 
         _holdTimer += Time.deltaTime;
+        _slider.value = _holdTimer / _secondsToHold;
 
         base.Update();
     }
