@@ -5,6 +5,7 @@ using UnityEngine;
 public class AffectMonster : InteractableReaction
 {
     [SerializeField] private MonsterEmotion _monsterEmotion;
+    [SerializeField] string _affectMonsterSound;
 
     protected override void Awake()
     {
@@ -21,7 +22,13 @@ public class AffectMonster : InteractableReaction
     protected override void Interact(InteractionInformation obj)
     {
         TriggerMonster();
-        AudioManager.instance.PlayWithPitch("BookInteract", 1f);
+        if (_affectMonsterSound == null)
+        {
+            Debug.Log("No AffectMonsterSound found!");
+            return;
+        }
+
+        AudioManager.instance.PlayWithPitch(_affectMonsterSound, 1f);
     }
 
     private void TriggerMonster()
