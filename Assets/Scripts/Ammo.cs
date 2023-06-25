@@ -29,7 +29,7 @@ public class Ammo : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_infiniteMode);
+        //Debug.Log(_infiniteMode);
     }
 
     private void ResetAmmo()

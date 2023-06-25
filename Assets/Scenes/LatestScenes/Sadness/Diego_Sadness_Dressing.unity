@@ -956,6 +956,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2693056373544528901, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
     - target: {fileID: 3320410956785874623, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
         type: 3}
       propertyPath: m_RootOrder
@@ -1014,6 +1019,11 @@ PrefabInstance:
     - target: {fileID: 3320410956785874623, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321119993687687600, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1993,12 +2003,12 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001898133
+      value: 0.000000018981332
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000003127853
+      value: -0.0000000031278535
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -2058,12 +2068,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000085339185
+      value: 0.000000008534735
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000010895433
+      value: -0.0000000010896476
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
@@ -2128,6 +2138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 7193605707809755528, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8260373857840947362, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
         type: 3}
       propertyPath: m_RootOrder
@@ -2192,6 +2207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_6 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784674519835490840, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb, type: 3}
@@ -3883,7 +3903,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 5000
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 5.6e-44, z: 1.7e-44, w: 1.6114932e-38}
+  m_BoundingSphereOverride: {x: 1.4e-44, y: 1.0798e-40, z: 1.02e-43, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4163,6 +4183,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3471789887765476068, guid: 68e08531a6f41934ba0d12201fcd5f44,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
     - target: {fileID: 4279992148045965406, guid: 68e08531a6f41934ba0d12201fcd5f44,
         type: 3}
       propertyPath: m_RootOrder
@@ -4221,6 +4246,11 @@ PrefabInstance:
     - target: {fileID: 4279992148045965406, guid: 68e08531a6f41934ba0d12201fcd5f44,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8227803271148209048, guid: 68e08531a6f41934ba0d12201fcd5f44,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6180,10 +6210,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 2727950239471960269, guid: 1414496da6775f6478728dd201635947,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8491376066178832178, guid: 1414496da6775f6478728dd201635947,
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491376066178832178, guid: 1414496da6775f6478728dd201635947,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     - target: {fileID: 9123374917736697224, guid: 1414496da6775f6478728dd201635947,
         type: 3}
@@ -6331,6 +6371,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_4 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2693056373544528901, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
     - target: {fileID: 3320410956785874623, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
         type: 3}
       propertyPath: m_RootOrder
@@ -6389,6 +6434,11 @@ PrefabInstance:
     - target: {fileID: 3320410956785874623, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321119993687687600, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8670,6 +8720,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_5 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6442223885399772953, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6797198102044475074, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c, type: 3}
 --- !u!1001 &910207964
@@ -8679,6 +8739,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 7193605707809755528, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8260373857840947362, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
         type: 3}
       propertyPath: m_RootOrder
@@ -8743,6 +8808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_6 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784674519835490840, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb, type: 3}
@@ -10578,10 +10648,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 2727950239471960269, guid: 1414496da6775f6478728dd201635947,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8491376066178832178, guid: 1414496da6775f6478728dd201635947,
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491376066178832178, guid: 1414496da6775f6478728dd201635947,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     - target: {fileID: 9123374917736697224, guid: 1414496da6775f6478728dd201635947,
         type: 3}
@@ -11901,6 +11981,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483444335715329173, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718980008019087700, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b438c83853741864cac8d28b606db605, type: 3}
@@ -13388,6 +13478,7 @@ MonoBehaviour:
   _minMaxX: {x: -14, y: 2}
   _minMaxY: {x: -35, y: 29}
   _gunModel: {fileID: 622369007}
+  _bullet: {fileID: 5501178624890060767, guid: be7d82c9056535a44a8f0932b21b30f0, type: 3}
 --- !u!114 &1312377914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13462,6 +13553,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 7193605707809755528, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8260373857840947362, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
         type: 3}
       propertyPath: m_RootOrder
@@ -13526,6 +13622,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_6 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784674519835490840, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb, type: 3}
@@ -14746,6 +14847,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_5 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6442223885399772953, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6797198102044475074, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c, type: 3}
 --- !u!1 &1504962249
@@ -15715,6 +15826,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3471789887765476068, guid: 68e08531a6f41934ba0d12201fcd5f44,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
     - target: {fileID: 4279992148045965406, guid: 68e08531a6f41934ba0d12201fcd5f44,
         type: 3}
       propertyPath: m_RootOrder
@@ -15773,6 +15889,11 @@ PrefabInstance:
     - target: {fileID: 4279992148045965406, guid: 68e08531a6f41934ba0d12201fcd5f44,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8227803271148209048, guid: 68e08531a6f41934ba0d12201fcd5f44,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16740,6 +16861,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6483444335715329173, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718980008019087700, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b438c83853741864cac8d28b606db605, type: 3}
 --- !u!1 &1659246515
@@ -17188,6 +17319,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483444335715329173, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718980008019087700, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b438c83853741864cac8d28b606db605, type: 3}
@@ -18320,6 +18461,7 @@ MonoBehaviour:
   _minMaxX: {x: 0, y: 0}
   _minMaxY: {x: 0, y: 0}
   _gunModel: {fileID: 0}
+  _bullet: {fileID: 0}
 --- !u!23 &1809794918
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18962,6 +19104,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 7193605707809755528, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8260373857840947362, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
         type: 3}
       propertyPath: m_RootOrder
@@ -19026,6 +19173,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_6 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784674519835490840, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb, type: 3}
@@ -20700,6 +20852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_BALLOON_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3471789887765476068, guid: 68e08531a6f41934ba0d12201fcd5f44,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
     - target: {fileID: 4279992148045965406, guid: 68e08531a6f41934ba0d12201fcd5f44,
         type: 3}
       propertyPath: m_RootOrder
@@ -20760,6 +20917,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8227803271148209048, guid: 68e08531a6f41934ba0d12201fcd5f44,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68e08531a6f41934ba0d12201fcd5f44, type: 3}
 --- !u!1001 &227767405657466532
@@ -20773,6 +20935,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693056373544528901, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     - target: {fileID: 3320410956785874623, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
         type: 3}
@@ -20832,6 +20999,11 @@ PrefabInstance:
     - target: {fileID: 3320410956785874623, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321119993687687600, guid: cc983edb2f794db4f9c5e45ee1eb5eac,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20937,6 +21109,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 2727950239471960269, guid: 1414496da6775f6478728dd201635947,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8491376066178832178, guid: 1414496da6775f6478728dd201635947,
         type: 3}
       propertyPath: m_Name
@@ -20946,6 +21123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491376066178832178, guid: 1414496da6775f6478728dd201635947,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     - target: {fileID: 9123374917736697224, guid: 1414496da6775f6478728dd201635947,
         type: 3}
@@ -21080,6 +21262,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483444335715329173, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718980008019087700, guid: b438c83853741864cac8d28b606db605,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b438c83853741864cac8d28b606db605, type: 3}
@@ -21273,6 +21465,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442223885399772953, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6797198102044475074, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2ff9bba4ea5a2e4ca83bb0e54ef177c, type: 3}
@@ -21496,6 +21698,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1160550701}
     m_Modifications:
+    - target: {fileID: 7193605707809755528, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8260373857840947362, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
         type: 3}
       propertyPath: m_RootOrder
@@ -21560,6 +21767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_BALLOON_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784674519835490840, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Balloon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3e73756f93bb4c8ff902f4c24d8bb, type: 3}
