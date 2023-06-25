@@ -96,13 +96,6 @@ public class DisgustQuest : LevelQuest
         OnShowNextHint?.Invoke(_plateHint);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M)) MixingCompleted();
-
-        if (Input.GetKeyDown(KeyCode.Space)) ServePlate();
-    }
-
     void ServePlate()
     {
         ObjectPickup _platePickup;
