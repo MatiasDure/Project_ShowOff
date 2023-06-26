@@ -16,11 +16,14 @@ public class AmmoUI : MonoBehaviour
     private void Awake()
     {
         _ammo = GetComponent<Ammo>();
+    }
 
+    private void Start()
+    {
         _ammo.OnBulletCountChanged += ChangeText;
-        _ammo.OnInfiteMode += InfiniteText;
+        _ammo.OnInfiniteMode += InfiniteText;
 
-        ToggleCamera.OnCameraModeChanged += ToggleUI;
+        ToggleCamera.OnReachedCameraMode += ToggleUI;
     }
 
     private void ChangeText(int pAmmoCount)
@@ -30,19 +33,21 @@ public class AmmoUI : MonoBehaviour
 
     private void InfiniteText(bool pEnabled)
     {
+        Debug.Log(pEnabled);
         if (_infiniteImg != null) _infiniteImg.SetActive(pEnabled);
         if (_ammoText != null) _ammoText.gameObject.SetActive(!pEnabled);
     }
 
-    private void ToggleUI(string pCamMode)
+    private void ToggleUI(CameraMode pCamMode)
     {
-        _container.SetActive(pCamMode.Equals("Shooting"));
+        _container.SetActive(pCamMode.Mode.Equals("Shooting"));
     }
 
     private void OnDestroy()
     {
         _ammo.OnBulletCountChanged -= ChangeText;
+        //_ammo.OnInfiniteMode -= InfiniteText;
 
-        ToggleCamera.OnCameraModeChanged -= ToggleUI;
+        ToggleCamera.OnReachedCameraMode -= ToggleUI;
     }
 }

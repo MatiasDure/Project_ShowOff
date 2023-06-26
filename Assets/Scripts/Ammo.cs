@@ -10,11 +10,11 @@ public class Ammo : MonoBehaviour
     private bool _infiniteMode = false;
 
     public Action<int> OnBulletCountChanged;
-    public Action<bool> OnInfiteMode;
+    public Action<bool> OnInfiniteMode;
 
     public void Start()
     {
-        ResetAmmo();
+        //ResetAmmo();
         EnableInfiniteAmmo();
     }
 
@@ -37,13 +37,13 @@ public class Ammo : MonoBehaviour
     public void EnableInfiniteAmmo()
     {
         _infiniteMode = true;
-        OnInfiteMode?.Invoke(true);
+        OnInfiniteMode?.Invoke(true);
     }
 
     public void DisableInfiniteAmmo()
     {
         _infiniteMode = false;
-        OnInfiteMode?.Invoke(false);
+        OnInfiniteMode?.Invoke(false);
         ResetAmmo();
     }
 

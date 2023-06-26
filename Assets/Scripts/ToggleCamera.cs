@@ -7,8 +7,14 @@ using UnityEngine;
 public abstract class ToggleCamera : MonoBehaviour
 {
     [SerializeField] protected CameraMode[] Cameras;
+    [SerializeField] private CinemachineBrain _mainCamera;
+    [SerializeField] private float _distanceThreshold;
 
     public static Action<string> OnCameraModeChanged;
+    public static Action<CameraMode> OnReachedCameraMode;
+
+    protected CameraMode CurrentCamera = null;
+    protected bool ReachedNewCamera = true;
 
     public static ToggleCamera Instance { get; private set; }
 
@@ -27,6 +33,24 @@ public abstract class ToggleCamera : MonoBehaviour
             Toggle();
             ResetAfterToggle();
         }
+
+        if (CurrentCamera == null || ReachedNewCamera) return;
+
+        CheckDistanceToCurrentCam();
+    }
+
+    private void CheckDistanceToCurrentCam()
+    {
+        Vector3 currentCamPos = CurrentCamera.VirtualCamera.transform.position;
+        Vector3 mainCamPos = _mainCamera.transform.position;
+        Vector3 dir = currentCamPos - mainCamPos;
+        float dist = dir.magnitude;
+
+        if (dist < _distanceThreshold)
+        {
+            ReachedNewCamera = true;
+            OnReachedCameraMode?.Invoke(CurrentCamera);
+        }
     }
 
     protected abstract bool ConditionToCheck();
@@ -43,8 +67,11 @@ public abstract class ToggleCamera : MonoBehaviour
         firstCam.SetActive(!firstCam.activeInHierarchy);
         Cameras[1].VirtualCamera.gameObject.SetActive(!firstCam.activeInHierarchy);
 
-        OnCameraModeChanged?.Invoke(firstCam.activeInHierarchy ? Cameras[0].Mode : Cameras[1].Mode);
+        CurrentCamera = firstCam.activeInHierarchy ? Cameras[0] : Cameras[1];
 
+        OnCameraModeChanged?.Invoke(CurrentCamera.Mode);
+
+        ReachedNewCamera = false;
     }
 
     public void SwitchCamera(string pCameraMode)
@@ -56,6 +83,11 @@ public abstract class ToggleCamera : MonoBehaviour
             //activating camera
             mode.VirtualCamera.gameObject.SetActive(false);
             mode.VirtualCamera.gameObject.SetActive(true);
+
+            CurrentCamera = mode;
+            ReachedNewCamera = false;
+
+            break;
         }
     }
 }
