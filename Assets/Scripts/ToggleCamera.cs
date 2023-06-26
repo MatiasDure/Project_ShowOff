@@ -16,12 +16,29 @@ public abstract class ToggleCamera : MonoBehaviour
     protected CameraMode CurrentCamera = null;
     protected bool ReachedNewCamera = true;
 
+    public CameraMode CurrentCameraMode => CurrentCamera;
     public static ToggleCamera Instance { get; private set; }
 
     protected virtual void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
+    }
+
+    protected virtual void Start()
+    {
+        SetPlayerCamAsCurrent();
+    }
+
+    private void SetPlayerCamAsCurrent()
+    {
+        foreach (var cam in Cameras)
+        {
+            if (cam.Mode != "PlayerCam") continue;
+
+            CurrentCamera = cam;
+            break;
+        }
     }
 
     // Update is called once per frame
@@ -84,8 +101,10 @@ public abstract class ToggleCamera : MonoBehaviour
             mode.VirtualCamera.gameObject.SetActive(false);
             mode.VirtualCamera.gameObject.SetActive(true);
 
+
             CurrentCamera = mode;
             ReachedNewCamera = false;
+            OnCameraModeChanged?.Invoke(CurrentCamera.Mode);
 
             break;
         }

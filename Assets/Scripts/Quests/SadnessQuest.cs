@@ -9,6 +9,8 @@ public class SadnessQuest : LevelQuest
     [SerializeField] private ActivateObjects _balloonActivator;
     [SerializeField] private Ammo _ammo;
     [SerializeField] private PopUp _monsterPopUp; //should go into the base class
+    [SerializeField] private GameObject _scoreBoard;
+    [SerializeField] private float _scoreShowSeconds = 2f;
 
     private SadnessQuestTrigger _trigger;
 
@@ -17,6 +19,7 @@ public class SadnessQuest : LevelQuest
     public QuestState CurrentQuestState => State;
 
     private bool _displayingScore = false;
+    private int _bulletsDestroyed = 0;
 
     private void Awake()
     {
@@ -34,13 +37,14 @@ public class SadnessQuest : LevelQuest
 
     private void Start()
     {
+        Bullet.OnBulletDestroyed += BulletDestroyed;
         ResetQuest();
     }
 
     private void Update()
     {
-        if(State == QuestState.InQuest && 
-            !_ammo.AmmoAvailable)
+        if(State == QuestState.InQuest &&
+            _ammo.StartingAmmoCount == _bulletsDestroyed)
         {
             CompleteQuest();
         }
@@ -52,7 +56,7 @@ public class SadnessQuest : LevelQuest
 
         _balloonActivator.DeactivateAllObjects();
         State = QuestState.Waiting;
-        HoldToggleCamera.Instance.Toggle();
+        ToggleCamera.Instance.SwitchCamera("PlayerCam");
         _ammo.EnableInfiniteAmmo();
 
         StartCoroutine(DisplayWin());
@@ -77,19 +81,44 @@ public class SadnessQuest : LevelQuest
             _displayingScore) return;
         base.StartQuest();
 
+        
+        _scoreBoard.SetActive(true);
+        StartCoroutine(ShowScores());
         _balloonActivator.ActivateAllObjects();
         State = QuestState.InQuest;
         _ammo.DisableInfiniteAmmo();
     }
 
+    private IEnumerator ShowScores()
+    {
+        GameState.Instance.IsFrozen = true;
+        Debug.Log(ToggleCamera.Instance);
+        ToggleCamera.Instance.SwitchCamera("ScoreCam");
+
+        yield return new WaitForSeconds(_scoreShowSeconds);
+        
+        ToggleCamera.Instance.SwitchCamera("PlayerCam");
+        GameState.Instance.IsFrozen = false;
+    }
+
     private void ResetQuest()
     {
+        _bulletsDestroyed = 0;
         _monsterPopUp._text.text = "Try to shoot as many balloons as posible";
         ScoreSystem.Instance.ResetScore();
+        _scoreBoard.SetActive(false);
+    }
+
+    private void BulletDestroyed()
+    {
+        if (CurrentQuestState != QuestState.InQuest) return;
+
+        _bulletsDestroyed++;
     }
 
     private void OnDestroy()
     {
+        Bullet.OnBulletDestroyed -= BulletDestroyed;
         _trigger.OnStartQuest -= StartQuest;
     }
 }

@@ -33,7 +33,6 @@ public class AmmoUI : MonoBehaviour
 
     private void InfiniteText(bool pEnabled)
     {
-        Debug.Log(pEnabled);
         if (_infiniteImg != null) _infiniteImg.SetActive(pEnabled);
         if (_ammoText != null) _ammoText.gameObject.SetActive(!pEnabled);
     }
