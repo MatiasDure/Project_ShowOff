@@ -54,7 +54,6 @@ public class FearEmotion : MonsterEmotion
     {
         yield return new WaitForSeconds(delay);
         OnTreeCameraToggle?.Invoke();
-
         yield return new WaitForSeconds(1.25f);
         _animator.UpdateParameter(AnimatorMonster.Params.IsTriggered, true);
         AudioManager.instance.PlayWithPitch(_emotionSound, 1f);
