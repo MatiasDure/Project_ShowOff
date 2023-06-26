@@ -27,11 +27,6 @@ public class Ammo : MonoBehaviour
         CheckAmmoAvailable();
     }
 
-    private void Update()
-    {
-        //Debug.Log(_infiniteMode);
-    }
-
     private void ResetAmmo()
     {
         AmountCount = _ammoCount;
