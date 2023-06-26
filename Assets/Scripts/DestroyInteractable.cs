@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DestroyInteractable : InteractableReaction
 {
+    public event Action OnSpiderWebDestroyed;
+
     [Range(0,3f)]
     [SerializeField] float _fadePerSec;
     [SerializeField] private string _soundToPlay;
     [SerializeField] private string _soundToPlayMonster;
+    [SerializeField] MonsterEmotion _monsterEmotion;
 
     bool _startFade = false;
 
@@ -48,8 +52,10 @@ public class DestroyInteractable : InteractableReaction
 
         if (_material.color.a <= 0)
         {
-            Destroy(gameObject);
+            _monsterEmotion.AffectMonster();
+            OnSpiderWebDestroyed?.Invoke();
             AudioManager.instance.PlayWithPitch(_soundToPlayMonster, 1f);
+            Destroy(gameObject);
         }
     }
 }
