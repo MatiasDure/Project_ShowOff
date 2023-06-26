@@ -1,3 +1,5 @@
+using Mono.Cecil.Cil;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +7,24 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float _speed;
+    [Tooltip("Used when there are no objects in line of bullet")]
+    [SerializeField] float _secondsToDie = 2f;
 
     int _objectsToHit;
     int _objectsHit;
 
-    public void SetProperties(Quaternion newRot, int hittables)
+    public void SetProperties(int hittables)
     {
-        transform.rotation = newRot;
         _objectsToHit = hittables;
+
+        CheckNoHittable();
+    }
+
+    private void CheckNoHittable()
+    {
+        if (_objectsToHit > 0) return;
+
+        StartCoroutine(DieAfterSeconds(_secondsToDie));
     }
 
     void Update()
@@ -27,12 +39,17 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("okay");
-        if (!other.CompareTag("Balloon")) return;
+        if (!other.TryGetComponent<IHittable>(out var hittable)) return;
 
-        _objectsHit++;
-        other.GetComponent<IHittable>().Hit();
+        hittable.Hit();
 
-        if (_objectsHit == _objectsToHit) Destroy(gameObject);
+        if (++_objectsHit == _objectsToHit) Destroy(gameObject);
+    }
+
+    IEnumerator DieAfterSeconds(float pSeconds)
+    {
+        yield return new WaitForSeconds(pSeconds);
+
+        Destroy(gameObject);
     }
 }

@@ -835,12 +835,12 @@ PrefabInstance:
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000003796266
+      value: 0.00000003796266
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000006255709
+      value: -0.000000006255709
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
@@ -2068,12 +2068,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008534735
+      value: 0.0000000085339185
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000010896476
+      value: -0.0000000010895433
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
@@ -3903,7 +3903,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 5000
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.4e-44, y: 1.0798e-40, z: 1.02e-43, w: 0}
+  m_BoundingSphereOverride: {x: 7.61e-43, y: 188.3302, z: 7.61e-43, w: 3.1067104}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -13478,7 +13478,7 @@ MonoBehaviour:
   _minMaxX: {x: -14, y: 2}
   _minMaxY: {x: -35, y: 29}
   _gunModel: {fileID: 622369007}
-  _bullet: {fileID: 5501178624890060767, guid: be7d82c9056535a44a8f0932b21b30f0, type: 3}
+  _bullet: {fileID: 2007944971454794395, guid: be7d82c9056535a44a8f0932b21b30f0, type: 3}
 --- !u!114 &1312377914
 MonoBehaviour:
   m_ObjectHideFlags: 0

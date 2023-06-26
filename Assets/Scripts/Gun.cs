@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private Vector2 _minMaxX;
     [SerializeField] private Vector2 _minMaxY;
     [SerializeField] private GameObject _gunModel;
-    [SerializeField] GameObject _bullet;
+    [SerializeField] Bullet _bullet;
 
     private Ammo _ammo;
     private bool _ignoredFirst = false;
@@ -124,6 +124,7 @@ public class Gun : MonoBehaviour
         foreach (RaycastHit hit in hits)
         {
             if (!hit.transform.TryGetComponent<IHittable>(out IHittable hittable)) continue;
+
             hittables++;
         }
 
@@ -135,8 +136,8 @@ public class Gun : MonoBehaviour
     void SpawnBullet(int hittables)
     {
         AudioManager.instance.PlayWithPitch("Spray", 1f);
-        GameObject bullet = Instantiate(_bullet, _laserPos.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().SetProperties(transform.rotation, hittables);
+        Bullet bullet = Instantiate(_bullet, _laserPos.position, transform.rotation);
+        bullet.SetProperties(hittables);
     }
 
     private void OnDestroy()
