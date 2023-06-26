@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Interactable), typeof(TrafficLight))]
-public class AngerQuest : MonoBehaviour
+public class AngerQuest : LevelQuest
 {
     [Tooltip("The Positions to move the player to after illegal moves")]
     [SerializeField] private Transform[] _playerPositions;
@@ -65,6 +65,11 @@ public class AngerQuest : MonoBehaviour
     private void Update()
     {
         CheckState();
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SetGameWon();
+        }
     }
 
     private void ChangeState(TrafficLight.State pLightState) => _state = pLightState;
@@ -101,10 +106,10 @@ public class AngerQuest : MonoBehaviour
 
     private void SetGameWon()
     {
+        base.CompleteQuest("Anger");
         _trafficLight.StopLights();
         OnQuestFinished?.Invoke();
         _gameWon = true;
-        AudioManager.instance.PlayWithPitch("FinalNote", 1f);
         StartCoroutine(WinPopUp());
     }
 
@@ -117,6 +122,7 @@ public class AngerQuest : MonoBehaviour
 
     private void StartGame()
     {
+        base.StartQuest();
         _isPlaying = true;
         _trafficLight.StartLights();
         OnTouchedMonster?.Invoke();

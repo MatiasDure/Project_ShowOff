@@ -62,6 +62,13 @@ public class DisgustQuest : LevelQuest
 
         State = base.State;
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            CompleteQuest();
+        }
+    }
 
     void IngredientsCollected()
     {
@@ -134,9 +141,9 @@ public class DisgustQuest : LevelQuest
         QuestStep = QuestSteps.CollectingIngredients;
     }
 
-    protected override void CompleteQuest()
+    void CompleteQuest()
     {
-        base.CompleteQuest();
+        base.CompleteQuest("Disgust");
         _recipe.SetActive(false);
         _animator.SetBool("IsEating", true);
 

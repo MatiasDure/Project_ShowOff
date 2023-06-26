@@ -44,11 +44,16 @@ public class SadnessQuest : LevelQuest
         {
             CompleteQuest();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            CompleteQuest();
+        }
     }
 
-    protected override void CompleteQuest()
+    void CompleteQuest()
     {
-        base.CompleteQuest();
+        base.CompleteQuest("Sadness");
 
         _balloonActivator.DeactivateAllObjects();
         State = QuestState.Waiting;

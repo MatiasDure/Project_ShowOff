@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LatestScenes/Sadness/Diego_Sadness_Dressing.unity
     guid: 44e9df4b98d07b24bbfc0280688152ff
+  - enabled: 1
+    path: Assets/Scenes/LatestScenes/GameOver.unity
+    guid: 220a77d10c9e2aa488bf9f24ef04c0b8
   m_configObjects: {}
