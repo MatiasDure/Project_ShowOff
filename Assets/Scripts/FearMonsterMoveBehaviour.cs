@@ -31,6 +31,7 @@ public class FearMonsterMoveBehaviour : MonoBehaviour, IMoveBehaviour
     {
         if (_waypoints.Count > _currTarg) return true;
 
+        _monsterAnim.UpdateParameter(AnimatorMonster.Params.IsMoving, false);
         return false;
     }
 
@@ -45,7 +46,6 @@ public class FearMonsterMoveBehaviour : MonoBehaviour, IMoveBehaviour
 
         if (_desiredPos.magnitude > 1) return;
 
-        _monsterAnim.UpdateParameter(AnimatorMonster.Params.IsMoving, false);
         _currTarg++;
     }
 

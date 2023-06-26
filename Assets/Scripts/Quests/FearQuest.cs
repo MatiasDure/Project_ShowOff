@@ -6,15 +6,18 @@ using System;
 public class FearQuest : LevelQuest
 {
     public static event Action<Vector2> OnNextMonsterWaypoint;
+    public static event Action<Transform> OnTorchLit;
     public static event Action OnFearQuestStart;
     public static event Action OnFearQuestEndTranstiion;
 
     [SerializeField] List<GameObject> torchesGO;
     [SerializeField] float firstTorchEnableSec;
+    [SerializeField] GameObject hints;
 
     List<PathTorch> torches = new List<PathTorch>();
 
     int torchesOn = 0;
+    bool questedComplete = false;
 
     void OnEnable()
     {
@@ -28,10 +31,11 @@ public class FearQuest : LevelQuest
 
     protected override void StartQuest()
     {
-        if (State == QuestState.InQuest) return;
+        if (State == QuestState.InQuest || questedComplete) return;
 
         base.StartQuest();
         SetupTorches();
+        hints.SetActive(true);
         State = QuestState.InQuest;
         StartCamTransition();
         Debug.Log("Quest started!");
@@ -39,7 +43,9 @@ public class FearQuest : LevelQuest
 
     protected override void CompleteQuest()
     {
+        questedComplete = true;
         base.CompleteQuest();
+        hints.SetActive(false);
         State = QuestState.Waiting;
         torchesOn = 0;
         TorchUnsubscribe();
@@ -65,16 +71,17 @@ public class FearQuest : LevelQuest
             pPathTorch.EnableTorch();
             OnNextMonsterWaypoint?.Invoke(pMonsterPos);
             torchesOn++;
-        }
-        else
-        {
-            AudioManager.instance.PlayWithPitch("WrongChoice", 1);
+
+            if (torchesOn == torches.Count)
+            {
+                CompleteQuest();
+                return;
+            }
+
+            OnTorchLit?.Invoke(torches[torchesOn].transform); // For hint trail
         }
 
-        if(torchesOn == torches.Count)
-        {
-            CompleteQuest();
-        }
+        AudioManager.instance.PlayWithPitch("WrongChoice", 1);
     }
 
     void TorchSubscribe(PathTorch pPathTorch)

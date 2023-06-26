@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class FearToggleCamera : ToggleCamera
+public class FearTreeCameraToggle : ToggleCamera
 {
     private bool _CanToggle = false;
 
     void OnEnable()
     {
-        FearQuest.OnFearQuestStart += ToggleCam;
-        FearQuest.OnFearQuestEndTranstiion += ToggleCam;
+        FearEmotion.OnTreeCameraToggle += ToggleCam;
     }
 
     void OnDisable()
     {
-        FearQuest.OnFearQuestStart -= ToggleCam;
-        FearQuest.OnFearQuestEndTranstiion -= ToggleCam;
+        FearEmotion.OnTreeCameraToggle += ToggleCam;
     }
 
     protected override bool ConditionToCheck() => _CanToggle;

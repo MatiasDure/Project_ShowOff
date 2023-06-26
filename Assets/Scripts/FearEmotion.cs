@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Cinemachine;
+using System;
 
 public class FearEmotion : MonsterEmotion
 {
+    public static event Action OnTreeCameraToggle;
 
     [SerializeField] private CinemachineFreeLook _camera;
     [SerializeField] private Volume _globalVolume;
     [SerializeField] private float _shakeTime = .3f;
     [SerializeField] private float _intensity = .2f;
+    [SerializeField] float _monsterCamToggleSec;
+    [SerializeField] AnimatorMonster _animator;
 
     private CinemachineBasicMultiChannelPerlin _multiChannelPerlin;
     private Vignette _vignette;
@@ -25,7 +29,7 @@ public class FearEmotion : MonsterEmotion
 
     public override void AffectMonster()
     {
-        AudioManager.instance.PlayWithPitch(_emotionSound, 1f);
+        StartCoroutine(SwitchCameras(_monsterCamToggleSec));
 
         if (_camera == null) return;
 
@@ -44,7 +48,19 @@ public class FearEmotion : MonsterEmotion
 
         HideEmotion();
         _multiChannelPerlin.m_AmplitudeGain = 0;
+    }
 
+    IEnumerator SwitchCameras(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        OnTreeCameraToggle?.Invoke();
+
+        yield return new WaitForSeconds(1.25f);
+        _animator.UpdateParameter(AnimatorMonster.Params.IsTriggered, true);
+        AudioManager.instance.PlayWithPitch(_emotionSound, 1f);
+
+        yield return new WaitForSeconds(0.75f);
+        OnTreeCameraToggle?.Invoke();
     }
 
     private void Update()
