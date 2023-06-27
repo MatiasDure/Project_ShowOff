@@ -56,10 +56,23 @@ public class AngerQuest : LevelQuest
         _gameWon = false;
     }
 
+    private void Start()
+    {
+        MonsterNavMesh.OnReachedNewPosition += ReachedStartingSpot;
+    }
+
+    private void ReachedStartingSpot()
+    {
+        if (!_gameWon) return;
+
+        ResetStats();
+    }
+
     private void OnDestroy()
     {
         _interactable.OnInteractableActivated -= CheckInteraction;
-        _trafficLight.OnTrafficStateChanged -= ChangeState;
+        _trafficLight.OnTrafficStateChanged -= ChangeState; 
+        MonsterNavMesh.OnReachedNewPosition -= ReachedStartingSpot;
     }
 
     private void Update()
@@ -88,6 +101,13 @@ public class AngerQuest : LevelQuest
 
         AssignPlayer(info);
         StartGame();
+    }
+
+    private void ResetStats()
+    {
+        _interactedCount = 0;
+        _isPlaying = false;
+        _gameWon = false;
     }
 
     IEnumerator WinPopUp()
@@ -127,6 +147,8 @@ public class AngerQuest : LevelQuest
 
     private void AssignPlayer(InteractionInformation info)
     {
+        if (_playingPlayerMove != null) return;
+
         _playingPlayerMove = info.ObjInteracted.GetComponent<PlayerMoveBehaviour>();
         _characterController = info.ObjInteracted.GetComponent<CharacterController>();
     }

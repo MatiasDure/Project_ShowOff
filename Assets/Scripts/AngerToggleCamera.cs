@@ -14,13 +14,20 @@ public class AngerToggleCamera : ToggleCamera
     protected override bool ConditionToCheck() => _CanToggle;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         MonsterNavMesh.OnReachedNewPosition += ToggleCam;
         AngerQuest.OnTouchedMonster += ToggleCam;
     }
 
-    private void ToggleCam() => _CanToggle = true;
+    private void ToggleCam()
+    {
+        if (AngerQuest.Instance.GameWon) return;
+        Debug.Log("here");
+        _CanToggle = true;
+    }
 
     protected override void ResetAfterToggle()
     {
