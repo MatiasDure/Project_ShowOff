@@ -65,11 +65,6 @@ public class AngerQuest : LevelQuest
     private void Update()
     {
         CheckState();
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SetGameWon();
-        }
     }
 
     private void ChangeState(TrafficLight.State pLightState) => _state = pLightState;

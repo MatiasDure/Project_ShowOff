@@ -44,11 +44,6 @@ public class SadnessQuest : LevelQuest
         {
             CompleteQuest();
         }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CompleteQuest();
-        }
     }
 
     void CompleteQuest()

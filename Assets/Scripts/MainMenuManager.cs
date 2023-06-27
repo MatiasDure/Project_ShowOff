@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public event Action OnGameStart;
+
     [SerializeField] GameObject mainMenuEssentials;
 
     public static MainMenuManager Instance;
-    public bool firstTime = true;
+    public bool FirstTime { get; private set; } = true;
 
     void OnEnable()
     {
         GameOverHandler.OnGameRestart += GameRestart;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
         GameOverHandler.OnGameRestart -= GameRestart;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Awake()
@@ -27,24 +33,29 @@ public class MainMenuManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
-    {
-        if (firstTime) EnableMenuEssentials();
-    }
-
     void EnableMenuEssentials()
     {
         mainMenuEssentials.SetActive(true);
-        firstTime = false;
+        GameState.Instance.IsFrozen = true;
+        FirstTime = false;
     }
 
     public void DisableMenuEssentials()
     {
         mainMenuEssentials.SetActive(false);
+        OnGameStart?.Invoke();
     }
 
     void GameRestart()
     {
-        firstTime = true;
+        FirstTime = true;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if(scene.buildIndex == 1 && FirstTime)
+        {
+            EnableMenuEssentials();
+        }
     }
 }

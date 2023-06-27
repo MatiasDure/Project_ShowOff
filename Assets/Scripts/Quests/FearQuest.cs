@@ -29,15 +29,6 @@ public class FearQuest : LevelQuest
         FearQuestTrigger.instance.OnStartQuest -= StartQuest;
     }
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CompleteQuest();
-        }
-    }
-
     protected override void StartQuest()
     {
         if (State == QuestState.InQuest || questedComplete) return;

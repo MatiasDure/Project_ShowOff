@@ -62,13 +62,6 @@ public class DisgustQuest : LevelQuest
 
         State = base.State;
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CompleteQuest();
-        }
-    }
 
     void IngredientsCollected()
     {

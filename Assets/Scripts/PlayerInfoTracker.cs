@@ -26,6 +26,14 @@ public class PlayerInfoTracker : MonoBehaviour
         GameOverHandler.OnGameRestart -= GameRestart;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameOver = true;
+        }
+    }
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -45,7 +53,7 @@ public class PlayerInfoTracker : MonoBehaviour
         }
 
 
-        if (questsCompleted == 4)
+        if (questsCompleted == quests.Count)
         {
             GameOver = true;
         }
@@ -61,9 +69,11 @@ public class PlayerInfoTracker : MonoBehaviour
 
     void GameRestart()
     {
+        GameOver = false;
+
         questsCompleted = 0;
 
-        questNames.Clear();
+        quests.Clear();
         FillDictionary();
     }
 }

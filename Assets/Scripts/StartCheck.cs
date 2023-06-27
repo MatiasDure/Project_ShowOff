@@ -6,7 +6,7 @@ public class StartCheck : MonoBehaviour
 {
     [SerializeField] private KeyCode _keyToCheck;
 
-    private void Awake()
+    private void Start()
     {
         GameState.Instance.IsFrozen = true;
     }
