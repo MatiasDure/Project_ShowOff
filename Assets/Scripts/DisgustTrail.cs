@@ -18,15 +18,31 @@ public class DisgustTrail : HintTrail
 
     void ShowNextHint(Transform position)
     {
-        ParticleSystem current = Instantiate(_trailParticle);
-        _hintsParticles.Add(current);
+        bool newPS = true;
+        _positionsToGo[0] = position;
 
-        FollowPath particlePath = current.AddComponent<FollowPath>();
-        particlePath.Target = position;
+        ParticleSystem current;
+
+        if (_hintsParticles.Count == 0)
+        {
+            return;
+        }
+        else
+        {
+            current = _hintsParticles[0];
+            newPS = false;
+        }
+        current.Play();
+
+        FollowPath particlePath;
+        if (newPS) particlePath = current.AddComponent<FollowPath>();
+        else particlePath = current.GetComponent<FollowPath>();
+
+        particlePath.Target = _positionsToGo[0];
         particlePath.Speed = .1f;
         particlePath.StartingPosition = _player.transform.position;
         particlePath.ResetPosition();
 
-        _particlesPath.Add(current, particlePath);
+        if (newPS) _particlesPath.Add(current, particlePath);
     }
 }

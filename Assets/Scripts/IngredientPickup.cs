@@ -22,6 +22,8 @@ public class IngredientPickup : PickupManager
     {
         if (DisgustQuest.Instance.State != DisgustQuest.QuestState.InQuest) return;
 
+        AudioManager.instance.PlayWithPitch("Pickups", 1f);
+
         _objectsCollected.Add(_pObject);
         _pObject.GetComponent<Interactable>().ForceExit();
         _pObject.SetActive(false);
