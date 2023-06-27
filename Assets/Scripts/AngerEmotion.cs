@@ -20,7 +20,6 @@ public class AngerEmotion : MonsterEmotion
     {
         _globalVolume.profile.TryGet<Vignette>(out _vignette);
 
-        AngerQuest.OnIllegalMove += ShowEmotion;
         MonsterNavMesh.OnReachedNewPosition += HideEmotion;
     }
 
@@ -58,7 +57,6 @@ public class AngerEmotion : MonsterEmotion
 
     private void OnDestroy()
     {
-        AngerQuest.OnIllegalMove -= ShowEmotion;
         MonsterNavMesh.OnReachedNewPosition -= HideEmotion;
     }
 }

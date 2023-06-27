@@ -10,7 +10,7 @@ public class AngerQuest : LevelQuest
     [Tooltip("The Positions to move the player to after illegal moves")]
     [SerializeField] private Transform[] _playerPositions;
 
-    [SerializeField] private PopUp _monsterPopUp;
+    //[SerializeField] private PopUp _monsterPopUp;
 
     private PlayerMoveBehaviour _playingPlayerMove;
     private CharacterController _characterController;
@@ -35,7 +35,6 @@ public class AngerQuest : LevelQuest
 
     public static AngerQuest Instance { get; private set; }
 
-    public static event Action OnIllegalMove;
     public static event Action OnQuestFinished;
     public static event Action OnTouchedMonster;
 
@@ -110,14 +109,14 @@ public class AngerQuest : LevelQuest
         _gameWon = false;
     }
 
-    IEnumerator WinPopUp()
-    {
-        DisplayPopUp("You Won!");
+    //IEnumerator WinPopUp()
+    //{
+    //    DisplayPopUp("You Won!");
 
-        yield return new WaitForSeconds(4);
+    //    yield return new WaitForSeconds(4);
 
-        _monsterPopUp._container.SetActive(false);
-    }
+    //    _monsterPopUp._container.SetActive(false);
+    //}
 
     private void SetGameWon()
     {
@@ -125,15 +124,15 @@ public class AngerQuest : LevelQuest
         _trafficLight.StopLights();
         OnQuestFinished?.Invoke();
         _gameWon = true;
-        StartCoroutine(WinPopUp());
+        //StartCoroutine(WinPopUp());
     }
 
-    private void DisplayPopUp(string pText = "", Image pImage = null)
-    {
-        _monsterPopUp._container.SetActive(true);
-        _monsterPopUp._text.text = pText;
-        _monsterPopUp._image = pImage;
-    }
+    //private void DisplayPopUp(string pText = "", Image pImage = null)
+    //{
+    //    _monsterPopUp._container.SetActive(true);
+    //    _monsterPopUp._text.text = pText;
+    //    _monsterPopUp._image = pImage;
+    //}
 
     private void StartGame()
     {
