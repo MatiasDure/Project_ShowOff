@@ -11,6 +11,7 @@ public class IngredientMixing : InteractableReaction
     [SerializeField] float _requiredRotations;
     [SerializeField] float _timeLimit;
     [SerializeField] bool _skipTask = false;
+    [SerializeField] InteractionKeys _keyInteract;
 
     List<Vector2> _inputHistory = new List<Vector2>();
     Vector2 _inputDir;
@@ -50,6 +51,8 @@ public class IngredientMixing : InteractableReaction
             return;
         }
         if (DisgustQuest.Instance.QuestStep != DisgustQuest.QuestSteps.Mixing) return;
+        InteractKeyVisualizer.Instance.ForceKeyVisualizer(_keyInteract);
+        
         AudioManager.instance.PlayWithPitch("TikTok", 1f);
         AudioManager.instance.PlayWithPitch("FinalBoil", 1f);
         _startMixing = true;
@@ -134,6 +137,7 @@ public class IngredientMixing : InteractableReaction
 
     void MixingComplete()
     {
+        InteractKeyVisualizer.Instance.ForceDisableVisualizer();
         AudioManager.instance.Stop("FinalBoil");
         AudioManager.instance.Stop("TikTok");
         AudioManager.instance.PlayWithPitch("Correct", 1f);
@@ -152,6 +156,7 @@ public class IngredientMixing : InteractableReaction
 
     void TimeUp()
     {
+        InteractKeyVisualizer.Instance.ForceDisableVisualizer();
         AudioManager.instance.Stop("FinalBoil");
         AudioManager.instance.Stop("TikTok");
         AudioManager.instance.PlayWithPitch("Timer", 1f);

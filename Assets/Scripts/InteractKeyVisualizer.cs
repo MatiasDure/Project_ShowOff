@@ -11,16 +11,25 @@ public class InteractKeyVisualizer : MonoBehaviour
     [SerializeField] GameObject _container;
     [SerializeField] Animator _animator;
 
+    bool _forced = false;
+
     private Queue<InteractionKeys> _spritesWaitingForVisual = new Queue<InteractionKeys>(); 
+
+    public static InteractKeyVisualizer Instance { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(this.gameObject);
+
         Interactable.OnEnteredInteractionZone += FindInteractionKeySprite;
         Interactable.OnLeftInteractionZone += DisableVisualizer;
     }
 
     private void DisableVisualizer()
     {
+        if (_forced) return;
+
         _container.SetActive(false);
         if (_spritesWaitingForVisual.Count > 0) SetInteractionVisual(_spritesWaitingForVisual.Dequeue());
     }
@@ -33,12 +42,16 @@ public class InteractKeyVisualizer : MonoBehaviour
 
     private void Update()
     {
+        if (_forced) return;
+
         if (GameState.Instance.IsFrozen) DisableVisualizerAll();
     }
 
     private void FindInteractionKeySprite(KeyCode[] pKeyCodes)
     {
-        foreach(var key in _interactionKeys)
+        if (_forced) return;
+
+        foreach (var key in _interactionKeys)
         {
             if (key.KeyChar != pKeyCodes[0]) continue;
 
@@ -49,7 +62,7 @@ public class InteractKeyVisualizer : MonoBehaviour
 
     private void SetInteractionVisual(InteractionKeys pKey)
     {
-        if (_keyImg == null || 
+        if (_forced || _keyImg == null || 
             pKey == null ||
             GameState.Instance.IsFrozen) return;
 
@@ -62,6 +75,25 @@ public class InteractKeyVisualizer : MonoBehaviour
         _keyImg.sprite = pKey.KeySprite;
         _animator.runtimeAnimatorController = pKey.Controller;
         EnableVisualizer();
+    }
+
+    public void ForceKeyVisualizer(InteractionKeys pKey)
+    {
+        if (_keyImg == null ||
+          pKey == null) return;
+
+        DisableVisualizerAll();
+        _forced = true;
+        Debug.LogWarning(pKey.KeySprite);
+        _keyImg.sprite = pKey.KeySprite;
+        _animator.runtimeAnimatorController = pKey.Controller;
+        EnableVisualizer();
+    }
+
+    public void ForceDisableVisualizer()
+    {
+        _forced = false;
+        DisableVisualizer();
     }
 
     private void EnableVisualizer() => _container.SetActive(true);
