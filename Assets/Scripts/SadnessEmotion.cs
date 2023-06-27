@@ -10,6 +10,7 @@ public class SadnessEmotion : MonsterEmotion, IHittable
     [SerializeField] private Volume _globalVolume;
     [SerializeField] private float _shakeTime = .3f;
     [SerializeField] private float _intensity = .2f;
+    [SerializeField] private AnimatorMonster _animator;
 
     private CinemachineBasicMultiChannelPerlin _multiChannelPerlin;
     private Vignette _vignette;
@@ -51,6 +52,8 @@ public class SadnessEmotion : MonsterEmotion, IHittable
 
     public void Hit()
     {
+        _animator.UpdateParameter(AnimatorMonster.Params.IsTriggered, true);
+        ToggleCamera.Instance.SwitchCamera("MonsterCam");
         AffectMonster();
     }
 }

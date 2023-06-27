@@ -11,8 +11,8 @@ public class IngredientFlipping : InteractableReaction
     [SerializeField] float _requiredFlips;
     [SerializeField] float _timeLimit;
     [SerializeField] bool _skipTask = false;
+    [SerializeField] InteractionKeys _keyInteract;
     int _flipCounter = 0;
-
 
     List<Vector2> _inputHistory = new List<Vector2>();
     Vector2 _inputDir;
@@ -53,6 +53,9 @@ public class IngredientFlipping : InteractableReaction
         AudioManager.instance.PlayWithPitch("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]", 1f);
         _startFlipping = true;
         _helper.StartTask(_timeLimit);
+
+        //try force key visual
+        InteractKeyVisualizer.Instance.ForceKeyVisualizer(_keyInteract);
     }
 
 
@@ -140,6 +143,7 @@ public class IngredientFlipping : InteractableReaction
 
     void FlippingComplete()
     {
+        InteractKeyVisualizer.Instance.ForceDisableVisualizer();
         AudioManager.instance.Stop("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]");
         AudioManager.instance.Stop("TikTok");
         AudioManager.instance.PlayWithPitch("Correct", 1f);
@@ -158,6 +162,7 @@ public class IngredientFlipping : InteractableReaction
 
     void TimeUp()
     {
+        InteractKeyVisualizer.Instance.ForceDisableVisualizer();
         AudioManager.instance.Stop("571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]");
         AudioManager.instance.Stop("TikTok");
         AudioManager.instance.PlayWithPitch("Timer", 1f);

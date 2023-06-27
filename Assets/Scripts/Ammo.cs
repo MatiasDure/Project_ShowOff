@@ -6,6 +6,7 @@ public class Ammo : MonoBehaviour
     [SerializeField] private int _ammoCount;
     public int AmountCount { get; private set; }
     public bool AmmoAvailable { get; private set; }
+    public int StartingAmmoCount => _ammoCount;
 
     private bool _infiniteMode = false;
 

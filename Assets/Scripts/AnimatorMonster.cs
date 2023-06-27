@@ -11,13 +11,16 @@ public class AnimatorMonster : MonoBehaviour
     }
 
     [SerializeField] Animator _animator;
+    [Tooltip("The amount of loops for the reaction animations")]
+    [SerializeField] int _reactionLoops = 1;
 
     // Update is called once per frame
     void Update()
     {
         var state = _animator.GetCurrentAnimatorStateInfo(0);
 
-        if (state.IsName("REACTION") && state.normalizedTime >= 1)
+        //two loops for the reaction animation
+        if (state.IsName("REACTION") && state.normalizedTime >= _reactionLoops)
         {
             UpdateParameter(Params.IsTriggered, false);
             ToggleCamera.Instance.SwitchCamera("PlayerCam");

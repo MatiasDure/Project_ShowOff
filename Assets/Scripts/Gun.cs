@@ -31,8 +31,10 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        CameraMode currentCam = ToggleCamera.Instance.CurrentCameraMode;
         //not in shooting mode
-        if (!GameState.Instance.IsFrozen)
+        if (currentCam == null || 
+            currentCam.Mode != "Shooting")
         {
             lineRenderer.enabled = false;
             _ignoredFirst = false;

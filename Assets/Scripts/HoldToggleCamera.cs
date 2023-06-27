@@ -16,8 +16,9 @@ public class HoldToggleCamera : ToggleCamera
     {
         base.Awake();
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         ToggleCamera.OnCameraModeChanged += CameraModeChanged;
     }
 
@@ -35,33 +36,35 @@ public class HoldToggleCamera : ToggleCamera
     {
         base.Update();
 
-        GameState.Instance.IsFrozen = IsShootMode();
+        GameState.Instance.IsFrozen = ToggleCamera.Instance.CurrentCameraMode == null ? false : ToggleCamera.Instance.CurrentCameraMode.Mode == "Shooting";
 
         if (!Input.GetKey(_keyToHold))
         {
-            _holdTimer = 0;
-            _slider.value = 0;
+            ResetHold();
             return;
         }
 
         _holdTimer += Time.deltaTime;
         _slider.value = _holdTimer / _secondsToHold;
+
+        ChangeCam();
     }
 
-    private bool IsShootMode()
+    private void ResetHold()
     {
-        foreach (var item in Cameras)
-        {
-            if (!item.Mode.Equals("Shooting")) continue;
-
-            return item.VirtualCamera.gameObject.activeInHierarchy;
-        }
-
-        return false;
+        _holdTimer = 0;
+        _slider.value = 0;
     }
 
-    protected override bool ConditionToCheck() => CheckTimer();
+    protected override bool ConditionToCheck() => false;
 
+    private void ChangeCam()
+    {
+        if (!CheckTimer()) return;
+
+        ResetHold();
+        SwitchCamera(CurrentCamera.Mode == "PlayerCam" ? "Shooting" : "PlayerCam");
+    }
     protected override void ResetAfterToggle()
     {
         _holdTimer = 0;

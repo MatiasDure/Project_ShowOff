@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     int _objectsToHit;
     int _objectsHit;
 
+    public static event Action OnBulletDestroyed;
+
     public void SetProperties(int hittables)
     {
         _objectsToHit = hittables;
@@ -43,13 +45,18 @@ public class Bullet : MonoBehaviour
 
         hittable.Hit();
 
-        if (++_objectsHit == _objectsToHit) Destroy(gameObject);
+        if (++_objectsHit == _objectsToHit)
+        {
+            OnBulletDestroyed?.Invoke();
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator DieAfterSeconds(float pSeconds)
     {
         yield return new WaitForSeconds(pSeconds);
 
+        OnBulletDestroyed?.Invoke();
         Destroy(gameObject);
     }
 }
