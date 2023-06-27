@@ -39,7 +39,7 @@ public class MonsterNavMesh : MonoBehaviour
 
     private void MoveToPos()
     {
-        if (!AngerQuest.Instance.IsPlaying) return;
+        if (!AngerQuest.Instance.IsPlaying || AngerQuest.Instance.GameWon) return;
 
         _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, true);
         _target = _monsterPositions[_currentIndex++].position;
@@ -58,6 +58,8 @@ public class MonsterNavMesh : MonoBehaviour
     private void ResetPos()
     {
         _target = _startingPosition;
+        _navMesh.destination = _target;
+        _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, true);
         _questWon = true;
         ResetAttributes();
     }
@@ -77,6 +79,9 @@ public class MonsterNavMesh : MonoBehaviour
 
         GameState.Instance.IsFrozen = false;
         _animatorMonster.UpdateParameter(AnimatorMonster.Params.IsMoving, false);
+
+        _questWon = false;
+
         OnReachedNewPosition?.Invoke();
     }
 

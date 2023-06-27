@@ -98,10 +98,14 @@ public class TrafficLight : MonoBehaviour
         if (_state != State.None) return;
 
         UpdateForState(State.Go);
+
+        OnTrafficStateChanged?.Invoke(_state);
     }
 
     public void StopLights()
     {
         _state = State.None;
+
+        OnTrafficStateChanged?.Invoke(_state);
     }
 }
