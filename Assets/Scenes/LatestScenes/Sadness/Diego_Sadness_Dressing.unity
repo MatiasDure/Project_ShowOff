@@ -2003,12 +2003,12 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000018981332
+      value: 0.00000001898133
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000031278535
+      value: -0.000000003127853
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -3938,7 +3938,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 5000
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.51e-43, y: 2e-44, z: 4.5697343e-37, w: 3.0662174}
+  m_BoundingSphereOverride: {x: -0.8, y: 8, z: 8.8, w: -9.6}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -15408,6 +15408,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504962249}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1513097923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6813343578054200307, guid: efdf5a83b708617408e4dd1f3a8dfe11,
+    type: 3}
+  m_PrefabInstance: {fileID: 6813343577767815127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1513097927
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513097923}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1520486367
 GameObject:
   m_ObjectHideFlags: 0
@@ -22178,6 +22204,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 329645926}
     m_Modifications:
+    - target: {fileID: 6813343577756686458, guid: efdf5a83b708617408e4dd1f3a8dfe11,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813343578054200305, guid: efdf5a83b708617408e4dd1f3a8dfe11,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813343578540900241, guid: efdf5a83b708617408e4dd1f3a8dfe11,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813343578540900255, guid: efdf5a83b708617408e4dd1f3a8dfe11,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813343579149541752, guid: efdf5a83b708617408e4dd1f3a8dfe11,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1513097927}
+    - target: {fileID: 6813343579149541752, guid: efdf5a83b708617408e4dd1f3a8dfe11,
+        type: 3}
+      propertyPath: _interactionKeys.Array.data[0]._controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c382d713f21f3c54694265c8f41256eb, type: 2}
     - target: {fileID: 6813343579149541753, guid: efdf5a83b708617408e4dd1f3a8dfe11,
         type: 3}
       propertyPath: m_Pivot.x

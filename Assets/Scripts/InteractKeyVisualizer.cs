@@ -9,8 +9,9 @@ public class InteractKeyVisualizer : MonoBehaviour
     [SerializeField] InteractionKeys[] _interactionKeys;
     [SerializeField] Image _keyImg;
     [SerializeField] GameObject _container;
+    [SerializeField] Animator _animator;
 
-    private Queue<Sprite> _spritesWaitingForVisual = new Queue<Sprite>(); 
+    private Queue<InteractionKeys> _spritesWaitingForVisual = new Queue<InteractionKeys>(); 
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class InteractKeyVisualizer : MonoBehaviour
     private void DisableVisualizer()
     {
         _container.SetActive(false);
-        if (_spritesWaitingForVisual.Count > 0) SetInteractionSprite(_spritesWaitingForVisual.Dequeue());
+        if (_spritesWaitingForVisual.Count > 0) SetInteractionVisual(_spritesWaitingForVisual.Dequeue());
     }
 
     private void DisableVisualizerAll()
@@ -41,24 +42,25 @@ public class InteractKeyVisualizer : MonoBehaviour
         {
             if (key.KeyChar != pKeyCodes[0]) continue;
 
-            SetInteractionSprite(key.KeySprite);
+            SetInteractionVisual(key);
             break;
         }
     }
 
-    private void SetInteractionSprite(Sprite pKeySprite)
+    private void SetInteractionVisual(InteractionKeys pKey)
     {
         if (_keyImg == null || 
-            pKeySprite == null ||
+            pKey == null ||
             GameState.Instance.IsFrozen) return;
 
         if (VisualizerActive())
         {
-            _spritesWaitingForVisual.Enqueue(pKeySprite);
+            _spritesWaitingForVisual.Enqueue(pKey);
             return;
         }
 
-        _keyImg.sprite = pKeySprite;
+        _keyImg.sprite = pKey.KeySprite;
+        _animator.runtimeAnimatorController = pKey.Controller;
         EnableVisualizer();
     }
 
@@ -78,7 +80,9 @@ public class InteractionKeys
 {
     [SerializeField] private Sprite _keySprite;
     [SerializeField] private KeyCode _keyChar;
+    [SerializeField] private RuntimeAnimatorController _controller;
 
     public Sprite KeySprite => _keySprite;
     public KeyCode KeyChar => _keyChar;
+    public RuntimeAnimatorController Controller => _controller;
 }
