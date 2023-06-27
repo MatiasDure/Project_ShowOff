@@ -31,13 +31,25 @@ public class AnimatorManipulator : MonoBehaviour
     {
         var state = _animator.GetCurrentAnimatorStateInfo(0);
         if (state.IsName("Interaction") && state.normalizedTime >= 1) SetParamValue(Params.IsInteracting, false);
+
+        if(_animator.GetBool("IsInteracting") == true && _animator.GetCurrentAnimatorStateInfo(0).IsName("Moving"))
+        {
+            SetParamValue(Params.IsInteracting, false);
+        }
+
+        if (_animator.GetBool("IsMoving") == true)
+        {
+            _animator.Play("Moving");
+            SetParamValue(Params.IsInteracting, false);
+        }
     }
 
     private void Interacted() => SetParamValue(Params.IsInteracting, true);
 
     public void SetParamValue(Params pParam, bool pValue)
     {
-        _animator.SetBool(pParam.ToString(), pValue);
+        string param = pParam.ToString();
+        _animator.SetBool(param, pValue);
     }
 
     private void OnDestroy()

@@ -19,8 +19,6 @@ public class Ingredient : InteractableReaction
 
     protected override void Interact(InteractionInformation obj)
     {
-        AudioManager.instance.PlayWithPitch("Pickups", 1f);
-
         OnIngredientPickup?.Invoke(this.gameObject);
     }
 }
