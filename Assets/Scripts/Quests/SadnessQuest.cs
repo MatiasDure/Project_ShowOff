@@ -11,6 +11,7 @@ public class SadnessQuest : LevelQuest
     [SerializeField] private PopUp _monsterPopUp; //should go into the base class
     [SerializeField] private GameObject _scoreBoard;
     [SerializeField] private float _scoreShowSeconds = 2f;
+    [SerializeField] private GameObject _balloonImg;
 
     private SadnessQuestTrigger _trigger;
 
@@ -64,13 +65,21 @@ public class SadnessQuest : LevelQuest
 
     private IEnumerator DisplayWin()
     {
+        //setting ui elements
         _monsterPopUp._container.SetActive(true);
-        _monsterPopUp._text.text = "Game Finished! Your Score: " + ScoreSystem.Instance.Score;
+        _monsterPopUp._image.color = new Color(0, 0, 0, 0);
+        _monsterPopUp._text.text = ScoreSystem.Instance.Score.ToString();
+        _balloonImg.SetActive(true);
         _displayingScore = true;
 
         yield return new WaitForSeconds(6f);
 
+        //resetting ui elements
         _monsterPopUp._container.SetActive(false);
+        _monsterPopUp._image.color = new Color(255, 255, 255, 1);
+        _balloonImg.SetActive(false);
+        _monsterPopUp._text.text = "";
+
         ResetQuest();
         _displayingScore = false;
     }
@@ -104,7 +113,7 @@ public class SadnessQuest : LevelQuest
     private void ResetQuest()
     {
         _bulletsDestroyed = 0;
-        _monsterPopUp._text.text = "Try to shoot as many balloons as posible";
+        _monsterPopUp._text.text = "";
         ScoreSystem.Instance.ResetScore();
         _scoreBoard.SetActive(false);
     }

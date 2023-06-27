@@ -10,6 +10,7 @@ public abstract class LevelQuest : MonoBehaviour
     protected QuestState State = QuestState.Waiting;
 
     public static event Action<string> OnQuestComplete;
+    public static event Action OnQuestStarted;
 
     //[SerializeField] protected AudioClip StartQuestSound;
     //[SerializeField] protected AudioClip EndQuestSound;
@@ -23,6 +24,8 @@ public abstract class LevelQuest : MonoBehaviour
         {
             AudioManager.instance.PlayWithPitch(StartQuestSound, 1f);
         }
+
+        OnQuestStarted?.Invoke();
     }
 
     protected virtual void CompleteQuest(string questName)

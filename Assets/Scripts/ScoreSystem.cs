@@ -29,5 +29,9 @@ public class ScoreSystem : MonoBehaviour
         OnScoreModified?.Invoke(Score);
     }
 
-    public void ResetScore() => Score = 0;
+    public void ResetScore()
+    {
+        Score = 0;
+        OnScoreModified?.Invoke(Score);
+    }
 }

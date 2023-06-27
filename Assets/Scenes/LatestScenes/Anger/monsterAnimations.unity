@@ -3494,6 +3494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7535498425441261486}
+  _reactionLoops: 1
 --- !u!1001 &194533047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16939,8 +16940,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1376018555802240258, guid: ef9e3092e6fcab84e961aa63646657f7,
         type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 1623013354}
+    - target: {fileID: 1376018555802240258, guid: ef9e3092e6fcab84e961aa63646657f7,
+        type: 3}
       propertyPath: Cameras.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376018555802240258, guid: ef9e3092e6fcab84e961aa63646657f7,
+        type: 3}
+      propertyPath: _distanceThreshold
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1376018555802240258, guid: ef9e3092e6fcab84e961aa63646657f7,
         type: 3}
@@ -28898,7 +28909,7 @@ Animator:
   m_GameObject: {fileID: 1577457281}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 674396be5dfa2fd4298670f74ada7936, type: 2}
+  m_Controller: {fileID: 9100000, guid: 514c674ecd2d83c45a1ee205d17e87e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -29796,6 +29807,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1623013354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2816121875318002504, guid: c20481b93da31894c819944e3f536500,
+    type: 3}
+  m_PrefabInstance: {fileID: 112359899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1625560705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30197,6 +30220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070323729872062041, guid: 1daa5d379eb68044daa0913bdcc6ced6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1daa5d379eb68044daa0913bdcc6ced6, type: 3}
@@ -37836,12 +37864,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000033317855
+      value: 0.00000035025167
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000041710724
+      value: -0.00000004384811
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
@@ -40589,6 +40617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6e0c8debb533146a4d223ba81a96ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartQuestSound: 
+  EndQuestSound: 
   _playerPositions:
   - {fileID: 1884856301}
   - {fileID: 1829219909}

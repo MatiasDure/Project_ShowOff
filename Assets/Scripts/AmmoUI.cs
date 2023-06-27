@@ -45,7 +45,7 @@ public class AmmoUI : MonoBehaviour
     private void OnDestroy()
     {
         _ammo.OnBulletCountChanged -= ChangeText;
-        //_ammo.OnInfiniteMode -= InfiniteText;
+        _ammo.OnInfiniteMode -= InfiniteText;
 
         ToggleCamera.OnReachedCameraMode -= ToggleUI;
     }

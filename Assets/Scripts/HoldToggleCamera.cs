@@ -65,6 +65,7 @@ public class HoldToggleCamera : ToggleCamera
         ResetHold();
         SwitchCamera(CurrentCamera.Mode == "PlayerCam" ? "Shooting" : "PlayerCam");
     }
+
     protected override void ResetAfterToggle()
     {
         _holdTimer = 0;
