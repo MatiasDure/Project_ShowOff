@@ -80,8 +80,11 @@ public class FearQuest : LevelQuest
 
             OnTorchLit?.Invoke(torches[torchesOn].transform); // For hint trail
         }
-
+        else
+        {
         AudioManager.instance.PlayWithPitch("WrongChoice", 1);
+        }
+
     }
 
     void TorchSubscribe(PathTorch pPathTorch)
