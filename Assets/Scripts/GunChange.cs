@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GunChange : InteractableReaction , IPickable
 {
-    [SerializeField] Transform _currentGunInStation;
+    [SerializeField] GunModel[] _models;
+    [SerializeField] MonsterEmotion _monsterEmotion;
+
+    private GunModel _currentModel;
 
     protected override void Awake()
     {
@@ -13,31 +17,72 @@ public class GunChange : InteractableReaction , IPickable
 
     private void Start()
     {
-        if (transform.childCount < 1) return;
-            
-        _currentGunInStation = transform.GetChild(0);
+        if (_models.Length < 1) Destroy(this.gameObject);
+
+        _currentModel = FindModel(GunModel.Types.Monster);
+
+        Toggle(_currentModel.ModelType);
+    }
+
+    public void Toggle(GunModel.Types pModel)
+    {
+        foreach (var gun in _models)
+        {
+            if (!gun.ModelType.Equals(pModel))
+            {
+                gun.ModelGun.gameObject.SetActive(false);
+                continue;
+            }
+
+            _currentModel = gun;
+            gun.ModelGun.gameObject.SetActive(true);
+        }
     }
 
     public void PickedUp(GameObject objInteracted)
     {
-        if (!objInteracted.TryGetComponent<GunPickUp>(out GunPickUp pickUpScript)) return;
+        GunPickUp gunPick = objInteracted.GetComponentInChildren<GunPickUp>();
 
-        //give stationed gun to player
-        _currentGunInStation.transform.SetParent(pickUpScript.PickUpJoint);
-        _currentGunInStation.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        if (gunPick == null) return;
 
-        //Set player gun in station
-        Transform oldPlayerGun = pickUpScript.CurrentHoldingGun;
-        oldPlayerGun.SetParent(this.transform);
-        oldPlayerGun.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        bool isMonsterType = _currentModel.ModelType == GunModel.Types.Monster;
 
-        //exchange guns
-        pickUpScript.CurrentHoldingGun = _currentGunInStation;
-        _currentGunInStation = oldPlayerGun;
+        //give player current model in station
+        gunPick.Toggle(_currentModel.ModelType);
+
+        //get the opposite to ourselves
+        Toggle(isMonsterType ? GunModel.Types.Player : GunModel.Types.Monster);
+
+        _monsterEmotion.AffectMonster();
+    }
+
+    private GunModel FindModel(GunModel.Types pType)
+    {
+        foreach (var model in _models)
+        {
+            if (!model.ModelType.Equals(pType)) continue;
+
+            return model;
+        }
+
+        return null;
     }
 
     protected override void Interact(InteractionInformation obj)
     {
         PickedUp(obj.ObjInteracted);
     }
+}
+
+[System.Serializable]
+public class GunModel
+{
+    public enum Types
+    {
+        Monster,
+        Player
+    }
+
+    public Transform ModelGun;
+    public Types ModelType;
 }

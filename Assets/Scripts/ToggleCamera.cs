@@ -17,6 +17,7 @@ public abstract class ToggleCamera : MonoBehaviour
     protected bool ReachedNewCamera = true;
 
     public CameraMode CurrentCameraMode => CurrentCamera;
+    public CameraMode PreviousCameraMode { get; private set; }
     public static ToggleCamera Instance { get; private set; }
 
     protected virtual void Awake()
@@ -84,6 +85,7 @@ public abstract class ToggleCamera : MonoBehaviour
         firstCam.SetActive(!firstCam.activeInHierarchy);
         Cameras[1].VirtualCamera.gameObject.SetActive(!firstCam.activeInHierarchy);
 
+        PreviousCameraMode = CurrentCamera;
         CurrentCamera = firstCam.activeInHierarchy ? Cameras[0] : Cameras[1];
 
         OnCameraModeChanged?.Invoke(CurrentCamera.Mode);
@@ -101,7 +103,7 @@ public abstract class ToggleCamera : MonoBehaviour
             mode.VirtualCamera.gameObject.SetActive(false);
             mode.VirtualCamera.gameObject.SetActive(true);
 
-
+            PreviousCameraMode = CurrentCamera;
             CurrentCamera = mode;
             ReachedNewCamera = false;
             OnCameraModeChanged?.Invoke(CurrentCamera.Mode);

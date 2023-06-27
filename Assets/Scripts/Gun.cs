@@ -11,7 +11,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private Vector2 _minMaxX;
     [SerializeField] private Vector2 _minMaxY;
     [SerializeField] private GameObject _gunModel;
-    [SerializeField] Bullet _bullet;
+    [SerializeField] private Bullet _bulletPrefab;
+    [SerializeField] private GunPickUp _gunHolder;
 
     private Ammo _ammo;
     private bool _ignoredFirst = false;
@@ -98,7 +99,9 @@ public class Gun : MonoBehaviour
         if (pMode != "Shooting")
         {
             ResetAim();
-            _gunModel.SetActive(false);
+            _gunHolder.CurrentHoldingGun.ModelGun.gameObject.SetActive(false);
+            
+            //_gunModel.SetActive(false);
         }
     }
 
@@ -106,7 +109,8 @@ public class Gun : MonoBehaviour
     {
         if (!pMode.Mode.Equals("Shooting")) return;
 
-        _gunModel.SetActive(true);
+        //_gunModel.SetActive(true);
+        _gunHolder.CurrentHoldingGun.ModelGun.gameObject.SetActive(true);
         lineRenderer.enabled = true;
     }
 
@@ -138,7 +142,7 @@ public class Gun : MonoBehaviour
     void SpawnBullet(int hittables)
     {
         AudioManager.instance.PlayWithPitch("Spray", 1f);
-        Bullet bullet = Instantiate(_bullet, _laserPos.position, transform.rotation);
+        Bullet bullet = Instantiate(_bulletPrefab, _laserPos.position, transform.rotation);
         bullet.SetProperties(hittables);
     }
 

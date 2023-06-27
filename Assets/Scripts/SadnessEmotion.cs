@@ -24,6 +24,8 @@ public class SadnessEmotion : MonsterEmotion, IHittable
     public override void AffectMonster()
     {
         AudioManager.instance.PlayWithPitch(_emotionSound, 1f);
+        _animator.UpdateParameter(AnimatorMonster.Params.IsTriggered, true);
+        ToggleCamera.Instance.SwitchCamera("MonsterCam");
 
         if (_camera == null) return;
 
@@ -52,8 +54,6 @@ public class SadnessEmotion : MonsterEmotion, IHittable
 
     public void Hit()
     {
-        _animator.UpdateParameter(AnimatorMonster.Params.IsTriggered, true);
-        ToggleCamera.Instance.SwitchCamera("MonsterCam");
         AffectMonster();
     }
 }
