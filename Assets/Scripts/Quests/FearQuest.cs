@@ -41,10 +41,10 @@ public class FearQuest : LevelQuest
         Debug.Log("Quest started!");
     }
 
-    protected override void CompleteQuest()
+    void CompleteQuest()
     {
         questedComplete = true;
-        base.CompleteQuest();
+        base.CompleteQuest("Fear");
         hints.SetActive(false);
         State = QuestState.Waiting;
         torchesOn = 0;

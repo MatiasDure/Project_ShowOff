@@ -50,9 +50,9 @@ public class SadnessQuest : LevelQuest
         }
     }
 
-    protected override void CompleteQuest()
+    void CompleteQuest()
     {
-        base.CompleteQuest();
+        base.CompleteQuest("Sadness");
 
         _balloonActivator.DeactivateAllObjects();
         State = QuestState.Waiting;

@@ -1,0 +1,362 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7821045327984449625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7821045327984449623}
+  - component: {fileID: 7821045327984449622}
+  m_Layer: 0
+  m_Name: AudioManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7821045327984449623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821045327984449625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7821045327984449622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821045327984449625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e3a7ca24a114689992567871278e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: HideLantern
+    clip: {fileID: 8300000, guid: 873e9734bc4c04647a6309e36d00c312, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ShakingTree
+    clip: {fileID: 8300000, guid: e8451db0102a243bc886ee71249318d3, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: TakeOutLantern
+    clip: {fileID: 8300000, guid: dc6479d73ce314cc6aca1772a017c45b, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: TurnOffLamp
+    clip: {fileID: 8300000, guid: cfd965a974f6e418e96dc3b8389c2846, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: TurnOnLamp
+    clip: {fileID: 8300000, guid: 536e59fc94a0442e7a2110a37d6cc9d6, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: WalkingOnForest
+    clip: {fileID: 8300000, guid: e1260767d1d434d6fa5489f56d33a8ac, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: KeyNote
+    clip: {fileID: 8300000, guid: af4f0d77011ae42b0a50cdc60e3c7d84, type: 3}
+    volume: 0.1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: FinalNote
+    clip: {fileID: 8300000, guid: 356af0f1829c547b99fa7882ecd2896c, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: LightFire
+    clip: {fileID: 8300000, guid: e1b41117839564d2c871c260e2b9a136, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 50
+    source: {fileID: 0}
+  - name: LightUp
+    clip: {fileID: 8300000, guid: 03dbdc345eec548c28696a9379fc29cc, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: WrongChoice
+    clip: {fileID: 8300000, guid: 12ee666ee0dd44fd8a8e380af82d8269, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ThemeFear
+    clip: {fileID: 8300000, guid: c06071c870c5143a48e4ace328c04677, type: 3}
+    volume: 0.05
+    pitch: 0
+    loop: 1
+    priority: 225
+    source: {fileID: 0}
+  - name: BookInteract
+    clip: {fileID: 8300000, guid: 6a4506ea1904442d5bc4a97caa2c54b6, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 0
+    source: {fileID: 0}
+  - name: MonsterAngry
+    clip: {fileID: 8300000, guid: 9d62757fa2162438f836f3711c219d6c, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 192
+    source: {fileID: 0}
+  - name: WhiteBoard
+    clip: {fileID: 8300000, guid: f70ad9d0cbff442429693970985d6167, type: 3}
+    volume: 0.2
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: WrongMove
+    clip: {fileID: 8300000, guid: 196cbdaffefff4962a177be034fdf370, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Stop
+    clip: {fileID: 8300000, guid: 3b28455dfc4f1a344b74711289eea19a, type: 3}
+    volume: 0.35
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: AngerBackground
+    clip: {fileID: 8300000, guid: 021a37fe206464830ae58570cd30d564, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Boiling
+    clip: {fileID: 8300000, guid: 25ae743f0d96a48b99fce450240f6b1f, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 1
+    priority: 128
+    source: {fileID: 0}
+  - name: Chop
+    clip: {fileID: 8300000, guid: cadd5b66c3c1e41dcba7259eeb7290f9, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Fart
+    clip: {fileID: 8300000, guid: be6e423108d5540a896ff97b068843a4, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: FlipPan
+    clip: {fileID: 8300000, guid: 437e24248bd8f4fa09e989058f2704fb, type: 3}
+    volume: 0.8
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Mhm
+    clip: {fileID: 8300000, guid: 132f82affae614ee7ac32a35def4e36a, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Pickups
+    clip: {fileID: 8300000, guid: 1176893e04490469bbf07e49365a78cc, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Sizzle
+    clip: {fileID: 8300000, guid: 02b4bdb541d0a41748ce06340155a81b, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 1
+    priority: 128
+    source: {fileID: 0}
+  - name: Slurp
+    clip: {fileID: 8300000, guid: 256ee1443185a46eeb2efe6c2f46a2c9, type: 3}
+    volume: 0.65
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Tempo
+    clip: {fileID: 8300000, guid: 16b635d5309cd4494b1ed4a4dc7d6daf, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: TurnPot
+    clip: {fileID: 8300000, guid: 0d2877094efaf4ee3b03db5169a4e7a1, type: 3}
+    volume: 0.7
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: UghReaction
+    clip: {fileID: 8300000, guid: 48abe5f6b7f6b40e3b917d5c55c8c8da, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: YuckReaction
+    clip: {fileID: 8300000, guid: 0dde60388f8a44bab86a4bfe87f7e10e, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Boiling-[AudioTrimmer.com]
+    clip: {fileID: 8300000, guid: 54db1144ee2854093a498fe1825bbdba, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Sizzle-[AudioTrimmer.com]
+    clip: {fileID: 8300000, guid: 9a29a6c3d3756465fa9fbe8c427e204e, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 1
+    priority: 128
+    source: {fileID: 0}
+  - name: 571670__nachtmahrtv__frying-in-a-pan-[AudioTrimmer.com]
+    clip: {fileID: 8300000, guid: 1c8fcd728fffb41e39290ba6ca54ba84, type: 3}
+    volume: 0.5
+    pitch: 0
+    loop: 1
+    priority: 211
+    source: {fileID: 0}
+  - name: BalloonPop
+    clip: {fileID: 8300000, guid: 47226048c592546e4a5fd6213aff2dbe, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: GunShooting
+    clip: {fileID: 8300000, guid: 394ac1b8ac54e4516951927aa369a2cb, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: MonsterSad
+    clip: {fileID: 8300000, guid: 468b696d0fec344b89840b15f281f9cb, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: MonsterShot
+    clip: {fileID: 8300000, guid: 48857892ccbcf407eaf98d46f0e3bf0a, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: SadnessBG
+    clip: {fileID: 8300000, guid: b2576d97ff0664275af42c09a99f4c2f, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Spray
+    clip: {fileID: 8300000, guid: 9244e1a7894d74847a05d44055e0efd5, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: WaterGun
+    clip: {fileID: 8300000, guid: 0f74d5d71904f43b488d70b689c6f013, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ZoomIn
+    clip: {fileID: 8300000, guid: 097e08e0aea6f4b67b302ccf6b9293dc, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ZoomOut
+    clip: {fileID: 8300000, guid: 7eee3782de4c64bef91780080746a346, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ShortOff
+    clip: {fileID: 8300000, guid: 7b97cc641d4274446a67ef960867bb30, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: FearScared
+    clip: {fileID: 8300000, guid: effdc366bce884b95af497893456a7a9, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: ScaredSound
+    clip: {fileID: 8300000, guid: 96ae7b123b65349c3b941f9a37ed4c7d, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
