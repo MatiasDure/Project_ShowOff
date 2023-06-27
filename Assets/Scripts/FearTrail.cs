@@ -35,11 +35,12 @@ public class FearTrail : HintTrail
             current = _hintsParticles[0];
             newPS = false;
         }
-        current.Play();
 
         FollowPath particlePath;
         if (newPS) particlePath = current.AddComponent<FollowPath>();
         else particlePath = current.GetComponent<FollowPath>();
+
+        current.Play();
 
         particlePath.Target = _positionsToGo[0];
         particlePath.Speed = .1f;
