@@ -8969,7 +8969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2289fca2c30f9f348b1a71cc23f9058e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tempo: 5
+  _tempo: 4
   _spammingTimeSeconds: 3
   _timeLimit: 10
   _skipTask: 0
@@ -32237,7 +32237,7 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10256862
+      value: 0.102568634
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -32247,7 +32247,7 @@ PrefabInstance:
     - target: {fileID: 6257337607873026804, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.102568515
+      value: 0.10256852
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -32741,8 +32741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggleObj: {fileID: 8377093878790468891}
   _disableOnExit: 1
-  _soundToPlayOn: 
-  _soundToPlayOff: 
+  _soundToPlayOn: Mhm
+  _soundToPlayOff: FinalNote
   _monsterSound: 
 --- !u!135 &8377093878521076349
 SphereCollider:

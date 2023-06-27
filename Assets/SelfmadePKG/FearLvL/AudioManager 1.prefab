@@ -360,3 +360,31 @@ MonoBehaviour:
     loop: 0
     priority: 128
     source: {fileID: 0}
+  - name: Correct
+    clip: {fileID: 8300000, guid: abe25ba3eed7b472eb4c3d2c9cce263e, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: TikTok
+    clip: {fileID: 8300000, guid: db08a8449f8034aab8510343c50e6bdd, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Timer
+    clip: {fileID: 8300000, guid: a804d09d129824c878fa28a39153e379, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: FinalBoil
+    clip: {fileID: 8300000, guid: bbb311e79e92e4c4ab71419d1c6c2761, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
