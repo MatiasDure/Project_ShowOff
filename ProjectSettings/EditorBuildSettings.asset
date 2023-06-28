@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LatestScenes/Anger/monsterAnimations.unity
     guid: d635417f7684197499481d9a573c05c3
-  - enabled: 0
-    path: Assets/Scenes/LatestScenes/Anger/NicolasSoundAnger 1.unity
-    guid: 56c2a6854a8e6164d9dc124df0a124d5
   - enabled: 1
     path: Assets/Scenes/LatestScenes/Disgust/NickPPDisgust.unity
     guid: 868bffbb985b523428edc411f09f3600
