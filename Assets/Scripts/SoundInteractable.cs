@@ -28,7 +28,6 @@ public class SoundInteractable : InteractableReaction
     {
         if(_soundToPlay == null)
         {
-            Debug.Log("Audio clip not found!");
             return;
         }
 

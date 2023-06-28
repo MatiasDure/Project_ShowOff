@@ -38,7 +38,6 @@ public class FearQuest : LevelQuest
         hints.SetActive(true);
         State = QuestState.InQuest;
         StartCamTransition();
-        Debug.Log("Quest started!");
     }
 
     void CompleteQuest()
@@ -49,7 +48,6 @@ public class FearQuest : LevelQuest
         State = QuestState.Waiting;
         torchesOn = 0;
         TorchUnsubscribe();
-        Debug.Log("Quest complete!");
     }
 
     void SetupTorches()

@@ -30,6 +30,7 @@ public class AnimatorManipulator : MonoBehaviour
     void Update()
     {
         var state = _animator.GetCurrentAnimatorStateInfo(0);
+
         if (state.IsName("Interaction") && state.normalizedTime >= 1) SetParamValue(Params.IsInteracting, false);
 
         if(_animator.GetBool("IsInteracting") == true && _animator.GetCurrentAnimatorStateInfo(0).IsName("Moving"))

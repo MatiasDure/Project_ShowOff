@@ -46,12 +46,7 @@ public class AudioManager : MonoBehaviour
         Sound s =  Array.Find(sounds, sound => sound.name == name); // To play sound in specific point:
         if (s == null)
         {
-            Debug.LogWarning("Sound: " + name + "not found!");
             return;
-        }
-        else
-        {
-            Debug.Log("Playing: " + name);
         }
         s.source.Play();                                           // FindObjectOfType<AudioManager>().Play("Sound_Name");
     }
@@ -62,12 +57,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
             return;
-        }
-        else
-        {
-            Debug.Log("Playing: " + name + " with pitch: " + pitch);
         }
         s.source.pitch = pitch;
         s.source.Play();
@@ -82,7 +72,6 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
             return 0f;
         }
     }
@@ -91,11 +80,9 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
 
         s.source.Stop();
-        Debug.Log("Stopping: " + name);
     }
 }

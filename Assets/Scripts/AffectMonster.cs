@@ -24,7 +24,6 @@ public class AffectMonster : InteractableReaction
         TriggerMonster();
         if (_affectMonsterSound == null)
         {
-            Debug.Log("No AffectMonsterSound found!");
             return;
         }
 

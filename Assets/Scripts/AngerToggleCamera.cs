@@ -25,7 +25,6 @@ public class AngerToggleCamera : ToggleCamera
     private void ToggleCam()
     {
         if (AngerQuest.Instance.GameWon) return;
-        Debug.Log("here");
         _CanToggle = true;
     }
 

@@ -14,7 +14,7 @@ public class GameOverHandler : MonoBehaviour
         if (Input.GetKeyDown(_keyToCheck))
         {
             OnGameRestart?.Invoke();
-            LoadingScene.Instance.LoadScene(1);
+            LoadingScene.Instance.LoadScene(0);
         }
     }
 }

@@ -388,3 +388,17 @@ MonoBehaviour:
     loop: 0
     priority: 128
     source: {fileID: 0}
+  - name: Warning
+    clip: {fileID: 8300000, guid: bd0b72d0d3cdd2a4483f662be597dbb4, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}
+  - name: Start
+    clip: {fileID: 8300000, guid: b638b9e8debe9d34c9698bf211abae14, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 0
+    priority: 128
+    source: {fileID: 0}

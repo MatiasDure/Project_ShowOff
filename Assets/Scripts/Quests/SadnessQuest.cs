@@ -72,7 +72,7 @@ public class SadnessQuest : LevelQuest
         _balloonImg.SetActive(true);
         _displayingScore = true;
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(10f);
 
         //resetting ui elements
         _monsterPopUp._container.SetActive(false);
@@ -101,7 +101,6 @@ public class SadnessQuest : LevelQuest
     private IEnumerator ShowScores()
     {
         GameState.Instance.IsFrozen = true;
-        Debug.Log(ToggleCamera.Instance);
         ToggleCamera.Instance.SwitchCamera("ScoreCam");
 
         yield return new WaitForSeconds(_scoreShowSeconds);

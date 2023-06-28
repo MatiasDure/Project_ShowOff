@@ -84,7 +84,6 @@ public class InteractKeyVisualizer : MonoBehaviour
 
         DisableVisualizerAll();
         _forced = true;
-        Debug.LogWarning(pKey.KeySprite);
         _keyImg.sprite = pKey.KeySprite;
         _animator.runtimeAnimatorController = pKey.Controller;
         EnableVisualizer();

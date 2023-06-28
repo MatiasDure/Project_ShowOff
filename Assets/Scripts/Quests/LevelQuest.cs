@@ -19,8 +19,7 @@ public abstract class LevelQuest : MonoBehaviour
 
     protected virtual void StartQuest()
     {
-        if (StartQuestSound == null) Debug.Log("No StartQuestSound found.");
-        else
+        if(StartQuestSound != null)
         {
             AudioManager.instance.PlayWithPitch(StartQuestSound, 1f);
         }

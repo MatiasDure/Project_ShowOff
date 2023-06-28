@@ -23,7 +23,7 @@ public class AmmoUI : MonoBehaviour
         _ammo.OnBulletCountChanged += ChangeText;
         _ammo.OnInfiniteMode += InfiniteText;
 
-        ToggleCamera.OnReachedCameraMode += ToggleUI;
+        ToggleCamera.OnCameraModeChanged += ToggleUI;
     }
 
     private void ChangeText(int pAmmoCount)
@@ -37,9 +37,9 @@ public class AmmoUI : MonoBehaviour
         if (_ammoText != null) _ammoText.gameObject.SetActive(!pEnabled);
     }
 
-    private void ToggleUI(CameraMode pCamMode)
+    private void ToggleUI(string pCamMode)
     {
-        _container.SetActive(pCamMode.Mode.Equals("Shooting"));
+        _container.SetActive(pCamMode.Equals("Shooting"));
     }
 
     private void OnDestroy()
@@ -47,6 +47,6 @@ public class AmmoUI : MonoBehaviour
         _ammo.OnBulletCountChanged -= ChangeText;
         _ammo.OnInfiniteMode -= InfiniteText;
 
-        ToggleCamera.OnReachedCameraMode -= ToggleUI;
+        ToggleCamera.OnCameraModeChanged -= ToggleUI;
     }
 }

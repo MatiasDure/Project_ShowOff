@@ -53,7 +53,7 @@ public class MainMenuManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(scene.buildIndex == 1 && FirstTime)
+        if(scene.buildIndex == 0 && FirstTime)
         {
             EnableMenuEssentials();
         }

@@ -45,9 +45,9 @@ public class Teleporter : InteractableReaction
         if (LoadingScene.Instance == null) return;
 
         // CHANGE SCENE NUMBERS ON FINAL BUILD TO MATCH BEDROOM! (HERE AND IN GameOver!!!)
-        if (_sceneToTeleport == 1 && PlayerInfoTracker.Instance.GameOver)
+        if (_sceneToTeleport == 0 && PlayerInfoTracker.Instance.GameOver)
         {
-            _sceneToTeleport = 6;
+            _sceneToTeleport = 5;
         }
         LoadingScene.Instance.LoadScene(_sceneToTeleport);
     }

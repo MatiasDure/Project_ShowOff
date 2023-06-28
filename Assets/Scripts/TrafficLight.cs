@@ -31,6 +31,8 @@ public class TrafficLight : MonoBehaviour
 
     private bool TimerOver() => _timer <= 0f;
 
+    private Color _green = new Color(.56f, .93f , .56f);
+
     private void Start()
     {
         _globalVolume.profile.TryGet<Vignette>(out _vignette);
@@ -71,7 +73,7 @@ public class TrafficLight : MonoBehaviour
             case State.Stop:
                 UpdateForState(State.Go);
                 AudioManager.instance.PlayWithPitch("Start", 1f);
-                _vignette.color.value = Color.green;
+                _vignette.color.value = _green;
                 break;
             default:
                 break;

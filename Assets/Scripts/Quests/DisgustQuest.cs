@@ -107,7 +107,7 @@ public class DisgustQuest : LevelQuest
         _hintTrail.gameObject.SetActive(false);
         _foodPlate.transform.parent.SetParent(_plateEatingPosition);
         _foodPlate.transform.parent.localPosition = Vector3.zero;
-        Debug.Log(_foodPlate.transform.parent);
+
         Destroy(_poopFoodPlate);
         CompleteQuest();
     }
