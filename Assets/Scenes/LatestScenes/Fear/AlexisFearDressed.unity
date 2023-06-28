@@ -9306,6 +9306,16 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: _monsterSound
+      value: ScaredSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: _soundToPlayOn
+      value: TurnOnLamp
+      objectReference: {fileID: 0}
     - target: {fileID: 4188915115867135536, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: m_Name
@@ -10081,6 +10091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _monsterSound
       value: ScaredSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: _soundToPlayOn
+      value: TurnOnLamp
       objectReference: {fileID: 0}
     - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
@@ -11209,12 +11224,12 @@ PrefabInstance:
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0034668373
+      value: -0.0034668755
       objectReference: {fileID: 0}
     - target: {fileID: 6257337607912131658, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00040949642
+      value: 0.00040950094
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
@@ -11239,12 +11254,12 @@ PrefabInstance:
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0034754055
+      value: -0.0034754397
       objectReference: {fileID: 0}
     - target: {fileID: 6257337608093154414, guid: db69c6169246b8948ba9344403220a02,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00032897075
+      value: 0.000328974
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db69c6169246b8948ba9344403220a02, type: 3}
@@ -21786,6 +21801,16 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.z
       value: 4.5435827e+30
       objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: _monsterSound
+      value: ScaredSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188915115528725655, guid: 7f07d3b765abde743bbd129b9e236b5f,
+        type: 3}
+      propertyPath: _soundToPlayOn
+      value: TurnOnLamp
+      objectReference: {fileID: 0}
     - target: {fileID: 4188915115867135536, guid: 7f07d3b765abde743bbd129b9e236b5f,
         type: 3}
       propertyPath: m_Name
@@ -32161,12 +32186,12 @@ PrefabInstance:
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0034668182
+      value: -0.0034668944
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0004094941
+      value: 0.00040950318
       objectReference: {fileID: 0}
     - target: {fileID: 2816121875318002505, guid: c20481b93da31894c819944e3f536500,
         type: 3}
@@ -32578,7 +32603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monsterEmotion: {fileID: 8377093877921068864}
-  _affectMonsterSound: 
+  _affectMonsterSound: ScaredSound
 --- !u!1001 &1797785076
 PrefabInstance:
   m_ObjectHideFlags: 0
