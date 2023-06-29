@@ -15,9 +15,23 @@ public class FearQuest : LevelQuest
     [SerializeField] GameObject hints;
 
     List<PathTorch> torches = new List<PathTorch>();
+    List<Interactable> interactableScripts = new List<Interactable>();
 
     int torchesOn = 0;
     bool questedComplete = false;
+
+    private void Start()
+    {
+        foreach (GameObject torch in torchesGO)
+        {
+            PathTorch pathTorch = torch.transform.GetComponentInChildren<PathTorch>();
+            Interactable currentInteractableScript = pathTorch.GetComponent<Interactable>();
+            currentInteractableScript.enabled = false;
+            interactableScripts.Add(currentInteractableScript);
+            //TorchSubscribe(pathTorch);
+            torches.Add(pathTorch);
+        }
+    }
 
     void OnEnable()
     {
@@ -52,11 +66,17 @@ public class FearQuest : LevelQuest
 
     void SetupTorches()
     {
-        foreach(GameObject torch in torchesGO)
+        foreach(PathTorch torch in torches)
         {
-            PathTorch pathTorch = torch.transform.GetComponentInChildren<PathTorch>();
-            TorchSubscribe(pathTorch);
-            torches.Add(pathTorch);
+            //PathTorch pathTorch = torch.transform.GetComponentInChildren<PathTorch>();
+            //torch.GetComponentInChildren<Interactable>().enabled = true;
+            TorchSubscribe(torch);
+            //torches.Add(pathTorch);
+        }
+
+        foreach(var interactable in interactableScripts)
+        {
+            interactable.enabled = true;
         }
     }
 
