@@ -25,7 +25,12 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (GameState.Instance.IsFrozen) return;
+        if (GameState.Instance.IsFrozen)
+        {
+            _moveBehaviour.AnimManipulator.SetParamValue(AnimatorManipulator.Params.IsMoving, false);
+            _moveBehaviour.AnimManipulator.SetParamValue(AnimatorManipulator.Params.IsInteracting, false);
+            return;
+        }
 
         PlayerMovement();
     }

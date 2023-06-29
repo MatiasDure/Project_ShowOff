@@ -33,16 +33,17 @@ public class AnimatorManipulator : MonoBehaviour
 
         if (state.IsName("Interaction") && state.normalizedTime >= 1) SetParamValue(Params.IsInteracting, false);
 
-        if(_animator.GetBool("IsInteracting") == true && _animator.GetCurrentAnimatorStateInfo(0).IsName("Moving"))
-        {
-            SetParamValue(Params.IsInteracting, false);
-        }
+        //Not a good idea to put this here... Better way is to set interaction false when you set moving true
+        //if(_animator.GetBool("IsInteracting") == true && _animator.GetCurrentAnimatorStateInfo(0).IsName("Moving"))
+        //{
+        //    SetParamValue(Params.IsInteracting, false);
+        //}
 
-        if (_animator.GetBool("IsMoving") == true)
-        {
-            _animator.Play("Moving");
-            SetParamValue(Params.IsInteracting, false);
-        }
+        //if (_animator.GetBool("IsMoving") == true)
+        //{
+        //    _animator.Play("Moving");
+        //    SetParamValue(Params.IsInteracting, false);
+        //}
     }
 
     private void Interacted() => SetParamValue(Params.IsInteracting, true);

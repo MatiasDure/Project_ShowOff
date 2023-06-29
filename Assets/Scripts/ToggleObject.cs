@@ -6,13 +6,9 @@ public class ToggleObject : InteractableReaction
 {
     [SerializeField] GameObject _toggleObj;
     [SerializeField] private bool _disableOnExit = true;
-    //[SerializeField] private string _soundToPlay = null;
     [SerializeField] private string _soundToPlayOn = null;
     [SerializeField] private string _soundToPlayOff = null;
     [SerializeField] private string _monsterSound = null;
-
-    private bool _isOn = false;
-
 
     protected override void Awake()
     {
@@ -29,8 +25,6 @@ public class ToggleObject : InteractableReaction
     
     private void ToggleObj()
     {
-        //orestis
-        //_toggleObj.SetActive(!_toggleObj.activeInHierarchy);
 
         _toggleObj.SetActive(!_toggleObj.activeInHierarchy);
 
@@ -45,10 +39,6 @@ public class ToggleObject : InteractableReaction
             AudioManager.instance.PlayWithPitch(_soundToPlayOff, 1f);
             StartCoroutine(PlayNextSound());
         }
-
-        //if (_soundToPlay == null) return;
-
-        //AudioManager.instance.PlayWithPitch(_soundToPlay,1f);
     }
 
     private void DeactivateObj() => _toggleObj.SetActive(false);
