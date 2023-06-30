@@ -14,6 +14,22 @@ public class PlayerInfoTracker : MonoBehaviour
 
     Dictionary<string, bool> quests = new Dictionary<string, bool>();
 
+    public List<string> Finished { 
+        get 
+        {
+            List<string> fin = new List<string>();
+
+            foreach(var quest in quests)
+            {
+                if (!quest.Value) continue;
+
+                fin.Add(quest.Key);
+            }
+
+            return fin;        
+        } 
+    } 
+
     void OnEnable()
     {
         LevelQuest.OnQuestComplete += QuestCompleted;
